@@ -15,18 +15,16 @@ function App() {
       </section>
 
       {/* MODAL */}
-      <section
-        className={cn(
-          'absolute z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6 rounded-lg',
-          'text-3xl backdrop-blur-sm bg-black/40 '
-        )}
-      >
+      <section className='absolute z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6 rounded-lg text-3xl backdrop-blur-sm bg-black/40 '>
         game paused
       </section>
 
       {/* IMAGE */}
-      <section className='absolute top-0 left-0 inset-0'>
-        <img className='h-full mx-auto object-cover' src='game_images/scene_office.webp' />
+      <section className='absolute inset-0 overflow-scroll scroll-smooth'>
+        <div className='relative flex items-center justify-center min-w-game min-h-game overflow-hidden'>
+          {/* Images should be scaled to 1512/680 */}
+          <img className='w-full h-full object-cover' src='game_images/scene-office.webp' />
+        </div>
       </section>
     </div>
   );

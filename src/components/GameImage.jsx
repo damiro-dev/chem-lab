@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useState, useEffect } from 'react';
 import cn from '../lib/tailwindMerge';
 import roundOff from '../lib/roundOff';
 import { useCursorUpdate } from '../context/CursorProvider';
@@ -40,6 +40,29 @@ export default function GameImage({ img, paused = true }) {
     }
   };
 
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (ref.current) {
+        setCanScrollLeft(ref.current.scrollLeft > 0);
+        setCanScrollRight(ref.current.scrollLeft + ref.current.clientWidth < ref.current.scrollWidth);
+      }
+    };
+
+    if (ref.current) {
+      handleScroll(); // Initial calculation
+      ref.current.addEventListener('scroll', handleScroll);
+
+      return () => {
+        if (ref.current) {
+          ref.current.removeEventListener('scroll', handleScroll);
+        }
+      };
+    }
+  }, [ref]);
+
   return (
     <>
       <section
@@ -62,7 +85,8 @@ export default function GameImage({ img, paused = true }) {
       <button
         onClick={() => scroll(distance * -1)}
         className={cn(
-          'absolute z-20 top-1/2 left-0 -translate-y-1/2 w-12 aspect-square ml-4 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center'
+          'absolute z-20 top-1/2 left-0 -translate-y-1/2 w-12 aspect-square ml-4 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center',
+          !canScrollLeft && 'hidden'
         )}
       >
         <MdChevronLeft size={'32px'} color='white' />
@@ -71,7 +95,8 @@ export default function GameImage({ img, paused = true }) {
       <button
         onClick={() => scroll(distance)}
         className={cn(
-          'absolute z-20 top-1/2 right-0 -translate-y-1/2 w-12 aspect-square mr-4 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center'
+          'absolute z-20 top-1/2 right-0 -translate-y-1/2 w-12 aspect-square mr-4 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center',
+          !canScrollRight && 'hidden'
         )}
       >
         <MdChevronRight size={'32px'} color='white' />

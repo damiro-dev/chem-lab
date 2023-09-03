@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useRef } from 'react';
 import cn from '../lib/tailwindMerge';
 import roundOff from '../lib/roundOff';
 import { useCursorUpdate } from '../context/CursorProvider';
@@ -7,10 +7,12 @@ import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 export default function GameImage({ img, paused = true }) {
   const setCursor = useCursorUpdate();
   const imgUrl = `game-images/scene-${img}.webp`;
+  const ref = useRef(null);
+  const distance = (window.innerWidth * 2) / 3;
 
   const calculateCursorPercentage = useCallback((e) => {
-    const image = document.getElementById('refImage');
-    const rect = image.getBoundingClientRect();
+    const rect = ref.current.getBoundingClientRect();
+
     // Calculate cursor position relative to the image
     const xRelativeToImage = e.clientX - rect.left;
     const yRelativeToImage = e.clientY - rect.top;
@@ -23,18 +25,25 @@ export default function GameImage({ img, paused = true }) {
 
   const handleMouseMove = (e) => {
     const cursorPosition = calculateCursorPercentage(e);
-    setCursor({ ...cursorPosition, ex: e.clientX, ey: e.clientY });
+    setCursor({ ...cursorPosition, vx: e.clientX, vy: e.clientY });
   };
 
   const handleClick = (e) => {
     const cursorPosition = calculateCursorPercentage(e);
-    setCursor({ ...cursorPosition, cx: cursorPosition.x, cy: cursorPosition.y });
+    setCursor({ ...cursorPosition, x: cursorPosition.x, y: cursorPosition.y });
     console.log(cursorPosition.x, cursorPosition.y);
+  };
+
+  const scroll = (offset) => {
+    if (ref.current) {
+      ref.current.scrollLeft += offset;
+    }
   };
 
   return (
     <>
       <section
+        ref={ref}
         onClick={handleClick}
         onMouseMove={handleMouseMove}
         className={cn(
@@ -46,12 +55,12 @@ export default function GameImage({ img, paused = true }) {
           <div className='absolute z-[2] w-full h-full bg-transparent' />
 
           {/* Important! Images should be scaled to 1512/680 */}
-          <img id='refImage' className='w-full h-full object-cover' src={imgUrl} alt={`Game scene - ${img}`} />
+          <img className='w-full h-full object-cover' src={imgUrl} alt={`Game scene - ${img}`} />
         </div>
       </section>
 
       <button
-        // onClick={() => scroll(distance * -1)}
+        onClick={() => scroll(distance * -1)}
         className={cn(
           'absolute z-20 top-1/2 left-0 -translate-y-1/2 w-12 aspect-square ml-4 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center'
         )}
@@ -60,7 +69,7 @@ export default function GameImage({ img, paused = true }) {
       </button>
 
       <button
-        // onClick={() => scroll(distance)}
+        onClick={() => scroll(distance)}
         className={cn(
           'absolute z-20 top-1/2 right-0 -translate-y-1/2 w-12 aspect-square mr-4 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center'
         )}

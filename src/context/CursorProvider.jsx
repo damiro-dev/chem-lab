@@ -17,11 +17,11 @@ export default function CursorProvider({ children }) {
     x: 0,
     y: 0,
     // Position in px relative to viewport via e (clientx / clientY)
-    ex: 0,
-    ey: 0,
+    vx: 0,
+    vy: 0,
     // Position in px relative to image
-    rx: 0,
-    ry: 0,
+    ix: 0,
+    iy: 0,
   });
 
   return (

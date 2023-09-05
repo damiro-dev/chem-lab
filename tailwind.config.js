@@ -9,6 +9,9 @@ export default {
       minHeight: {
         game: '100dvh',
       },
+      transition: {
+        scale: '.3s ease-in-out',
+      },
     },
   },
   plugins: [],

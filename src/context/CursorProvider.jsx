@@ -12,17 +12,7 @@ export function useCursorUpdate() {
 }
 
 export default function CursorProvider({ children }) {
-  const [position, setPosition] = useState({
-    // Position in % relative to image (0-100%)
-    x: 0,
-    y: 0,
-    // Position in px relative to viewport via e (clientx / clientY)
-    vx: 0,
-    vy: 0,
-    // Position in px relative to image
-    ix: 0,
-    iy: 0,
-  });
+  const [position, setPosition] = useState({ x: 0, y: 0 });
 
   return (
     <CursorContext.Provider value={position}>

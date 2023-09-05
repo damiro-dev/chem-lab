@@ -9,9 +9,7 @@ export default function Follower() {
 
   useEffect(() => {
     window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   return (

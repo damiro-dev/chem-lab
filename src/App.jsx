@@ -4,6 +4,7 @@ import Modal from './components/Modal';
 import GameImage from './components/GameImage';
 import Follower from './components/Follower';
 import CursorProvider from './context/CursorProvider';
+import Tooltip from './components/Tooltip';
 
 export default function App() {
   return (
@@ -11,7 +12,8 @@ export default function App() {
       <div className='min-h-screen text-gray-300 bg-gray-800'>
         <Header />
         <GamePanel />
-        <Modal />
+        <Modal show={false} />
+        <Tooltip show={true} />
         <Follower />
         <GameImage img={'yard'} paused={false} />
       </div>

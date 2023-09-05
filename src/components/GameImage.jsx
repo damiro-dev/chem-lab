@@ -1,86 +1,83 @@
-import { useCallback, useRef, useState, useEffect } from 'react';
+import { useCallback, useRef, useEffect, useState } from 'react';
 import cn from '../lib/tailwindMerge';
 import roundOff from '../lib/roundOff';
 import { useCursorUpdate } from '../context/CursorProvider';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 
 export default function GameImage({ img, paused = true }) {
-  const setCursor = useCursorUpdate();
-  const imgUrl = `game-images/scene-${img}.webp`;
-  const ref = useRef(null);
-  const distance = (window.innerWidth * 2) / 3;
+  const imageUrl = `game-images/scene-${img}.webp`;
+  const imageRef = useRef(null);
 
   const calculateCursorPercentage = useCallback((e) => {
-    const rect = ref.current.getBoundingClientRect();
+    if (!imageRef.current) return { x: 0, y: 0 };
 
     // Calculate cursor position relative to the image
-    const xRelativeToImage = e.clientX - rect.left;
-    const yRelativeToImage = e.clientY - rect.top;
+    const bounds = imageRef.current.getBoundingClientRect();
+    const xRelativeToImage = e.clientX - bounds.left;
+    const yRelativeToImage = e.clientY - bounds.top;
 
     // Calculate percentage position relative to the image
-    const percentX = roundOff((xRelativeToImage * 100) / rect.width, 2);
-    const percentY = roundOff((yRelativeToImage * 100) / rect.height, 2);
+    const percentX = roundOff((xRelativeToImage * 100) / bounds.width, 2);
+    const percentY = roundOff((yRelativeToImage * 100) / bounds.height, 2);
     return { x: percentX, y: percentY };
   }, []);
 
-  const handleMouseMove = (e) => {
-    const cursorPosition = calculateCursorPercentage(e);
-    setCursor({ ...cursorPosition, vx: e.clientX, vy: e.clientY });
-  };
-
+  const setCursor = useCursorUpdate();
   const handleClick = (e) => {
     const cursorPosition = calculateCursorPercentage(e);
-    setCursor({ ...cursorPosition, x: cursorPosition.x, y: cursorPosition.y });
+    setCursor({ x: cursorPosition.x, y: cursorPosition.y });
     console.log(cursorPosition.x, cursorPosition.y);
   };
 
+  useEffect(() => {
+    const handleWindowClick = (e) => handleClick(e);
+    window.addEventListener('click', handleWindowClick);
+    return () => window.removeEventListener('click', handleWindowClick);
+  }, []);
+
+  const scrollRef = useRef(null);
+  const distance = (window.innerWidth * 2) / 3;
   const scroll = (offset) => {
-    if (ref.current) {
-      ref.current.scrollLeft += offset;
-    }
+    if (scrollRef.current) scrollRef.current.scrollLeft += offset;
   };
 
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
-      if (ref.current) {
-        setCanScrollLeft(ref.current.scrollLeft > 0);
-        setCanScrollRight(ref.current.scrollLeft + ref.current.clientWidth < ref.current.scrollWidth);
+      if (scrollRef.current) {
+        setCanScrollLeft(scrollRef.current.scrollLeft > 0);
+        setCanScrollRight(
+          scrollRef.current.scrollLeft + scrollRef.current.clientWidth < scrollRef.current.scrollWidth - 1
+        );
       }
     };
 
-    if (ref.current) {
+    if (scrollRef.current) {
       handleScroll(); // Initial calculation
-      ref.current.addEventListener('scroll', handleScroll);
-
+      scrollRef.current.addEventListener('scroll', handleScroll);
       return () => {
-        if (ref.current) {
-          ref.current.removeEventListener('scroll', handleScroll);
-        }
+        if (scrollRef.current) scrollRef.current.removeEventListener('scroll', handleScroll);
       };
     }
-  }, [ref]);
+  }, [scrollRef]);
 
   return (
-    <>
-      <section
-        ref={ref}
-        onClick={handleClick}
-        onMouseMove={handleMouseMove}
+    <section className='overflow-hidden'>
+      <div
+        ref={scrollRef}
         className={cn(
-          'absolute inset-0 overflow-x-auto snap-x snap-mandatory scroll-smooth transition-all duration-700',
+          'absolute inset-0 overflow-x-scroll scroll-smooth transition-all duration-700',
           paused && 'filter blur-3xl grayscale-[60%]'
         )}
       >
-        <div className='relative flex items-center justify-center min-w-game min-h-game overflow-hidden'>
-          <div className='absolute z-[2] w-full h-full bg-transparent' />
+        <div ref={imageRef} className='relative flex items-center justify-center min-w-game min-h-game overflow-hidden'>
+          <div className='absolute z-[2] w-full h-full bg-transparent overflow-hidden' />
 
           {/* Important! Images should be scaled to 1512/680 */}
-          <img className='w-full h-full object-cover' src={imgUrl} alt={`Game scene - ${img}`} />
+          <img className='w-full h-full object-cover overflow-hidden' src={imageUrl} alt={`Game scene - ${img}`} />
         </div>
-      </section>
+      </div>
 
       <button
         onClick={() => scroll(distance * -1)}
@@ -101,6 +98,6 @@ export default function GameImage({ img, paused = true }) {
       >
         <MdChevronRight size={'32px'} color='white' />
       </button>
-    </>
+    </section>
   );
 }

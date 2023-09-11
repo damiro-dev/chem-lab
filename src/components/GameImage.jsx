@@ -26,7 +26,7 @@ export default function GameImage({ img, paused = true }) {
   const handleClick = (e) => {
     const cursorPosition = calculateCursorPercentage(e);
     setCursor({ x: cursorPosition.x, y: cursorPosition.y });
-    console.log(cursorPosition.x, cursorPosition.y);
+    console.log('GAMEIMAGE:', cursorPosition.x, cursorPosition.y);
   };
 
   useEffect(() => {
@@ -71,7 +71,11 @@ export default function GameImage({ img, paused = true }) {
           paused && 'filter blur-3xl grayscale-[60%]'
         )}
       >
-        <div ref={imageRef} className='relative flex items-center justify-center min-w-game min-h-game overflow-hidden'>
+        <div
+          ref={imageRef}
+          id='imgRef'
+          className='relative flex items-center justify-center min-w-game min-h-game overflow-hidden'
+        >
           <div className='absolute z-[2] w-full h-full bg-transparent overflow-hidden' />
 
           {/* Important! Images should be scaled to 1512/680 */}

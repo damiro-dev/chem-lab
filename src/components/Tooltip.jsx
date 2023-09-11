@@ -28,7 +28,6 @@ export default function Tooltip({ show = true }) {
   };
 
   const handleMouseMove = (e) => {
-    // setIsMoving(false);
     if (isMoving) setPosition({ x: e.clientX, y: e.clientY });
   };
 
@@ -38,23 +37,23 @@ export default function Tooltip({ show = true }) {
   };
 
   useEffect(() => {
-    window.addEventListener('click', handleSceneClick);
-    window.addEventListener('mousemove', handleMouseMove);
+    const img = document.querySelector('#imgRef');
+    img.addEventListener('click', handleSceneClick);
+    img.addEventListener('mousemove', handleMouseMove);
     return () => {
-      window.removeEventListener('click', handleSceneClick);
-      window.removeEventListener('mousemove', handleMouseMove);
+      img.removeEventListener('click', handleSceneClick);
+      img.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
 
   return (
     <div
-      onMouseEnter={() => setToHide(false)}
       onMouseOver={() => setToHide(false)}
-      onMouseLeave={() => setToHide(true)}
       onMouseOut={() => setToHide(true)}
       style={{ left: `${position.x}px`, top: `${position.y}px` }}
       className={cn(
-        'absolute z-10 py-4 rounded-xl bg-black/50 backdrop-blur-md whitespace-nowrap origin-top-left transition-scale duration-150 ',
+        'absolute z-10 py-4 rounded-xl bg-black/50 backdrop-blur-md whitespace-nowrap origin-top-left',
+        // 'transition-scale duration-150 ',
         orientation.v && '-translate-y-full',
         orientation.h && '-translate-x-full',
         origin,

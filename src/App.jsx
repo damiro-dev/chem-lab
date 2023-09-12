@@ -13,7 +13,7 @@ export default function App() {
         <Header />
         <GamePanel />
         <Modal show={false} />
-        <Tooltip show={true} />
+        <Tooltip />
         <Follower />
         <GameImage img={'yard'} paused={false} />
       </div>

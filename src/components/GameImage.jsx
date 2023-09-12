@@ -78,6 +78,20 @@ export default function GameImage({ img, paused = true }) {
         >
           <div className='absolute z-[2] w-full h-full bg-transparent overflow-hidden' />
 
+          {/* List of objects to find */}
+          <div
+            style={{ left: '10%', top: '10%', width: '10%', height: '10%' }}
+            className='absolute border-white border-2 border-dashed rounded-xl'
+          />
+          <div
+            style={{ left: '50%', top: '10%', width: '20%', height: '10%' }}
+            className='absolute border-white border-2 border-dashed rounded-xl'
+          />
+          <div
+            style={{ left: '80%', top: '40%', width: '10%', height: '30%' }}
+            className='absolute border-white border-2 border-dashed rounded-xl'
+          />
+
           {/* Important! Images should be scaled to 1512/680 */}
           <img className='w-full h-full object-cover overflow-hidden' src={imageUrl} alt={`Game scene - ${img}`} />
         </div>

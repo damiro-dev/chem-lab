@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
+import { useCursor } from '../context/CursorProvider';
 import cn from '../lib/tailwindMerge';
 
-export default function Tooltip() {
+export default function Tooltip({ items }) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [orientation, setOrientation] = useState({ v: false, h: false });
   const [origin, setOrigin] = useState('origin-top-left');
   const [isHidden, setHidden] = useState(true);
   const [isMoving, setIsMoving] = useState(false);
+  const cursor = useCursor();
 
   const handleSceneClick = (e) => {
     const isRight = e.clientX > window.innerWidth / 2;
@@ -27,13 +29,18 @@ export default function Tooltip() {
     setHidden(false);
   };
 
+  const setToHide = (status) => {
+    setIsMoving(!status);
+    setHidden(status);
+  };
+
   const handleMouseMove = (e) => {
     if (isMoving) setPosition({ x: e.clientX, y: e.clientY });
   };
 
-  const setToHide = (status) => {
-    setIsMoving(!status);
-    setHidden(status);
+  const handleClick = (status, item) => {
+    setToHide(status);
+    console.log('clicked: ', item, cursor);
   };
 
   useEffect(() => {
@@ -62,24 +69,16 @@ export default function Tooltip() {
     >
       <span className='px-8 font-bold text-gray-400'>What is it?</span>
       <ol className='flex flex-col items-start pt-4 gap-0'>
-        <button
-          onClick={() => setToHide(true)}
-          className='w-full px-8 py-1 text-left hover:bg-orange-400 hover:text-gray-800'
-        >
-          handcuff
-        </button>
-        <button
-          onClick={() => setToHide(true)}
-          className='w-full px-8 py-1 text-left hover:bg-orange-400 hover:text-gray-800'
-        >
-          pelican
-        </button>
-        <button
-          onClick={() => setToHide(true)}
-          className='w-full px-8 py-1 text-left hover:bg-orange-400 hover:text-gray-800'
-        >
-          dolphin
-        </button>
+        {/* List of objects to find */}
+        {items.map((item) => (
+          <button
+            key={item.id}
+            onClick={() => handleClick(true, item.name)}
+            className='w-full px-8 py-1 text-left hover:bg-orange-400 hover:text-gray-800'
+          >
+            {item.name}
+          </button>
+        ))}
       </ol>
     </div>
   );

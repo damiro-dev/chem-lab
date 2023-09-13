@@ -5,17 +5,19 @@ import GameImage from './components/GameImage';
 import Follower from './components/Follower';
 import CursorProvider from './context/CursorProvider';
 import Tooltip from './components/Tooltip';
+import itemsData from './data/items';
 
 export default function App() {
+  const items = itemsData;
   return (
     <CursorProvider>
       <div className='min-h-screen text-gray-300 bg-gray-800'>
         <Header />
         <GamePanel />
         <Modal show={false} />
-        <Tooltip />
+        <Tooltip items={items} />
         <Follower />
-        <GameImage img={'yard'} paused={false} />
+        <GameImage img={'yard'} items={items} paused={false} />
       </div>
     </CursorProvider>
   );

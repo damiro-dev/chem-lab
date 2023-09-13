@@ -10,6 +10,20 @@ export default function Tooltip({ items }) {
   const [isMoving, setIsMoving] = useState(false);
   const cursor = useCursor();
 
+  const checkCorrectness = (item) => {
+    // check if click is in between (x & width && y & height) && if (item === name)
+    const clickedItem = items.filter((i) => i.name === item.name)[0];
+    if (clickedItem.name !== item.name) return;
+    if (
+      clickedItem.x < cursor.x &&
+      clickedItem.x + clickedItem.width > cursor.x &&
+      clickedItem.y < cursor.y &&
+      clickedItem.y + clickedItem.height > cursor.y
+    ) {
+      console.log('CORRECT:', clickedItem.name);
+    }
+  };
+
   const handleSceneClick = (e) => {
     const isRight = e.clientX > window.innerWidth / 2;
     const isBottom = e.clientY > window.innerHeight / 2;
@@ -40,7 +54,7 @@ export default function Tooltip({ items }) {
 
   const handleClick = (status, item) => {
     setToHide(status);
-    console.log('clicked: ', item, cursor);
+    checkCorrectness(item);
   };
 
   useEffect(() => {
@@ -73,7 +87,7 @@ export default function Tooltip({ items }) {
         {items.map((item) => (
           <button
             key={item.id}
-            onClick={() => handleClick(true, item.name)}
+            onClick={() => handleClick(true, item)}
             className='w-full px-8 py-1 text-left hover:bg-orange-400 hover:text-gray-800'
           >
             {item.name}

@@ -11,8 +11,8 @@ export default function Tooltip({ items }) {
   const cursor = useCursor();
 
   const checkCorrectness = (item) => {
+    const clickedItem = items.filter((index) => index.name === item.name)[0];
     // check if click is in between (x & width && y & height) && if (item === name)
-    const clickedItem = items.filter((i) => i.name === item.name)[0];
     if (clickedItem.name !== item.name) return;
     if (
       clickedItem.x < cursor.x &&

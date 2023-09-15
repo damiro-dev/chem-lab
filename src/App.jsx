@@ -7,19 +7,22 @@ import CursorProvider from './context/CursorProvider';
 import Tooltip from './components/Tooltip';
 import itemsData from './data/items';
 import TimerProvider from './context/TimerProvider';
+import getRandomItems from './lib/getRandomItems';
 
 export default function App() {
-  const items = itemsData;
+  const scene = 'yard';
+  const items = getRandomItems(itemsData, 4);
+
   return (
     <CursorProvider>
       <TimerProvider>
         <div className='min-h-screen text-gray-300 bg-gray-800'>
           <Header />
-          <GamePanel />
+          <GamePanel items={items} />
           <Modal show={false} />
           <Tooltip items={items} />
           <Follower />
-          <GameImage img={'yard'} items={items} paused={false} />
+          <GameImage img={scene} items={items} />
         </div>
       </TimerProvider>
     </CursorProvider>

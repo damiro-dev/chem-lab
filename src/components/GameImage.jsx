@@ -3,10 +3,12 @@ import cn from '../lib/tailwindMerge';
 import roundOff from '../lib/roundOff';
 import { useCursorUpdate } from '../context/CursorProvider';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+import { useTimer } from '../context/TimerProvider';
 
-export default function GameImage({ img, items, paused = true }) {
+export default function GameImage({ img, items }) {
   const imageUrl = `game-images/scene-${img}.webp`;
   const imageRef = useRef(null);
+  const paused = !useTimer().isRunning;
 
   const calculateCursorPercentage = useCallback((e) => {
     if (!imageRef.current) return { x: 0, y: 0 };
@@ -83,7 +85,7 @@ export default function GameImage({ img, items, paused = true }) {
             <div
               key={item.id}
               style={{ left: `${item.x}%`, top: `${item.y}%`, width: `${item.width}%`, height: `${item.height}%` }}
-              className='absolute border-white border-2 border-dashed rounded-xl'
+              className={cn('absolute border-white border-2 border-dashed rounded-xl', !item.tagged && 'hidden')}
             />
           ))}
 

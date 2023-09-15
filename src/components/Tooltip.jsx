@@ -21,6 +21,7 @@ export default function Tooltip({ items }) {
       clickedItem.y + clickedItem.height > cursor.y
     ) {
       console.log('CORRECT:', clickedItem.name);
+      item.tagged = !item.tagged;
     }
   };
 
@@ -84,11 +85,14 @@ export default function Tooltip({ items }) {
       <span className='px-8 font-bold text-gray-400'>What is it?</span>
       <ol className='flex flex-col items-start pt-4 gap-0'>
         {/* List of objects to find */}
-        {items.map((item) => (
+        {items.map((item, index) => (
           <button
             key={item.id}
             onClick={() => handleClick(true, item)}
-            className='w-full px-8 py-1 text-left hover:bg-orange-400 hover:text-gray-800'
+            className={cn(
+              'w-full px-8 py-1 text-left hover:bg-orange-400 hover:text-gray-800',
+              item.tagged && 'hidden'
+            )}
           >
             {item.name}
           </button>

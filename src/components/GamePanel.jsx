@@ -1,19 +1,19 @@
-import { useTimer } from '../context/TimerProvider';
+import { useEffect } from 'react';
+import { useTimer, useTimerUpdate } from '../context/TimerProvider';
 import cn from '../lib/tailwindMerge';
 
 export default function GamePanel({ items }) {
-  const { time, isRunning, startTimer, stopTimer, resetTimer } = useTimer();
+  const { isRunning, time, startTimer, stopTimer } = useTimer();
+  const { setIsCountdown, setTime } = useTimerUpdate();
+  const initTime = 30;
+
+  useEffect(() => {
+    setTime(initTime);
+    setIsCountdown(true);
+  }, [setTime, setIsCountdown]);
 
   const toggleTimer = () => {
-    if (isRunning) {
-      stopTimer();
-    } else {
-      startTimer();
-    }
-  };
-
-  const handleClick = () => {
-    console.log('click');
+    isRunning ? stopTimer() : startTimer();
   };
 
   return (
@@ -23,9 +23,12 @@ export default function GamePanel({ items }) {
         'flex flex-row items-center justify-center gap-4'
       )}
     >
-      <span>{time}</span>
+      <span className='font-black'>{time}</span>
       <button onClick={toggleTimer} className='z-[60] px-4 bg-red-400 rounded-full'>
         {isRunning ? 'Pause' : 'Resume'}
+      </button>
+      <button onClick={() => setTime(initTime)} className='z-[60] px-4 bg-red-400 rounded-full'>
+        {'reset'}
       </button>
       <div className='flex flex-row items-center justify-center gap-4'>
         {items.map((item) => (

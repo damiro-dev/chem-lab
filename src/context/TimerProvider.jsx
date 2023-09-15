@@ -1,53 +1,65 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useMemo } from 'react';
 
-// Create a context for the timer
 const TimerContext = createContext();
+const TimerContextUpdate = createContext();
 
-// Custom hook to access the timer context
 export function useTimer() {
-  const context = useContext(TimerContext);
-  if (!context) {
-    throw new Error('useTimer must be used within a TimerProvider');
-  }
-  return context;
+  return useContext(TimerContext);
+}
+
+export function useTimerUpdate() {
+  return useContext(TimerContextUpdate);
 }
 
 export default function TimerProvider({ children }) {
   const [isRunning, setIsRunning] = useState(false);
   const [time, setTime] = useState(0);
+  const [isCountdown, setIsCountdown] = useState(true);
 
   useEffect(() => {
     let timer;
 
     if (isRunning) {
       timer = setInterval(() => {
-        setTime((prevTime) => prevTime + 1);
-      }, 1000); // Increment time every second (1000ms)
+        if (isCountdown) {
+          if (time > 0) {
+            setTime((prevTime) => prevTime - 1);
+          } else {
+            setIsRunning(false);
+          }
+        } else {
+          setTime((prevTime) => prevTime + 1);
+        }
+      }, 1000);
     } else {
       clearInterval(timer);
     }
 
-    // Cleanup on unmount or when isRunning changes to false
+    // Cleanup
     return () => clearInterval(timer);
-  }, [isRunning]);
+  }, [isRunning, isCountdown, time]);
 
   const startTimer = () => setIsRunning(true);
   const stopTimer = () => setIsRunning(false);
   const pauseTimer = () => setIsRunning(false);
-  const resetTimer = () => setTime(0);
+
+  // Memoize the context value to avoid unnecessary re-renders
+  const contextValue = useMemo(
+    () => ({
+      isRunning,
+      time,
+      startTimer,
+      stopTimer,
+      pauseTimer,
+    }),
+    [isRunning, time, startTimer, stopTimer, pauseTimer]
+  );
+
+  const contextUpdateValue = { setIsCountdown, setTime };
 
   return (
-    <TimerContext.Provider
-      value={{
-        isRunning,
-        time,
-        startTimer,
-        stopTimer,
-        pauseTimer,
-        resetTimer,
-      }}
-    >
-      {children}
+    <TimerContext.Provider value={contextValue}>
+      <TimerContextUpdate.Provider value={contextUpdateValue}>{children}</TimerContextUpdate.Provider>
     </TimerContext.Provider>
   );
 }

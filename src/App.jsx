@@ -15,7 +15,7 @@ export default function App() {
 
   return (
     <CursorProvider>
-      <TimerProvider>
+      <TimerProvider initialTime={30}>
         <div className='min-h-screen text-gray-300 bg-gray-800'>
           <Header />
           <GamePanel items={items} />

@@ -48,11 +48,12 @@ export default function TimerProvider({ children }) {
     () => ({
       isRunning,
       time,
+      isCountdown,
       startTimer,
       stopTimer,
       pauseTimer,
     }),
-    [isRunning, time, startTimer, stopTimer, pauseTimer]
+    [isRunning, time, isCountdown, startTimer, stopTimer, pauseTimer]
   );
 
   const contextUpdateValue = { setIsCountdown, setTime };

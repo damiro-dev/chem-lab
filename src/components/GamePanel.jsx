@@ -3,17 +3,22 @@ import { useTimer, useTimerUpdate } from '../context/TimerProvider';
 import cn from '../lib/tailwindMerge';
 
 export default function GamePanel({ items }) {
-  const { isRunning, time, startTimer, stopTimer } = useTimer();
+  const { isRunning, time, startTimer, stopTimer, isCountdown } = useTimer();
   const { setIsCountdown, setTime } = useTimerUpdate();
-  const initTime = 30;
+  const timeRange = 30;
 
   useEffect(() => {
-    setTime(initTime);
+    setTime(timeRange);
     setIsCountdown(true);
   }, [setTime, setIsCountdown]);
 
   const toggleTimer = () => {
     isRunning ? stopTimer() : startTimer();
+  };
+
+  const resetTimer = () => {
+    stopTimer();
+    isCountdown ? setTime(timeRange) : setTime(0);
   };
 
   return (
@@ -27,12 +32,12 @@ export default function GamePanel({ items }) {
       <button onClick={toggleTimer} className='z-[60] px-4 bg-red-400 rounded-full'>
         {isRunning ? 'Pause' : 'Resume'}
       </button>
-      <button onClick={() => setTime(initTime)} className='z-[60] px-4 bg-red-400 rounded-full'>
+      <button onClick={resetTimer} className='z-[60] px-4 bg-red-400 rounded-full'>
         {'reset'}
       </button>
-      <div className='flex flex-row items-center justify-center gap-4'>
+      <div className='flex flex-row items-center justify-center gap-6'>
         {items.map((item) => (
-          <span key={item.id} className={cn(item.tagged && 'line-through opacity-40')}>
+          <span key={item.id} className={cn('whitespace-nowrap', item.tagged && 'line-through opacity-40')}>
             {item.name}
           </span>
         ))}

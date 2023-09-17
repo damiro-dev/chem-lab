@@ -11,8 +11,8 @@ import getRandomItems from './lib/getRandomItems';
 import PlayerProvider from './context/PlayerProvider';
 
 export default function App() {
-  const inGame = true;
-  const page = 'game';
+  const inGame = false;
+  const content = 'home';
   const scene = 'yard';
   const items = getRandomItems(itemsData, 4); // triggered by play button
 
@@ -21,8 +21,8 @@ export default function App() {
       <CursorProvider>
         <TimerProvider initialTime={30}>
           <Container>
-            <GamePanel items={items} />
-            <Modal page={page} />
+            <GamePanel items={items} inGame={inGame} />
+            <Modal content={content} />
             <Tooltip items={items} inGame={inGame} />
             <Follower inGame={inGame} />
             <GameImage img={scene} items={items} inGame={inGame} />

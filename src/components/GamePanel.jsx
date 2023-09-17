@@ -3,7 +3,7 @@ import { useTimer, useTimerUpdate } from '../context/TimerProvider';
 import { PiPlayFill } from 'react-icons/Pi';
 import cn from '../lib/tailwindMerge';
 
-export default function GamePanel({ items }) {
+export default function GamePanel({ items, inGame = false }) {
   const { isRunning, time, startTimer, stopTimer, isCountdown } = useTimer();
   const { setIsCountdown, setTime } = useTimerUpdate();
   const timeRange = 30;
@@ -24,7 +24,7 @@ export default function GamePanel({ items }) {
 
   return (
     <>
-      <section>
+      <section className={cn(!inGame && 'hidden')}>
         <div
           onClick={toggleTimer}
           className={cn(
@@ -46,17 +46,18 @@ export default function GamePanel({ items }) {
       </section>
       <section
         className={cn(
+          inGame ? 'flex' : 'hidden',
           'absolute z-20 bottom-0 left-1/2 -translate-x-1/2 backdrop-blur-sm bg-black/40 px-6 py-3 mb-2 rounded-full',
-          'flex flex-row items-center justify-center gap-4'
+          'flex-row items-center justify-center gap-4'
         )}
       >
         <span
           className={cn(
-            'absolute z-20 left-1/2 -translate-x-1/2 -top-3',
+            'absolute z-20 left-1/2 -translate-x-1/2 -top-4',
             'uppercase text-[10px] tracking-widest bg-red-600 px-3 py-1 rounded-full'
           )}
         >
-          {'Find the following'}
+          {'Missing Equipment'}
         </span>
         <div className='flex flex-row items-center justify-center gap-6'>
           {items.map((item) => (

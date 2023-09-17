@@ -9,8 +9,8 @@ export default function Modal({ content = '' }) {
   return (
     <section
       className={cn(
-        'absolute w-40 z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6 rounded-lg backdrop-blur-sm bg-black/40 text-center',
-        content === 'game' && 'hidden'
+        content === 'game' && 'hidden',
+        'absolute w-full container max-w-3xl z-20 p-6 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
       )}
     >
       {content === 'home' && <ModalHome />}

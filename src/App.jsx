@@ -12,7 +12,7 @@ import PlayerProvider from './context/PlayerProvider';
 
 export default function App() {
   const inGame = false;
-  const content = 'home';
+  const content = 'highscore';
   const scene = 'yard';
   const items = getRandomItems(itemsData, 4); // triggered by play button
 

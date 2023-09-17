@@ -25,7 +25,5 @@ export default function getRandomItems(inputArray, numItems) {
     randomItems[i] = { ...randomItems[i], ...additionalData };
   }
 
-  console.log(randomItems);
-
   return randomItems;
 }

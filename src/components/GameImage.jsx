@@ -5,7 +5,7 @@ import { useCursorUpdate } from '../context/CursorProvider';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import { useTimer } from '../context/TimerProvider';
 
-export default function GameImage({ img, items }) {
+export default function GameImage({ img, items, inGame = false }) {
   const imageUrl = `game-images/scene-${img}.webp`;
   const imageRef = useRef(null);
   const paused = !useTimer().isRunning;
@@ -97,7 +97,8 @@ export default function GameImage({ img, items }) {
       <button
         onClick={() => scroll(distance * -1)}
         className={cn(
-          'absolute z-20 top-1/2 left-0 -translate-y-1/2 w-12 aspect-square ml-4 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center',
+          inGame ? 'flex' : 'hidden',
+          'absolute z-20 top-1/2 left-0 -translate-y-1/2 w-12 aspect-square ml-4 bg-black/30 backdrop-blur-sm rounded-full items-center justify-center',
           !canScrollLeft && 'hidden'
         )}
       >
@@ -107,7 +108,8 @@ export default function GameImage({ img, items }) {
       <button
         onClick={() => scroll(distance)}
         className={cn(
-          'absolute z-20 top-1/2 right-0 -translate-y-1/2 w-12 aspect-square mr-4 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center',
+          inGame ? 'flex' : 'hidden',
+          'absolute z-20 top-1/2 right-0 -translate-y-1/2 w-12 aspect-square mr-4 bg-black/30 backdrop-blur-sm rounded-full items-center justify-center',
           !canScrollRight && 'hidden'
         )}
       >

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useCursor } from '../context/CursorProvider';
 import cn from '../lib/tailwindMerge';
 
-export default function Tooltip({ items }) {
+export default function Tooltip({ items, inGame = false }) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [orientation, setOrientation] = useState({ v: false, h: false });
   const [origin, setOrigin] = useState('origin-top-left');
@@ -26,22 +26,24 @@ export default function Tooltip({ items }) {
   };
 
   const handleSceneClick = (e) => {
-    const isRight = e.clientX > window.innerWidth / 2;
-    const isBottom = e.clientY > window.innerHeight / 2;
-    const orientation = { v: isBottom, h: isRight };
+    if (inGame) {
+      const isRight = e.clientX > window.innerWidth / 2;
+      const isBottom = e.clientY > window.innerHeight / 2;
+      const orientation = { v: isBottom, h: isRight };
 
-    const origin = isRight
-      ? isBottom
-        ? 'origin-bottom-right rounded-br-none'
-        : 'origin-top-right rounded-tr-none'
-      : isBottom
-      ? 'origin-bottom-left rounded-bl-none'
-      : 'origin-top-left rounded-tl-none';
+      const origin = isRight
+        ? isBottom
+          ? 'origin-bottom-right rounded-br-none'
+          : 'origin-top-right rounded-tr-none'
+        : isBottom
+        ? 'origin-bottom-left rounded-bl-none'
+        : 'origin-top-left rounded-tl-none';
 
-    setOrigin(origin);
-    setOrientation(orientation);
-    setPosition({ x: e.clientX, y: e.clientY });
-    setHidden(false);
+      setOrigin(origin);
+      setOrientation(orientation);
+      setPosition({ x: e.clientX, y: e.clientY });
+      setHidden(false);
+    }
   };
 
   const setToHide = (status) => {
@@ -75,7 +77,6 @@ export default function Tooltip({ items }) {
       style={{ left: `${position.x}px`, top: `${position.y}px` }}
       className={cn(
         'absolute z-10 py-4 rounded-xl bg-black/50 backdrop-blur-md whitespace-nowrap origin-top-left',
-        // 'transition-scale duration-150 ',
         orientation.v && '-translate-y-full',
         orientation.h && '-translate-x-full',
         origin,
@@ -84,7 +85,7 @@ export default function Tooltip({ items }) {
     >
       <span className='px-8 font-bold text-gray-400'>What is it?</span>
       <ol className='flex flex-col items-start pt-4 gap-0'>
-        {/* List of objects to find */}
+        {/* List of game objects */}
         {items.map((item, index) => (
           <button
             key={item.id}

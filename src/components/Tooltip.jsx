@@ -8,6 +8,7 @@ export default function Tooltip({ items, inGame = false }) {
   const [origin, setOrigin] = useState('origin-top-left');
   const [isHidden, setHidden] = useState(true);
   const [isMoving, setIsMoving] = useState(false);
+  const [found, setFound] = useState(1);
   const cursor = useCursor();
 
   const checkCorrectness = (item) => {
@@ -20,8 +21,12 @@ export default function Tooltip({ items, inGame = false }) {
       clickedItem.y < cursor.y &&
       clickedItem.y + clickedItem.height > cursor.y
     ) {
-      console.log('CORRECT:', clickedItem.name);
+      setFound((found) => found + 1);
       item.tagged = !item.tagged;
+      console.log('CORRECT:', clickedItem.name, found, items.length);
+      if (found === items.length) {
+        console.log('LEVEL CLEARED');
+      }
     }
   };
 

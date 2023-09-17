@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useTimer, useTimerUpdate } from '../context/TimerProvider';
+import { PiPlayFill } from 'react-icons/Pi';
 import cn from '../lib/tailwindMerge';
 
 export default function GamePanel({ items }) {
@@ -25,35 +26,38 @@ export default function GamePanel({ items }) {
     <>
       <section>
         <div
+          onClick={toggleTimer}
           className={cn(
             'absolute z-20 left-1/2 -translate-x-1/2 top-4',
-            'w-12 aspect-square flex items-center justify-center rounded-full',
-            'font-bold text-white backdrop-blur-sm bg-black/40'
+            'w-12 aspect-square flex items-center justify-center rounded-full cursor-pointer',
+            'font-semibold text-2xl text-white backdrop-blur-sm bg-black/40'
           )}
         >
-          {time}
+          {isRunning ? time : <PiPlayFill />}
         </div>
         <span
           className={cn(
             'absolute z-20 left-1/2 -translate-x-1/2 top-14',
-            'uppercase text-[10px] tracking-widest bg-red-600 px-3 py-0.5 rounded-full'
+            'uppercase text-[10px] tracking-widest bg-red-600 px-3 py-1 rounded-full'
           )}
         >
-          SEC REMAINING
+          {isRunning ? 'SEC REMAINING' : 'PAUSED'}
         </span>
       </section>
       <section
         className={cn(
-          'absolute z-20 bottom-0 left-1/2 -translate-x-1/2 backdrop-blur-sm bg-black/40 px-6 py-2 mb-2 rounded-full',
+          'absolute z-20 bottom-0 left-1/2 -translate-x-1/2 backdrop-blur-sm bg-black/40 px-6 py-3 mb-2 rounded-full',
           'flex flex-row items-center justify-center gap-4'
         )}
       >
-        <button onClick={toggleTimer} className='z-[60] px-4 bg-red-400 rounded-full'>
-          {isRunning ? 'Pause' : 'Resume'}
-        </button>
-        <button onClick={resetTimer} className='z-[60] px-4 bg-red-400 rounded-full'>
-          {'reset'}
-        </button>
+        <span
+          className={cn(
+            'absolute z-20 left-1/2 -translate-x-1/2 -top-3',
+            'uppercase text-[10px] tracking-widest bg-red-600 px-3 py-1 rounded-full'
+          )}
+        >
+          {'Find the following'}
+        </span>
         <div className='flex flex-row items-center justify-center gap-6'>
           {items.map((item) => (
             <span key={item.id} className={cn('whitespace-nowrap', item.tagged && 'line-through opacity-40')}>

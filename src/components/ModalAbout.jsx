@@ -1,12 +1,22 @@
+import { useNavigationUpdate } from '../context/NavigationProvider';
 import cn from '../lib/tailwindMerge';
 
 export default function ModalAbout() {
+  const setContent = useNavigationUpdate();
+
   return (
     <>
       <div>
-        <div className='absolute z-10 flex gap-4 -mt-3 right-12 justify-end'>
-          <div className='uppercase text-[12px] tracking-[4px] bg-red-600 px-3 py-1 rounded-full'>Play</div>
-          <div className='uppercase text-[12px] tracking-[4px] bg-red-600 px-3 py-1 rounded-full'>Highscore</div>
+        <div onClick={() => setContent('home')} className='absolute z-10 flex gap-4 -mt-3 right-12 justify-end'>
+          <div className='uppercase text-[12px] tracking-[4px] bg-red-600 px-3 py-1 rounded-full cursor-pointer'>
+            Play
+          </div>
+          <div
+            onClick={() => setContent('highscore')}
+            className='uppercase text-[12px] tracking-[4px] bg-red-600 px-3 py-1 rounded-full cursor-pointer'
+          >
+            Highscore
+          </div>
         </div>
       </div>
       <div className={cn('rounded-lg backdrop-blur-sm bg-black/40 px-6 pt-10 pb-6 flex flex-col gap-4')}>

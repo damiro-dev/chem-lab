@@ -4,8 +4,10 @@ import ModalOver from './ModalOver';
 import ModalPaused from './ModalPaused';
 import ModalAbout from './ModalAbout';
 import ModalHighScore from './ModalHighScore';
+import { useNavigation } from '../context/NavigationProvider';
 
-export default function Modal({ content = '' }) {
+export default function Modal() {
+  const content = useNavigation();
   return (
     <section
       className={cn(

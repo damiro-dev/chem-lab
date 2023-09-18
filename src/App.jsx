@@ -9,26 +9,28 @@ import itemsData from './data/items';
 import TimerProvider from './context/TimerProvider';
 import getRandomItems from './lib/getRandomItems';
 import PlayerProvider from './context/PlayerProvider';
+import NavigationProvider from './context/NavigationProvider';
 
 export default function App() {
   const inGame = false;
-  const content = 'highscore';
   const scene = 'yard';
   const items = getRandomItems(itemsData, 4); // triggered by play button
 
   return (
-    <PlayerProvider>
-      <CursorProvider>
-        <TimerProvider initialTime={30}>
-          <Container>
-            <GamePanel items={items} inGame={inGame} />
-            <Modal content={content} />
-            <Tooltip items={items} inGame={inGame} />
-            <Follower inGame={inGame} />
-            <GameImage img={scene} items={items} inGame={inGame} />
-          </Container>
-        </TimerProvider>
-      </CursorProvider>
-    </PlayerProvider>
+    <NavigationProvider>
+      <PlayerProvider>
+        <CursorProvider>
+          <TimerProvider initialTime={30}>
+            <Container>
+              <GamePanel items={items} inGame={inGame} />
+              <Modal />
+              <Tooltip items={items} inGame={inGame} />
+              <Follower inGame={inGame} />
+              <GameImage img={scene} items={items} inGame={inGame} />
+            </Container>
+          </TimerProvider>
+        </CursorProvider>
+      </PlayerProvider>
+    </NavigationProvider>
   );
 }

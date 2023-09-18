@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { PiPlayFill } from 'react-icons/Pi';
+import { useNavigationUpdate } from '../context/NavigationProvider';
 import cn from '../lib/tailwindMerge';
 
 export default function ModalHome() {
+  const setContent = useNavigationUpdate();
   const [inputChange, setInputChange] = useState('');
   const handleInputChange = (e) => setInputChange(e.currentTarget.value);
 
@@ -13,8 +15,18 @@ export default function ModalHome() {
   return (
     <>
       <div className='absolute z-10 flex gap-4 -mt-3 right-12 justify-end'>
-        <div className='uppercase text-[12px] tracking-[4px] bg-red-600 px-3 py-1 rounded-full'>About</div>
-        <div className='uppercase text-[12px] tracking-[4px] bg-red-600 px-3 py-1 rounded-full'>Highscore</div>
+        <div
+          onClick={() => setContent('about')}
+          className='uppercase text-[12px] tracking-[4px] bg-red-600 px-3 py-1 rounded-full cursor-pointer'
+        >
+          About
+        </div>
+        <div
+          onClick={() => setContent('highscore')}
+          className='uppercase text-[12px] tracking-[4px] bg-red-600 px-3 py-1 rounded-full cursor-pointer'
+        >
+          Highscore
+        </div>
       </div>
       <div className={cn('rounded-lg backdrop-blur-sm bg-black/40 px-6 py-10 flex flex-col gap-4')}>
         <h1 className='text-4xl font-bold'>Chem Lab</h1>

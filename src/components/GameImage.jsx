@@ -2,12 +2,12 @@ import { useCallback, useRef, useEffect, useState } from 'react';
 import cn from '../lib/tailwindMerge';
 import roundOff from '../lib/roundOff';
 import { useCursorUpdate } from '../context/CursorProvider';
-import { usePlayer } from '../context/PlayerProvider';
+import { useGame } from '../context/GameProvider';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import { useTimer } from '../context/TimerProvider';
 
 export default function GameImage({ img, items }) {
-  const inGame = usePlayer();
+  const inGame = useGame();
   const imageUrl = `game-images/scene-${img}.webp`;
   const imageRef = useRef(null);
   const paused = !useTimer().isRunning;

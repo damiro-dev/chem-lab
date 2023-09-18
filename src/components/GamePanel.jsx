@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useTimer, useTimerUpdate } from '../context/TimerProvider';
-import { usePlayer } from '../context/PlayerProvider';
+import { useGame } from '../context/GameProvider';
 import { PiPlayFill } from 'react-icons/Pi';
 import cn from '../lib/tailwindMerge';
 
 export default function GamePanel({ items }) {
-  const { inGame } = usePlayer();
+  const { inGame } = useGame();
   const { isRunning, time, startTimer, stopTimer, isCountdown } = useTimer();
   const { setIsCountdown, setTime } = useTimerUpdate();
   const timeRange = 30;

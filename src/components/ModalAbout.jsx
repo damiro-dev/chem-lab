@@ -7,8 +7,11 @@ export default function ModalAbout() {
   return (
     <>
       <div>
-        <div onClick={() => setContent('home')} className='absolute z-10 flex gap-4 -mt-3 right-12 justify-end'>
-          <div className='uppercase text-[12px] tracking-[4px] bg-red-600 px-3 py-1 rounded-full cursor-pointer'>
+        <div className='absolute z-10 flex gap-4 -mt-3 right-12 justify-end'>
+          <div
+            onClick={() => setContent('home')}
+            className='uppercase text-[12px] tracking-[4px] bg-red-600 px-3 py-1 rounded-full cursor-pointer'
+          >
             Play
           </div>
           <div

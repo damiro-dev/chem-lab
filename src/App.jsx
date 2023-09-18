@@ -3,16 +3,15 @@ import GamePanel from './components/GamePanel';
 import Modal from './components/Modal';
 import GameImage from './components/GameImage';
 import Follower from './components/Follower';
-import CursorProvider from './context/CursorProvider';
 import Tooltip from './components/Tooltip';
-import itemsData from './data/items';
+import CursorProvider from './context/CursorProvider';
 import TimerProvider from './context/TimerProvider';
-import getRandomItems from './lib/getRandomItems';
 import PlayerProvider from './context/PlayerProvider';
 import NavigationProvider from './context/NavigationProvider';
+import itemsData from './data/items';
+import getRandomItems from './lib/getRandomItems';
 
 export default function App() {
-  const inGame = false;
   const scene = 'yard';
   const items = getRandomItems(itemsData, 4); // triggered by play button
 
@@ -22,11 +21,11 @@ export default function App() {
         <CursorProvider>
           <TimerProvider initialTime={30}>
             <Container>
-              <GamePanel items={items} inGame={inGame} />
+              <GamePanel items={items} />
               <Modal />
-              <Tooltip items={items} inGame={inGame} />
-              <Follower inGame={inGame} />
-              <GameImage img={scene} items={items} inGame={inGame} />
+              <Tooltip items={items} />
+              <Follower />
+              <GameImage img={scene} items={items} />
             </Container>
           </TimerProvider>
         </CursorProvider>

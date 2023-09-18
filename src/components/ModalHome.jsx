@@ -44,6 +44,7 @@ export default function ModalHome() {
       </div>
       <div className='absolute flex items-center -mt-5 right-12'>
         <input
+          name='inputName'
           type='text'
           onChange={handleInputChange}
           value={inputChange}

@@ -16,10 +16,10 @@ export default function Modal() {
       )}
     >
       {content === 'home' && <ModalHome />}
-      {content === 'paused' && <ModalPaused />}
-      {content === 'over' && <ModalOver />}
       {content === 'about' && <ModalAbout />}
       {content === 'highscore' && <ModalHighScore />}
+      {content === 'paused' && <ModalPaused />}
+      {content === 'over' && <ModalOver />}
     </section>
   );
 }

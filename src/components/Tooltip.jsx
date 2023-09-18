@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useCursor } from '../context/CursorProvider';
+import { usePlayer } from '../context/PlayerProvider';
 import cn from '../lib/tailwindMerge';
 
-export default function Tooltip({ items, inGame = false }) {
+export default function Tooltip({ items }) {
+  const { inGame } = usePlayer();
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [orientation, setOrientation] = useState({ v: false, h: false });
   const [origin, setOrigin] = useState('origin-top-left');

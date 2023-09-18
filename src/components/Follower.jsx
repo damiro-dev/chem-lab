@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import { usePlayer } from '../context/PlayerProvider';
 import cn from '../lib/tailwindMerge';
 
-export default function Follower({ inGame = false }) {
+export default function Follower() {
+  const { inGame } = usePlayer();
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e) => {

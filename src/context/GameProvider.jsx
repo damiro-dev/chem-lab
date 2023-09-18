@@ -13,16 +13,29 @@ export function useGameUpdate() {
 }
 
 export default function GameProvider({ children }) {
-  const [inGame, setInGame] = useState(true); // default to false
-  const [items, setItems] = useState(false);
+  const [inGame, setInGame] = useState(false);
+  const [items, setItems] = useState([]);
+  const [numItems, setNumItems] = useState(4);
 
-  const getItems = () => {
-    const randomItems = getRandomItems(itemsData, 4);
-    setItems(randomItems);
+  const getRandomItemsWrapper = (items) => {
+    const newItems = getRandomItems(items, numItems);
+    setItems(newItems);
   };
 
-  const contextValue = { inGame, items };
-  const contextUpdateValue = { setInGame, getItems };
+  const updateInGame = (bool) => {
+    setInGame(bool);
+  };
+
+  const updateNumItems = (num) => {
+    setNumItems(num);
+  };
+
+  const contextValue = { inGame, items, numItems };
+  const contextUpdateValue = {
+    setRandomItems: getRandomItemsWrapper,
+    setNumItems: updateNumItems,
+    setInGame: updateInGame,
+  };
 
   return (
     <GameContext.Provider value={contextValue}>

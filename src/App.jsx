@@ -9,30 +9,27 @@ import TimerProvider from './context/TimerProvider';
 import PlayerProvider from './context/PlayerProvider';
 import NavigationProvider from './context/NavigationProvider';
 import GameProvider from './context/GameProvider';
-import itemsData from './data/items';
-import getRandomItems from './lib/getRandomItems';
 
 export default function App() {
   const scene = 'yard';
-  const items = getRandomItems(itemsData, 4);
 
   return (
-    <NavigationProvider>
-      <GameProvider>
+    <GameProvider>
+      <NavigationProvider>
         <PlayerProvider>
           <CursorProvider>
             <TimerProvider initialTime={30}>
               <Container>
-                <GamePanel items={items} />
+                <GamePanel />
                 <Modal />
-                <Tooltip items={items} />
+                <Tooltip />
                 <Follower />
-                <GameImage img={scene} items={items} />
+                <GameImage img={scene} />
               </Container>
             </TimerProvider>
           </CursorProvider>
         </PlayerProvider>
-      </GameProvider>
-    </NavigationProvider>
+      </NavigationProvider>
+    </GameProvider>
   );
 }

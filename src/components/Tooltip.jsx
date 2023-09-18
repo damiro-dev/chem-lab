@@ -3,15 +3,17 @@ import { useCursor } from '../context/CursorProvider';
 import { useGame } from '../context/GameProvider';
 import cn from '../lib/tailwindMerge';
 
-export default function Tooltip({ items }) {
-  const { inGame } = useGame();
+export default function Tooltip() {
+  const cursor = useCursor();
+  const { items, inGame, numItems } = useGame();
+
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [orientation, setOrientation] = useState({ v: false, h: false });
   const [origin, setOrigin] = useState('origin-top-left');
   const [isHidden, setHidden] = useState(true);
   const [isMoving, setIsMoving] = useState(false);
   const [found, setFound] = useState(1);
-  const cursor = useCursor();
+  const [playing, setPlaying] = useState(false);
 
   const checkCorrectness = (item) => {
     const clickedItem = items.filter((index) => index.name === item.name)[0];
@@ -32,7 +34,14 @@ export default function Tooltip({ items }) {
     }
   };
 
+  useEffect(() => {
+    setPlaying(inGame);
+    console.log('tooltip effect:', playing, inGame, numItems);
+  }, [inGame, playing, numItems]);
+
   const handleSceneClick = (e) => {
+    console.log('tooltip click', playing, inGame, numItems);
+
     if (inGame) {
       const isRight = e.clientX > window.innerWidth / 2;
       const isBottom = e.clientY > window.innerHeight / 2;
@@ -93,7 +102,7 @@ export default function Tooltip({ items }) {
       <span className='px-8 font-bold text-gray-400'>What is it?</span>
       <ol className='flex flex-col items-start pt-4 gap-0'>
         {/* List of game objects */}
-        {items.map((item, index) => (
+        {items.map((item) => (
           <button
             key={item.id}
             onClick={() => handleClick(true, item)}

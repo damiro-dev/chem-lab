@@ -1,15 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { PiPlayFill } from 'react-icons/Pi';
 import { useNavigationUpdate } from '../context/NavigationProvider';
+import { useGameUpdate } from '../context/GameProvider';
+import { useTimer } from '../context/TimerProvider';
+import itemsData from '../data/items';
 import cn from '../lib/tailwindMerge';
 
 export default function ModalHome() {
   const setContent = useNavigationUpdate();
+  const { startTimer } = useTimer();
+  const { setNumItems, setInGame, setRandomItems } = useGameUpdate();
+
   const [inputChange, setInputChange] = useState('');
   const handleInputChange = (e) => setInputChange(e.currentTarget.value);
 
   const handlePlay = () => {
-    console.log('PLAY!', inputChange);
+    setContent('game');
+    setNumItems(5);
+    setRandomItems(itemsData);
+    setInGame(true);
+    startTimer();
+    console.log('PLAY!');
   };
 
   return (
@@ -28,6 +39,7 @@ export default function ModalHome() {
           Highscore
         </div>
       </div>
+
       <div className={cn('rounded-lg backdrop-blur-sm bg-black/40 px-6 py-10 flex flex-col gap-4')}>
         <h1 className='text-4xl font-bold'>Chem Lab</h1>
         <p>
@@ -42,6 +54,7 @@ export default function ModalHome() {
           itaque labore vero.
         </p>
       </div>
+
       <div className='absolute flex items-center -mt-5 right-12'>
         <input
           name='inputName'

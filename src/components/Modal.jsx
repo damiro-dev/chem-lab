@@ -5,9 +5,12 @@ import ModalPaused from './ModalPaused';
 import ModalAbout from './ModalAbout';
 import ModalHighScore from './ModalHighScore';
 import { useNavigation } from '../context/NavigationProvider';
+import { useGame } from '../context/GameProvider';
 
 export default function Modal() {
   const content = useNavigation();
+  const inGame = useGame();
+  // console.log('modal parent:', inGame);
   return (
     <section
       className={cn(

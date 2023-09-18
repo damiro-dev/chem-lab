@@ -4,8 +4,8 @@ import { useGame } from '../context/GameProvider';
 import { PiPlayFill } from 'react-icons/Pi';
 import cn from '../lib/tailwindMerge';
 
-export default function GamePanel({ items }) {
-  const { inGame } = useGame();
+export default function GamePanel() {
+  const { inGame, items } = useGame();
   const { isRunning, time, startTimer, stopTimer, isCountdown } = useTimer();
   const { setIsCountdown, setTime } = useTimerUpdate();
   const timeRange = 30;
@@ -40,12 +40,13 @@ export default function GamePanel({ items }) {
         <span
           className={cn(
             'absolute z-20 left-1/2 -translate-x-1/2 top-14',
-            'uppercase text-[10px] tracking-widest bg-red-600 px-3 py-1 rounded-full'
+            'uppercase text-[10px] tracking-widest bg-red-600 px-3 py-1 rounded-full whitespace-nowrap'
           )}
         >
           {isRunning ? 'SEC REMAINING' : 'PAUSED'}
         </span>
       </section>
+
       <section
         className={cn(
           inGame ? 'flex' : 'hidden',
@@ -56,7 +57,7 @@ export default function GamePanel({ items }) {
         <span
           className={cn(
             'absolute z-20 left-1/2 -translate-x-1/2 -top-4',
-            'uppercase text-[10px] tracking-widest bg-red-600 px-3 py-1 rounded-full'
+            'uppercase text-[10px] tracking-widest bg-red-600 px-3 py-1 rounded-full whitespace-nowrap'
           )}
         >
           {'Missing Equipment'}

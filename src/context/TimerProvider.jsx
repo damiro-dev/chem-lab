@@ -23,13 +23,19 @@ export default function TimerProvider({ children }) {
     if (isRunning) {
       timer = setInterval(() => {
         if (isCountdown) {
+          // Countdown
           if (time > 0) {
             setTime((prevTime) => prevTime - 1);
           } else {
             setIsRunning(false);
           }
         } else {
-          setTime((prevTime) => prevTime + 1);
+          // Countup
+          if (time < initialTime) {
+            setTime((prevTime) => prevTime + 1);
+          } else {
+            setIsRunning(false);
+          }
         }
       }, 1000);
     } else {
@@ -42,20 +48,18 @@ export default function TimerProvider({ children }) {
 
   const startTimer = () => setIsRunning(true);
   const stopTimer = () => setIsRunning(false);
-  const pauseTimer = () => setIsRunning(false);
 
   // Memoize the context value to avoid unnecessary re-renders
   const contextValue = useMemo(
     () => ({
-      isRunning,
       time,
+      isRunning,
       isCountdown,
+      initialTime,
       startTimer,
       stopTimer,
-      pauseTimer,
-      initialTime,
     }),
-    [isRunning, time, isCountdown, initialTime, startTimer, stopTimer, pauseTimer]
+    [time, isRunning, isCountdown, initialTime, startTimer, stopTimer]
   );
 
   const contextUpdateValue = { setIsCountdown, setTime, setInitialTime };

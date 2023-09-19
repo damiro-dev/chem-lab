@@ -14,9 +14,12 @@ export default function ModalHome() {
   const [inputChange, setInputChange] = useState('');
   const handleInputChange = (e) => setInputChange(e.currentTarget.value);
 
+  useEffect(() => {
+    setNumItems(2);
+  }, []);
+
   const handlePlay = () => {
     setContent('game');
-    setNumItems(5);
     setScene('yard');
     setRandomItems(itemsData);
     setInGame(true);

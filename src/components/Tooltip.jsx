@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useCursor } from '../context/CursorProvider';
+import { useNavigationUpdate } from '../context/NavigationProvider';
 import { useGame } from '../context/GameProvider';
 import cn from '../lib/tailwindMerge';
 
 export default function Tooltip() {
   const cursor = useCursor();
+  const navUpdate = useNavigationUpdate();
   const { items, inGame } = useGame();
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -30,6 +32,7 @@ export default function Tooltip() {
       console.log('CORRECT:', clickedItem.name, found, items.length);
       if (found === items.length) {
         console.log('LEVEL CLEARED');
+        // navUpdate('levelup');
       }
     }
   };

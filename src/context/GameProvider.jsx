@@ -1,4 +1,4 @@
-import { useState, createContext, useContext } from 'react';
+import { useState, createContext, useContext, useEffect } from 'react';
 import getRandomItems from '../lib/getRandomItems';
 
 const GameContext = createContext();
@@ -16,26 +16,18 @@ export default function GameProvider({ children }) {
   const [scene, setScene] = useState('yard');
   const [inGame, setInGame] = useState(false);
   const [items, setItems] = useState([]);
-  const [numItems, setNumItems] = useState(4);
+  const [numItems, setNumItems] = useState(0);
 
   const getRandomItemsWrapper = (items) => {
     const newItems = getRandomItems(items, numItems);
     setItems(newItems);
   };
 
-  const updateInGame = (bool) => {
-    setInGame(bool);
-  };
-
-  const updateNumItems = (num) => {
-    setNumItems(num);
-  };
-
   const contextValue = { inGame, items, numItems, scene };
   const contextUpdateValue = {
     setRandomItems: getRandomItemsWrapper,
-    setNumItems: updateNumItems,
-    setInGame: updateInGame,
+    setNumItems,
+    setInGame,
     setScene,
   };
 

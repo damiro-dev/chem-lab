@@ -5,7 +5,7 @@ import cn from '../lib/tailwindMerge';
 
 export default function Tooltip() {
   const cursor = useCursor();
-  const { items, inGame, numItems } = useGame();
+  const { items, inGame } = useGame();
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [orientation, setOrientation] = useState({ v: false, h: false });
@@ -13,10 +13,10 @@ export default function Tooltip() {
   const [isHidden, setHidden] = useState(true);
   const [isMoving, setIsMoving] = useState(false);
   const [found, setFound] = useState(1);
-  const [playing, setPlaying] = useState(false);
 
   const checkCorrectness = (item) => {
     const clickedItem = items.filter((index) => index.name === item.name)[0];
+
     // check if click is in between (x & width && y & height) && if (item === name)
     if (clickedItem.name !== item.name) return;
     if (
@@ -34,32 +34,23 @@ export default function Tooltip() {
     }
   };
 
-  useEffect(() => {
-    setPlaying(inGame);
-    console.log('tooltip effect:', playing, inGame, numItems);
-  }, [inGame, playing, numItems]);
-
   const handleSceneClick = (e) => {
-    console.log('tooltip click', playing, inGame, numItems);
+    const isRight = e.clientX > window.innerWidth / 2;
+    const isBottom = e.clientY > window.innerHeight / 2;
+    const orientation = { v: isBottom, h: isRight };
 
-    if (inGame) {
-      const isRight = e.clientX > window.innerWidth / 2;
-      const isBottom = e.clientY > window.innerHeight / 2;
-      const orientation = { v: isBottom, h: isRight };
+    const origin = isRight
+      ? isBottom
+        ? 'origin-bottom-right rounded-br-none'
+        : 'origin-top-right rounded-tr-none'
+      : isBottom
+      ? 'origin-bottom-left rounded-bl-none'
+      : 'origin-top-left rounded-tl-none';
 
-      const origin = isRight
-        ? isBottom
-          ? 'origin-bottom-right rounded-br-none'
-          : 'origin-top-right rounded-tr-none'
-        : isBottom
-        ? 'origin-bottom-left rounded-bl-none'
-        : 'origin-top-left rounded-tl-none';
-
-      setOrigin(origin);
-      setOrientation(orientation);
-      setPosition({ x: e.clientX, y: e.clientY });
-      setHidden(false);
-    }
+    setOrigin(origin);
+    setOrientation(orientation);
+    setPosition({ x: e.clientX, y: e.clientY });
+    setHidden(false);
   };
 
   const setToHide = (status) => {
@@ -77,14 +68,16 @@ export default function Tooltip() {
   };
 
   useEffect(() => {
-    const img = document.querySelector('#imgRef');
-    img.addEventListener('click', handleSceneClick);
-    img.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      img.removeEventListener('click', handleSceneClick);
-      img.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
+    if (inGame) {
+      const img = document.querySelector('#imgRef');
+      img.addEventListener('click', handleSceneClick);
+      img.addEventListener('mousemove', handleMouseMove);
+      return () => {
+        img.removeEventListener('click', handleSceneClick);
+        img.removeEventListener('mousemove', handleMouseMove);
+      };
+    }
+  }, [inGame]);
 
   return (
     <div

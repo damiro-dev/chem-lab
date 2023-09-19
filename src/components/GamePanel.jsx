@@ -19,6 +19,10 @@ export default function GamePanel() {
     isRunning ? stopTimer() : startTimer();
   };
 
+  const testClick = () => {
+    console.log('Panel', inGame);
+  };
+
   const resetTimer = () => {
     stopTimer();
     isCountdown ? setTime(timeRange) : setTime(0);

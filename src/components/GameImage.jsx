@@ -6,11 +6,11 @@ import { useCursorUpdate } from '../context/CursorProvider';
 import { useTimer } from '../context/TimerProvider';
 import { useGame } from '../context/GameProvider';
 
-export default function GameImage({ img }) {
-  const { inGame, items } = useGame();
-  const imageUrl = `game-images/scene-${img}.webp`;
+export default function GameImage() {
+  const { inGame, items, scene } = useGame();
+  const imageUrl = `game-images/scene-${scene}.webp`;
   const imageRef = useRef(null);
-  const paused = !useTimer().isRunning;
+  const { isRunning } = useTimer();
 
   const calculateCursorPercentage = useCallback((e) => {
     if (!imageRef.current) return { x: 0, y: 0 };
@@ -72,7 +72,7 @@ export default function GameImage({ img }) {
         ref={scrollRef}
         className={cn(
           'absolute inset-0 overflow-x-scroll scroll-smooth transition-all duration-700',
-          paused && 'filter blur-3xl grayscale-[60%]'
+          !isRunning && 'filter blur-3xl grayscale-[60%]'
         )}
       >
         <div
@@ -92,7 +92,7 @@ export default function GameImage({ img }) {
           ))}
 
           {/* Important! Images should be scaled to 1512/680 */}
-          <img className='w-full h-full object-cover overflow-hidden' src={imageUrl} alt={`Game scene - ${img}`} />
+          <img className='w-full h-full object-cover overflow-hidden' src={imageUrl} alt={`Game scene - ${scene}`} />
         </div>
       </div>
 

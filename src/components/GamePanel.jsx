@@ -1,36 +1,40 @@
 import { useEffect } from 'react';
-import { useTimer, useTimerUpdate } from '../context/TimerProvider';
 import { useGame } from '../context/GameProvider';
+import { useTimer, useTimerUpdate } from '../context/TimerProvider';
+import { useNavigationUpdate } from '../context/NavigationProvider';
 import { PiPlayFill } from 'react-icons/Pi';
 import cn from '../lib/tailwindMerge';
 
 export default function GamePanel() {
   const { inGame, items } = useGame();
-  const { isRunning, time, startTimer, stopTimer, isCountdown } = useTimer();
+  const { time, isRunning, startTimer, stopTimer, isCountdown, initialTime } = useTimer();
   const { setIsCountdown, setTime } = useTimerUpdate();
-  const timeRange = 30;
+  const navUpdate = useNavigationUpdate();
 
   useEffect(() => {
-    setTime(timeRange);
+    setTime(initialTime);
     setIsCountdown(true);
   }, [setTime, setIsCountdown]);
 
   const toggleTimer = () => {
-    isRunning ? stopTimer() : startTimer();
-  };
-
-  const testClick = () => {
-    console.log('Panel', inGame);
+    if (isRunning) {
+      stopTimer();
+      navUpdate('paused');
+    } else {
+      startTimer();
+      navUpdate('game');
+    }
   };
 
   const resetTimer = () => {
     stopTimer();
-    isCountdown ? setTime(timeRange) : setTime(0);
+    isCountdown ? setTime(initialTime) : setTime(0);
   };
 
   return (
     <>
       <section className={cn(!inGame && 'hidden')}>
+        {/* TIMER */}
         <div
           onClick={toggleTimer}
           className={cn(
@@ -51,6 +55,7 @@ export default function GamePanel() {
         </span>
       </section>
 
+      {/* MISSING LIST */}
       <section
         className={cn(
           inGame ? 'flex' : 'hidden',

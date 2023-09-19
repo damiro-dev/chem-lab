@@ -9,7 +9,7 @@ import cn from '../lib/tailwindMerge';
 export default function ModalHome() {
   const setContent = useNavigationUpdate();
   const { startTimer } = useTimer();
-  const { setNumItems, setInGame, setRandomItems } = useGameUpdate();
+  const { setScene, setNumItems, setInGame, setRandomItems } = useGameUpdate();
 
   const [inputChange, setInputChange] = useState('');
   const handleInputChange = (e) => setInputChange(e.currentTarget.value);
@@ -17,6 +17,7 @@ export default function ModalHome() {
   const handlePlay = () => {
     setContent('game');
     setNumItems(5);
+    setScene('yard');
     setRandomItems(itemsData);
     setInGame(true);
     startTimer();

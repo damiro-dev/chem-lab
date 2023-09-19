@@ -18,13 +18,13 @@ export default function App() {
       <NavigationProvider>
         <PlayerProvider>
           <CursorProvider>
-            <TimerProvider initialTime={30}>
+            <TimerProvider>
               <Container>
                 <GamePanel />
                 <Modal />
                 <Tooltip />
                 <Follower />
-                <GameImage img={scene} />
+                <GameImage />
               </Container>
             </TimerProvider>
           </CursorProvider>

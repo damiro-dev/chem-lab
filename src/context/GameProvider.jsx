@@ -13,6 +13,7 @@ export function useGameUpdate() {
 }
 
 export default function GameProvider({ children }) {
+  const [scene, setScene] = useState('yard');
   const [inGame, setInGame] = useState(false);
   const [items, setItems] = useState([]);
   const [numItems, setNumItems] = useState(4);
@@ -30,11 +31,12 @@ export default function GameProvider({ children }) {
     setNumItems(num);
   };
 
-  const contextValue = { inGame, items, numItems };
+  const contextValue = { inGame, items, numItems, scene };
   const contextUpdateValue = {
     setRandomItems: getRandomItemsWrapper,
     setNumItems: updateNumItems,
     setInGame: updateInGame,
+    setScene,
   };
 
   return (

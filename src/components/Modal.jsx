@@ -9,8 +9,6 @@ import { useGame } from '../context/GameProvider';
 
 export default function Modal() {
   const content = useNavigation();
-  const inGame = useGame();
-  // console.log('modal parent:', inGame);
   return (
     <section
       className={cn(

@@ -14,6 +14,7 @@ export function useTimerUpdate() {
 export default function TimerProvider({ children }) {
   const [isRunning, setIsRunning] = useState(false);
   const [time, setTime] = useState(0);
+  const [initialTime, setInitialTime] = useState(30);
   const [isCountdown, setIsCountdown] = useState(true);
 
   useEffect(() => {
@@ -52,11 +53,12 @@ export default function TimerProvider({ children }) {
       startTimer,
       stopTimer,
       pauseTimer,
+      initialTime,
     }),
-    [isRunning, time, isCountdown, startTimer, stopTimer, pauseTimer]
+    [isRunning, time, isCountdown, initialTime, startTimer, stopTimer, pauseTimer]
   );
 
-  const contextUpdateValue = { setIsCountdown, setTime };
+  const contextUpdateValue = { setIsCountdown, setTime, setInitialTime };
 
   return (
     <TimerContext.Provider value={contextValue}>

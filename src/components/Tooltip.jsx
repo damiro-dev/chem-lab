@@ -92,7 +92,7 @@ export default function Tooltip() {
         isHidden ? 'scale-[0]' : 'scale-100'
       )}
     >
-      <span className='px-8 font-bold text-gray-400'>What is it?</span>
+      <span className='px-8 font-bold text-gray-400 cursor-default'>What is it?</span>
       <ol className='flex flex-col items-start pt-4 gap-0'>
         {/* List of game objects */}
         {items.map((item) => (

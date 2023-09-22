@@ -16,11 +16,11 @@ export default function ModalHome() {
 
   useEffect(() => {
     setNumItems(2);
+    setScene('yard');
   }, []);
 
   const handlePlay = () => {
     setContent('game');
-    setScene('yard');
     setRandomItems(itemsData);
     setInGame(true);
     startTimer();
@@ -45,7 +45,7 @@ export default function ModalHome() {
       </div>
 
       <div className={cn('rounded-lg backdrop-blur-sm bg-black/40 px-6 py-10 flex flex-col gap-4')}>
-        <h1 className='text-4xl font-bold'>Chem Lab</h1>
+        <h1 className='text-4xl font-bold'>Labs GAME</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur architecto sapiente fugiat reiciendis modi,
           autem delectus ratione error labore facilis quo eos, nisi vitae quam temporibus quasi nulla iure voluptatibus?

@@ -23,11 +23,11 @@ export default function ModalAbout() {
         </div>
       </div>
       <div className={cn('rounded-lg backdrop-blur-sm bg-black/40 px-6 pt-10 pb-6 flex flex-col gap-4')}>
-        <h1 className='text-3xl font-bold'>About Chem Lab</h1>
+        <h1 className='text-3xl font-bold'>About Labs GAME</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur architecto sapiente fugiat reiciendis modi,
-          autem delectus ratione error labore facilis quo eos, nisi vitae quam temporibus quasi nulla iure voluptatibus?
-          Animi, minima minus voluptatibus enim, nam odit quas voluptates harum, voluptatem in exercitationem?
+          Interactive and educational game designed to enhance laboratory skills and familiarity with laboratory
+          apparatuses, materials, and equipment. A learner or player will embark on a learning journey where they engage
+          in memory challenges and interactive tasks related to the laboratory environment.
         </p>
         <p>
           Odio veritatis, numquam quidem repellat sequi perspiciatis eveniet debitis, maxime, dolore neque quod

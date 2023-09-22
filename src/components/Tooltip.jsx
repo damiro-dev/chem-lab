@@ -1,20 +1,19 @@
 import { useState, useEffect } from 'react';
 import { useCursor } from '../context/CursorProvider';
-import { useNavigationUpdate } from '../context/NavigationProvider';
-import { useGame } from '../context/GameProvider';
+import { useGame, useGameUpdate } from '../context/GameProvider';
 import cn from '../lib/tailwindMerge';
 
 export default function Tooltip() {
   const cursor = useCursor();
-  const navUpdate = useNavigationUpdate();
   const { items, inGame } = useGame();
+  const { setLevel } = useGameUpdate();
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [orientation, setOrientation] = useState({ v: false, h: false });
   const [origin, setOrigin] = useState('origin-top-left');
   const [isHidden, setHidden] = useState(true);
   const [isMoving, setIsMoving] = useState(false);
-  const [found, setFound] = useState(1);
+  const [itemFound, setItemFound] = useState(1);
 
   const checkCorrectness = (item) => {
     const clickedItem = items.filter((index) => index.name === item.name)[0];
@@ -27,12 +26,12 @@ export default function Tooltip() {
       clickedItem.y < cursor.y &&
       clickedItem.y + clickedItem.height > cursor.y
     ) {
-      setFound((found) => found + 1);
+      setItemFound((found) => found + 1);
       item.tagged = !item.tagged;
-      console.log('CORRECT:', clickedItem.name, found, items.length);
-      if (found === items.length) {
+      console.log('CORRECT:', clickedItem.name, itemFound, items.length);
+      if (itemFound === items.length) {
         console.log('LEVEL CLEARED');
-        // navUpdate('levelup');
+        setLevel((level) => level + 1);
       }
     }
   };

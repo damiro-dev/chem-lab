@@ -7,7 +7,7 @@ import { useTimer } from '../context/TimerProvider';
 import { useGame } from '../context/GameProvider';
 
 export default function GameImage() {
-  const { inGame, items, scene } = useGame();
+  const { inGame, items, scene, revealItems } = useGame();
   const imageUrl = `game-images/scene-${scene}.webp`;
   const imageRef = useRef(null);
   const { isRunning } = useTimer();
@@ -72,7 +72,7 @@ export default function GameImage() {
         ref={scrollRef}
         className={cn(
           'absolute inset-0 overflow-x-scroll scroll-smooth transition-all duration-700',
-          !isRunning && 'filter blur-3xl grayscale-[60%]'
+          revealItems === true ? null : !isRunning && 'filter blur-3xl grayscale-[60%]'
         )}
       >
         <div
@@ -87,7 +87,10 @@ export default function GameImage() {
             <div
               key={item.id}
               style={{ left: `${item.x}%`, top: `${item.y}%`, width: `${item.width}%`, height: `${item.height}%` }}
-              className={cn('absolute border-white border-2 border-dashed rounded-xl', !item.tagged && 'hidden')}
+              className={cn(
+                revealItems === true ? null : !item.tagged && 'hidden',
+                'absolute border-white border-2 border-dashed rounded-xl'
+              )}
             />
           ))}
 

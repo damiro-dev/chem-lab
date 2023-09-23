@@ -7,10 +7,19 @@ import { useTimer } from '../context/TimerProvider';
 import { useGame } from '../context/GameProvider';
 
 export default function GameImage() {
-  const { inGame, items, scene, revealItems } = useGame();
+  const { inGame, items, scene } = useGame();
   const imageUrl = `game-images/scene-${scene}.webp`;
   const imageRef = useRef(null);
   const { isRunning } = useTimer();
+
+  const [revealItems, setRevealItems] = useState(false);
+
+  useEffect(() => {
+    if (inGame && !isRunning) {
+      setRevealItems(true);
+    }
+    console.log('useEff', revealItems);
+  }, [isRunning, inGame]);
 
   const calculateCursorPercentage = useCallback((e) => {
     if (!imageRef.current) return { x: 0, y: 0 };

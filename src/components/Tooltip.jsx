@@ -87,7 +87,8 @@ export default function Tooltip() {
       onMouseOut={() => setToHide(true)}
       style={{ left: `${position.x}px`, top: `${position.y}px` }}
       className={cn(
-        'absolute z-10 py-4 rounded-xl bg-black/50 backdrop-blur-md whitespace-nowrap origin-top-left',
+        inGame ? 'absolute' : 'hidden',
+        'z-10 py-4 rounded-xl bg-black/50 backdrop-blur-md whitespace-nowrap origin-top-left',
         orientation.v && '-translate-y-full',
         orientation.h && '-translate-x-full',
         origin,

@@ -5,7 +5,6 @@ import ModalPaused from './ModalPaused';
 import ModalAbout from './ModalAbout';
 import ModalHighScore from './ModalHighScore';
 import { useNavigation } from '../context/NavigationProvider';
-import { useGame } from '../context/GameProvider';
 
 export default function Modal() {
   const content = useNavigation();
@@ -21,6 +20,7 @@ export default function Modal() {
       {content === 'highscore' && <ModalHighScore />}
       {content === 'paused' && <ModalPaused />}
       {content === 'over' && <ModalOver />}
+      {content === 'levelup' && <ModalLevelUp />}
     </section>
   );
 }

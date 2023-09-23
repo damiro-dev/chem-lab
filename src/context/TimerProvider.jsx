@@ -1,5 +1,4 @@
 import { createContext, useContext, useState, useEffect, useMemo } from 'react';
-import { useGame, useGameUpdate } from './GameProvider';
 
 const TimerContext = createContext();
 const TimerContextUpdate = createContext();
@@ -18,17 +17,6 @@ export default function TimerProvider({ children }) {
   const [initialTime, setInitialTime] = useState(5);
   const [isCountdown, setIsCountdown] = useState(true);
 
-  const { inGame } = useGame();
-  const { setRevealItems } = useGameUpdate();
-
-  const onTimeOver = () => {
-    if (inGame) {
-      console.log('time-over');
-      setIsRunning(false);
-      setRevealItems(true);
-    }
-  };
-
   useEffect(() => {
     let timer;
 
@@ -36,10 +24,10 @@ export default function TimerProvider({ children }) {
       timer = setInterval(() => {
         if (isCountdown) {
           // Countdown
-          setTime((prevTime) => (time > 0 ? prevTime - 1 : onTimeOver()));
+          setTime((prevTime) => (time > 0 ? prevTime - 1 : setIsRunning(false)));
         } else {
           // Countup
-          setTime((prevTime) => (time < initialTime ? prevTime + 1 : onTimeOver()));
+          setTime((prevTime) => (time < initialTime ? prevTime + 1 : setIsRunning(false)));
         }
       }, 1000);
     } else {

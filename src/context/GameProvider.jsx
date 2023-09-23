@@ -19,7 +19,6 @@ export default function GameProvider({ children }) {
   const [level, setLevel] = useState(0);
   const [numItems, setNumItems] = useState(0);
   const [status, setStatus] = useState('');
-  const [revealItems, setRevealItems] = useState(false);
 
   const setStatusWrapper = (status) => {
     setStatus(status);
@@ -30,14 +29,14 @@ export default function GameProvider({ children }) {
     setItems(newItems);
   };
 
-  const contextValue = { inGame, items, numItems, scene, level, status, revealItems };
+  const contextValue = { inGame, items, numItems, scene, level, status };
   const contextUpdateValue = {
     setRandomItems: getRandomItemsWrapper,
+    setStatus: setStatusWrapper,
     setNumItems,
     setInGame,
     setScene,
     setLevel,
-    setRevealItems,
   };
 
   return (

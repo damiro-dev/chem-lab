@@ -7,7 +7,7 @@ import cn from '../lib/tailwindMerge';
 
 export default function ModalHome() {
   const setContent = useNavigationUpdate();
-  const { setScene, setNumItems, setRevealItems, setLevel } = useGameUpdate();
+  const { setScene, setRevealItems, setLevel } = useGameUpdate();
   const { setTime } = useTimerUpdate();
   const { initialTime } = useTimer();
 
@@ -19,12 +19,11 @@ export default function ModalHome() {
     setRevealItems(false);
     setTime(initialTime);
     setLevel(0);
-    setNumItems(2);
     setScene('yard');
   }, []);
 
   const handlePlay = () => {
-    setContent('levelup');
+    setContent('comic');
     console.log('PLAY!');
   };
 

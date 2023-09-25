@@ -1,5 +1,6 @@
 import { useState, createContext, useContext } from 'react';
 import getRandomItems from '../lib/getRandomItems';
+import levelsData from '../data/levels';
 
 const GameContext = createContext();
 const GameContextUpdate = createContext();
@@ -16,28 +17,32 @@ export default function GameProvider({ children }) {
   const [scene, setScene] = useState('yard');
   const [inGame, setInGame] = useState(false);
   const [items, setItems] = useState([]);
-  const [level, setLevel] = useState(0);
-  const [numItems, setNumItems] = useState(0);
-  const [status, setStatus] = useState('');
+  const [numItems, setNumItems] = useState(1);
   const [revealItems, setRevealItems] = useState(false);
+  const [levelTime, setLevelTime] = useState(0);
+  const [level, setLevel] = useState(0);
 
-  const setStatusWrapper = (status) => {
-    setStatus(status);
+  const setLevelWrapper = (level) => {
+    setLevel(level);
+    const levelDetails = levelsData.find((levelData) => levelData.level === level);
+    setScene(levelDetails.scene);
+    setNumItems(levelDetails.items);
+    setLevelTime(levelDetails.time);
+    console.log('gpro:', level);
   };
 
   const getRandomItemsWrapper = (items) => {
     const newItems = getRandomItems(items, numItems);
     setItems(newItems);
+    console.log('gri', newItems);
   };
 
-  const contextValue = { inGame, items, numItems, scene, level, status, revealItems };
+  const contextValue = { inGame, items, numItems, scene, level, revealItems, levelTime };
   const contextUpdateValue = {
-    setRandomItems: getRandomItemsWrapper,
-    setStatus: setStatusWrapper,
-    setNumItems,
+    setLevel: setLevelWrapper,
+    setItems: getRandomItemsWrapper,
     setInGame,
     setScene,
-    setLevel,
     setRevealItems,
   };
 

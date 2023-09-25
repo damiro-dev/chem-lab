@@ -1,18 +1,28 @@
+import { useEffect } from 'react';
 import { PiPlayFill } from 'react-icons/Pi';
 import { useNavigationUpdate } from '../context/NavigationProvider';
+import { useGame, useGameUpdate } from '../context/GameProvider';
 import cn from '../lib/tailwindMerge';
 
 export default function ModalComic() {
   const navUpdate = useNavigationUpdate();
+  const { level } = useGame();
+  const { setLevel } = useGameUpdate();
+
+  // ON LOAD
+  useEffect(() => {
+    setLevel(level + 1);
+  }, []);
 
   const handlePlay = () => {
     console.log('COMIC!');
     navUpdate('levelup');
   };
+
   return (
     <>
       <div className={cn('rounded-lg backdrop-blur-sm bg-black/40 px-6 py-10 flex flex-col gap-4')}>
-        <h1 className='text-3xl font-bold'>Comic</h1>
+        <h1 className='text-3xl font-bold'>Comic {level}</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur architecto sapiente fugiat reiciendis modi,
           autem delectus ratione error labore facilis quo eos, nisi vitae quam temporibus quasi nulla iure voluptatibus?

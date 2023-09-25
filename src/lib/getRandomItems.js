@@ -14,6 +14,7 @@ export default function getRandomItems(inputArray, numItems) {
     [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
   }
 
+  // if numItems == 4
   // Select the first 4 elements from the shuffled array or all if inputArray length is less than 4
   for (let i = 0; i < Math.min(numItems, shuffledArray.length); i++) {
     randomItems.push(shuffledArray[i]);

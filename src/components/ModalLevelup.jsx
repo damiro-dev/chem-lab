@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { PiPlayFill } from 'react-icons/Pi';
 import { useGame, useGameUpdate } from '../context/GameProvider';
 import { useNavigationUpdate } from '../context/NavigationProvider';
@@ -7,37 +7,34 @@ import itemsData from '../data/items';
 import cn from '../lib/tailwindMerge';
 
 export default function Modallevelup() {
-  const { items, level } = useGame();
-  const { setLevel, setScene, setNumItems, setInGame, setRandomItems, setRevealItems } = useGameUpdate();
-  const { setTime } = useTimerUpdate();
-  const { startTimer, initialTime } = useTimer();
   const setContent = useNavigationUpdate();
-
-  const [levelWrapper, setLevelWrapper] = useState(0);
+  const { items, level, levelTime, numItems } = useGame();
+  const { setInGame, setRevealItems, setItems } = useGameUpdate();
+  const { setTime, setInitialTime } = useTimerUpdate();
+  const { startTimer } = useTimer();
 
   // ON LOAD
   useEffect(() => {
+    setInitialTime(levelTime);
+    setTime(levelTime);
     setRevealItems(false);
-    setNumItems(2);
-    setScene('yard');
-    setRandomItems(itemsData);
-    setTime(initialTime);
-    setLevelWrapper(level + 1);
+    setItems(itemsData);
   }, []);
 
   const handlePlay = () => {
     setContent('game');
     setInGame(true);
     startTimer();
-    setLevel(levelWrapper);
-    console.log('GAME ON!');
+    console.log('GO', items);
   };
 
   return (
     <>
       <div className={cn('rounded-lg backdrop-blur-sm bg-black/40 px-6 py-10 flex flex-col gap-4')}>
-        <h1 className='text-3xl font-bold'>Level {levelWrapper}</h1>
-        <p>Show next level items here</p>
+        <h1 className='text-3xl font-bold'>Level {level}</h1>
+        <p>
+          for only {levelTime} sec, find these {numItems} items:
+        </p>
         {items.map((item) => (
           <span key={item.id} className={cn('whitespace-nowrap', item.tagged && 'line-through opacity-40')}>
             {item.name}

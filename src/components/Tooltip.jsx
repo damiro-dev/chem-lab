@@ -9,7 +9,7 @@ export default function Tooltip() {
   const cursor = useCursor();
   const { setInGame } = useGameUpdate();
   const { items, inGame } = useGame();
-  const { isRunning, stopTimer } = useTimer();
+  const { isRunning, stopTimer, time, initialTime } = useTimer();
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [orientation, setOrientation] = useState({ v: false, h: false });
@@ -34,7 +34,7 @@ export default function Tooltip() {
       item.tagged = !item.tagged;
       console.log('CORRECT:', clickedItem.name, itemFound, items.length);
       if (itemFound === items.length) {
-        console.log('LEVEL CLEARED');
+        console.log('LEVEL COMPLETE', time, '/', initialTime);
         stopTimer();
         setInGame(false);
         setItemFound(1);

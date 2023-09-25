@@ -7,10 +7,10 @@ import cn from '../lib/tailwindMerge';
 
 export default function GamePanel() {
   const { inGame, items, revealItems } = useGame();
-  const { time, isRunning, startTimer, stopTimer, isCountdown, initialTime } = useTimer();
+  const { setRevealItems, setInGame } = useGameUpdate();
+  const { time, isRunning, startTimer, stopTimer, initialTime } = useTimer();
   const { setIsCountdown, setTime } = useTimerUpdate();
   const navUpdate = useNavigationUpdate();
-  const { setRevealItems, setInGame } = useGameUpdate();
 
   // ON LOAD
   useEffect(() => {
@@ -39,11 +39,6 @@ export default function GamePanel() {
       startTimer();
       navUpdate('game');
     }
-  };
-
-  const resetTimer = () => {
-    stopTimer();
-    isCountdown ? setTime(initialTime) : setTime(0);
   };
 
   return (

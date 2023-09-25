@@ -2,28 +2,29 @@ import { useState, useEffect } from 'react';
 import { PiPlayFill } from 'react-icons/Pi';
 import { useNavigationUpdate } from '../context/NavigationProvider';
 import { useGameUpdate } from '../context/GameProvider';
-import { useTimer } from '../context/TimerProvider';
-import itemsData from '../data/items';
+import { useTimer, useTimerUpdate } from '../context/TimerProvider';
 import cn from '../lib/tailwindMerge';
 
 export default function ModalHome() {
   const setContent = useNavigationUpdate();
-  const { startTimer } = useTimer();
-  const { setScene, setNumItems, setInGame, setRandomItems } = useGameUpdate();
+  const { setScene, setNumItems, setRevealItems, setLevel } = useGameUpdate();
+  const { setTime } = useTimerUpdate();
+  const { initialTime } = useTimer();
 
   const [inputChange, setInputChange] = useState('');
   const handleInputChange = (e) => setInputChange(e.currentTarget.value);
 
+  // ON LOAD
   useEffect(() => {
+    setRevealItems(false);
+    setTime(initialTime);
+    setLevel(0);
     setNumItems(2);
     setScene('yard');
   }, []);
 
   const handlePlay = () => {
-    setContent('game');
-    setRandomItems(itemsData);
-    setInGame(true);
-    startTimer();
+    setContent('levelup');
     console.log('PLAY!');
   };
 

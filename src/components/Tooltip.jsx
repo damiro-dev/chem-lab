@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useCursor } from '../context/CursorProvider';
 import { useTimer } from '../context/TimerProvider';
-import { useGame, useGameUpdate } from '../context/GameProvider';
+import { useGame } from '../context/GameProvider';
 import cn from '../lib/tailwindMerge';
 
 export default function Tooltip() {
   const cursor = useCursor();
   const { items, inGame } = useGame();
   const { isRunning } = useTimer();
-  const { setLevel } = useGameUpdate();
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [orientation, setOrientation] = useState({ v: false, h: false });
@@ -33,7 +32,6 @@ export default function Tooltip() {
       console.log('CORRECT:', clickedItem.name, itemFound, items.length);
       if (itemFound === items.length) {
         console.log('LEVEL CLEARED');
-        setLevel((level) => level + 1);
       }
     }
   };

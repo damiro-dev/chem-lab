@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useCursor } from '../context/CursorProvider';
+import { useTimer } from '../context/TimerProvider';
 import { useGame, useGameUpdate } from '../context/GameProvider';
 import cn from '../lib/tailwindMerge';
 
 export default function Tooltip() {
   const cursor = useCursor();
   const { items, inGame } = useGame();
+  const { isRunning } = useTimer();
   const { setLevel } = useGameUpdate();
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -87,8 +89,8 @@ export default function Tooltip() {
       onMouseOut={() => setToHide(true)}
       style={{ left: `${position.x}px`, top: `${position.y}px` }}
       className={cn(
-        inGame ? 'absolute' : 'hidden',
-        'z-10 py-4 rounded-xl bg-black/50 backdrop-blur-md whitespace-nowrap origin-top-left',
+        !isRunning && 'hidden',
+        'absolute z-10 py-4 rounded-xl bg-black/50 backdrop-blur-md whitespace-nowrap origin-top-left',
         orientation.v && '-translate-y-full',
         orientation.h && '-translate-x-full',
         origin,

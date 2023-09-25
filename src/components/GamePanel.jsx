@@ -1,26 +1,41 @@
 import { useEffect } from 'react';
-import { useGame } from '../context/GameProvider';
+import { useGame, useGameUpdate } from '../context/GameProvider';
 import { useTimer, useTimerUpdate } from '../context/TimerProvider';
 import { useNavigationUpdate } from '../context/NavigationProvider';
 import { PiPlayFill } from 'react-icons/Pi';
 import cn from '../lib/tailwindMerge';
 
 export default function GamePanel() {
-  const { inGame, items } = useGame();
+  const { inGame, items, revealItems } = useGame();
   const { time, isRunning, startTimer, stopTimer, isCountdown, initialTime } = useTimer();
   const { setIsCountdown, setTime } = useTimerUpdate();
   const navUpdate = useNavigationUpdate();
+  const { setRevealItems, setInGame } = useGameUpdate();
 
+  // ON LOAD
   useEffect(() => {
     setTime(initialTime);
     setIsCountdown(true);
-  }, [setTime, setIsCountdown]);
+  }, []);
 
+  // ON GAMEOVER
+  useEffect(() => {
+    if (inGame && time === 0) {
+      console.log('gp GAMEOVER');
+      navUpdate('over');
+      setRevealItems(true);
+      setInGame(false);
+    }
+  }, [time, inGame, revealItems]);
+
+  // ON PAUSE
   const toggleTimer = () => {
-    if (isRunning) {
+    if (inGame && isRunning) {
+      console.log('gp PAUSED');
       stopTimer();
       navUpdate('paused');
     } else {
+      console.log('gp RESUMED');
       startTimer();
       navUpdate('game');
     }
@@ -39,7 +54,7 @@ export default function GamePanel() {
           onClick={toggleTimer}
           className={cn(
             'absolute z-20 left-1/2 -translate-x-1/2 top-4',
-            'w-12 aspect-square flex items-center justify-center rounded-full cursor-pointer',
+            'flex w-12 aspect-square items-center justify-center rounded-full cursor-pointer',
             'font-semibold text-2xl text-white backdrop-blur-sm bg-black/40'
           )}
         >

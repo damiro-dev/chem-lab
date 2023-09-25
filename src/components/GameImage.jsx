@@ -7,19 +7,10 @@ import { useTimer } from '../context/TimerProvider';
 import { useGame } from '../context/GameProvider';
 
 export default function GameImage() {
-  const { inGame, items, scene } = useGame();
+  const { inGame, items, scene, revealItems } = useGame();
   const imageUrl = `game-images/scene-${scene}.webp`;
   const imageRef = useRef(null);
   const { isRunning } = useTimer();
-
-  const [revealItems, setRevealItems] = useState(false);
-
-  useEffect(() => {
-    if (inGame && !isRunning) {
-      setRevealItems(true);
-    }
-    console.log('useEff', revealItems);
-  }, [isRunning, inGame]);
 
   const calculateCursorPercentage = useCallback((e) => {
     if (!imageRef.current) return { x: 0, y: 0 };
@@ -80,10 +71,11 @@ export default function GameImage() {
       <div
         ref={scrollRef}
         className={cn(
-          'absolute inset-0 overflow-x-scroll scroll-smooth transition-all duration-700',
-          revealItems === true ? null : !isRunning && 'filter blur-3xl grayscale-[60%]'
+          revealItems ? null : !isRunning && 'filter blur-3xl grayscale-[60%]',
+          'absolute inset-0 overflow-x-scroll scroll-smooth transition-all duration-700'
         )}
       >
+        {/* BACKGROUND IMAGE / SCENE */}
         <div
           ref={imageRef}
           id='imgRef'
@@ -97,7 +89,7 @@ export default function GameImage() {
               key={item.id}
               style={{ left: `${item.x}%`, top: `${item.y}%`, width: `${item.width}%`, height: `${item.height}%` }}
               className={cn(
-                revealItems === true ? null : !item.tagged && 'hidden',
+                revealItems ? null : !item.tagged && 'hidden',
                 'absolute border-white border-2 border-dashed rounded-xl'
               )}
             />
@@ -108,6 +100,7 @@ export default function GameImage() {
         </div>
       </div>
 
+      {/* BUTTONS */}
       <button
         onClick={() => scroll(distance * -1)}
         className={cn(

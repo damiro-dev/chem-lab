@@ -4,6 +4,8 @@ import ModalOver from './ModalOver';
 import ModalPaused from './ModalPaused';
 import ModalAbout from './ModalAbout';
 import ModalHighScore from './ModalHighScore';
+import ModalLevelUp from './ModalLevelUp';
+import ModalComic from './ModalComic';
 import { useNavigation } from '../context/NavigationProvider';
 
 export default function Modal() {
@@ -18,9 +20,12 @@ export default function Modal() {
       {content === 'home' && <ModalHome />}
       {content === 'about' && <ModalAbout />}
       {content === 'highscore' && <ModalHighScore />}
+
+      {/* inGame Modals */}
       {content === 'paused' && <ModalPaused />}
       {content === 'over' && <ModalOver />}
       {content === 'levelup' && <ModalLevelUp />}
+      {content === 'comic' && <ModalComic />}
     </section>
   );
 }

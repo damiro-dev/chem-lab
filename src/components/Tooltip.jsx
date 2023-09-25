@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
 import { useCursor } from '../context/CursorProvider';
 import { useTimer } from '../context/TimerProvider';
-import { useGame } from '../context/GameProvider';
+import { useGame, useGameUpdate } from '../context/GameProvider';
+import { useNavigationUpdate } from '../context/NavigationProvider';
 import cn from '../lib/tailwindMerge';
 
 export default function Tooltip() {
   const cursor = useCursor();
+  const { setInGame } = useGameUpdate();
   const { items, inGame } = useGame();
-  const { isRunning } = useTimer();
+  const { isRunning, stopTimer } = useTimer();
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [orientation, setOrientation] = useState({ v: false, h: false });
@@ -15,6 +17,7 @@ export default function Tooltip() {
   const [isHidden, setHidden] = useState(true);
   const [isMoving, setIsMoving] = useState(false);
   const [itemFound, setItemFound] = useState(1);
+  const navUpdate = useNavigationUpdate();
 
   const checkCorrectness = (item) => {
     const clickedItem = items.filter((index) => index.name === item.name)[0];
@@ -32,6 +35,10 @@ export default function Tooltip() {
       console.log('CORRECT:', clickedItem.name, itemFound, items.length);
       if (itemFound === items.length) {
         console.log('LEVEL CLEARED');
+        stopTimer();
+        setInGame(false);
+        setItemFound(1);
+        navUpdate('comic');
       }
     }
   };

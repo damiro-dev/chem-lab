@@ -1,9 +1,13 @@
-import cn from '../lib/tailwindMerge';
 import { PiPlayFill } from 'react-icons/Pi';
+import { useNavigationUpdate } from '../context/NavigationProvider';
+import cn from '../lib/tailwindMerge';
 
 export default function ModalComic() {
+  const navUpdate = useNavigationUpdate();
+
   const handlePlay = () => {
     console.log('COMIC!');
+    navUpdate('levelup');
   };
   return (
     <>

@@ -14,7 +14,7 @@ export function useTimerUpdate() {
 export default function TimerProvider({ children }) {
   const [isRunning, setIsRunning] = useState(false);
   const [time, setTime] = useState(0);
-  const [initialTime, setInitialTime] = useState(5);
+  const [initialTime, setInitialTime] = useState(30);
   const [isCountdown, setIsCountdown] = useState(true);
 
   useEffect(() => {

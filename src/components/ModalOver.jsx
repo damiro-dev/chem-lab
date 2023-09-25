@@ -1,14 +1,14 @@
-import cn from '../lib/tailwindMerge';
 import { PiPlayFill } from 'react-icons/Pi';
 import { useGame } from '../context/GameProvider';
 import { useNavigationUpdate } from '../context/NavigationProvider';
+import cn from '../lib/tailwindMerge';
 
 export default function ModalOver() {
   const { items } = useGame();
   const navUpdate = useNavigationUpdate();
 
   const handlePlay = () => {
-    navUpdate('levelup');
+    navUpdate('home');
   };
 
   return (

@@ -3,6 +3,7 @@ import { PiPlayFill } from 'react-icons/Pi';
 import { useNavigationUpdate } from '../context/NavigationProvider';
 import { useGameUpdate } from '../context/GameProvider';
 import { useTimer, useTimerUpdate } from '../context/TimerProvider';
+import { useLocalStorage } from '../context/LocalStorageProvider';
 import cn from '../lib/tailwindMerge';
 
 export default function ModalHome() {
@@ -10,6 +11,8 @@ export default function ModalHome() {
   const { setScene, setRevealItems, setLevel, setName, setScore } = useGameUpdate();
   const { setTime } = useTimerUpdate();
   const { initialTime } = useTimer();
+
+  const { labsGameData, addLabsGameItem, resetLabsGame } = useLocalStorage();
 
   const [inputChange, setInputChange] = useState('');
   const handleInputChange = (e) => setInputChange(e.currentTarget.value);
@@ -21,6 +24,7 @@ export default function ModalHome() {
     setTime(initialTime);
     setLevel(0);
     setScene('yard');
+    console.log('LISTINGS:', labsGameData);
   }, []);
 
   const handlePlay = () => {

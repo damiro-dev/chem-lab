@@ -1,8 +1,10 @@
 import { useNavigationUpdate } from '../context/NavigationProvider';
+import { useLocalStorage } from '../context/LocalStorageProvider';
 import cn from '../lib/tailwindMerge';
 
 export default function ModalAbout() {
   const setContent = useNavigationUpdate();
+  const { labsGameData, addLabsGameItem, resetLabsGame } = useLocalStorage();
 
   return (
     <>
@@ -38,7 +40,7 @@ export default function ModalAbout() {
         <div className='flex flex-row gap-4'>
           <span className='w-8 aspect-square bg-black/80 rounded-full'></span>
           <span className='w-8 aspect-square bg-black/80 rounded-full'></span>
-          <span className='w-8 aspect-square bg-black/80 rounded-full'></span>
+          <span onClick={resetLabsGame} className='w-8 aspect-square bg-black/80 rounded-full'></span>
         </div>
       </div>
     </>

@@ -1,14 +1,32 @@
-import { PiPlayFill } from 'react-icons/Pi';
+import { useEffect } from 'react';
 import { useGame } from '../context/GameProvider';
 import { useNavigationUpdate } from '../context/NavigationProvider';
+import { PiPlayFill } from 'react-icons/Pi';
+import { useLocalStorage } from '../context/LocalStorageProvider';
 import getBadge from '../lib/getBadge';
 import cn from '../lib/tailwindMerge';
 
 export default function ModalOver() {
-  const { items, name, itemFound, level, score } = useGame();
   const navUpdate = useNavigationUpdate();
+  const { items, name, itemFound, level, score } = useGame();
+  const { labsGameData, addLabsGameItem, resetLabsGame } = useLocalStorage();
 
-  const handlePlay = () => {
+  // Function to add a new listing
+  const handleAddListing = () => {
+    const newListing = {
+      name: name,
+      score: score,
+      timestamp: new Date().toLocaleString(),
+    };
+    addLabsGameItem(newListing);
+  };
+
+  // ON LOAD
+  useEffect(() => {
+    handleAddListing();
+  }, []);
+
+  const handleExit = () => {
     navUpdate('home');
   };
 
@@ -32,7 +50,7 @@ export default function ModalOver() {
       </div>
 
       {/* EXIT BUTTON */}
-      <div onClick={handlePlay} className='absolute flex items-center -mt-5 right-12 cursor-pointer'>
+      <div onClick={handleExit} className='absolute flex items-center -mt-5 right-12 cursor-pointer'>
         <span className='backdrop-blur-sm bg-black/70 px-6 py-2 pr-14 rounded-full'>EXIT</span>
         <div
           className={cn(

@@ -19,6 +19,11 @@ export default function Tooltip() {
   const [itemFound, setItemFound] = useState(1);
   const navUpdate = useNavigationUpdate();
 
+  // RESET FOUND COUNTER
+  useEffect(() => {
+    if (!inGame) setItemFound(1);
+  }, [inGame]);
+
   const checkCorrectness = (item) => {
     const clickedItem = items.filter((index) => index.name === item.name)[0];
 
@@ -34,11 +39,10 @@ export default function Tooltip() {
       item.tagged = !item.tagged;
       console.log('CORRECT:', clickedItem.name, itemFound, items.length);
       if (itemFound === items.length) {
-        console.log('LEVEL COMPLETE', time, '/', initialTime);
         stopTimer();
         setInGame(false);
-        setItemFound(1);
-        navUpdate('comic');
+        navUpdate('summary');
+        console.log('LEVEL COMPLETE', time, '/', initialTime);
       }
     }
   };

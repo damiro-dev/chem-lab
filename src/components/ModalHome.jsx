@@ -7,7 +7,7 @@ import cn from '../lib/tailwindMerge';
 
 export default function ModalHome() {
   const setContent = useNavigationUpdate();
-  const { setScene, setRevealItems, setLevel } = useGameUpdate();
+  const { setScene, setRevealItems, setLevel, setName } = useGameUpdate();
   const { setTime } = useTimerUpdate();
   const { initialTime } = useTimer();
 
@@ -23,6 +23,7 @@ export default function ModalHome() {
   }, []);
 
   const handlePlay = () => {
+    setName(inputChange);
     setContent('comic');
     console.log('PLAY!');
   };

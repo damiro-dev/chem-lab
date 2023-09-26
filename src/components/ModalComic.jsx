@@ -6,7 +6,7 @@ import cn from '../lib/tailwindMerge';
 
 export default function ModalComic() {
   const navUpdate = useNavigationUpdate();
-  const { level } = useGame();
+  const { level, name } = useGame();
   const { setLevel } = useGameUpdate();
 
   // ON LOAD
@@ -24,9 +24,10 @@ export default function ModalComic() {
       <div className={cn('rounded-lg backdrop-blur-sm bg-black/40 px-6 py-10 flex flex-col gap-4')}>
         <h1 className='text-3xl font-bold'>Comic {level}</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur architecto sapiente fugiat reiciendis modi,
-          autem delectus ratione error labore facilis quo eos, nisi vitae quam temporibus quasi nulla iure voluptatibus?
-          Animi, minima minus voluptatibus enim, nam odit quas voluptates harum, voluptatem in exercitationem?
+          Hello {name}: Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur architecto sapiente fugiat
+          reiciendis modi, autem delectus ratione error labore facilis quo eos, nisi vitae quam temporibus quasi nulla
+          iure voluptatibus? Animi, minima minus voluptatibus enim, nam odit quas voluptates harum, voluptatem in
+          exercitationem?
         </p>
       </div>
       <div onClick={handlePlay} className='absolute flex items-center -mt-5 right-12 cursor-pointer'>

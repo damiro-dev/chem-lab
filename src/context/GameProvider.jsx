@@ -14,6 +14,7 @@ export function useGameUpdate() {
 }
 
 export default function GameProvider({ children }) {
+  const [name, setName] = useState('');
   const [scene, setScene] = useState('yard');
   const [inGame, setInGame] = useState(false);
   const [items, setItems] = useState([]);
@@ -37,13 +38,14 @@ export default function GameProvider({ children }) {
     console.log('gri', newItems);
   };
 
-  const contextValue = { inGame, items, numItems, scene, level, revealItems, levelTime };
+  const contextValue = { inGame, items, numItems, scene, level, revealItems, levelTime, name };
   const contextUpdateValue = {
     setLevel: setLevelWrapper,
     setItems: getRandomItemsWrapper,
     setInGame,
     setScene,
     setRevealItems,
+    setName,
   };
 
   return (

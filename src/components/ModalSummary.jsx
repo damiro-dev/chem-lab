@@ -3,29 +3,24 @@ import { useGame } from '../context/GameProvider';
 import { useNavigationUpdate } from '../context/NavigationProvider';
 import cn from '../lib/tailwindMerge';
 
-export default function ModalOver() {
-  const { items, name } = useGame();
+export default function ModalSummary() {
+  const { name } = useGame();
   const navUpdate = useNavigationUpdate();
 
   const handlePlay = () => {
-    navUpdate('home');
+    navUpdate('comic');
   };
 
   return (
     <>
       {/* CONTENT */}
       <div className={cn('rounded-lg backdrop-blur-sm bg-black/40 px-6 py-10 flex flex-col gap-4')}>
-        <h1 className='text-3xl font-bold'>Game Over {name}</h1>
+        <h1 className='text-3xl font-bold'>Good Work {name}!</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur architecto sapiente fugiat reiciendis modi,
           autem delectus ratione error labore facilis quo eos, nisi vitae quam temporibus quasi nulla iure voluptatibus?
           Animi, minima minus voluptatibus enim, nam odit quas voluptates harum, voluptatem in exercitationem?
         </p>
-        {items.map((item) => (
-          <span key={item.id} className={cn('whitespace-nowrap', item.tagged && 'line-through opacity-40')}>
-            {item.name}
-          </span>
-        ))}
       </div>
 
       {/* EXIT BUTTON */}

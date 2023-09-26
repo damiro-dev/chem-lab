@@ -6,6 +6,7 @@ import ModalAbout from './ModalAbout';
 import ModalHighScore from './ModalHighScore';
 import ModalLevelUp from './ModalLevelUp';
 import ModalComic from './ModalComic';
+import ModalSummary from './ModalSummary';
 import { useNavigation } from '../context/NavigationProvider';
 
 export default function Modal() {
@@ -26,6 +27,7 @@ export default function Modal() {
       {content === 'over' && <ModalOver />}
       {content === 'levelup' && <ModalLevelUp />}
       {content === 'comic' && <ModalComic />}
+      {content === 'summary' && <ModalSummary />}
     </section>
   );
 }

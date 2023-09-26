@@ -1,6 +1,7 @@
 import { PiPlayFill } from 'react-icons/Pi';
 import { useGame } from '../context/GameProvider';
 import { useNavigationUpdate } from '../context/NavigationProvider';
+import getBadge from '../lib/getBadge';
 import cn from '../lib/tailwindMerge';
 
 export default function ModalOver() {
@@ -17,7 +18,7 @@ export default function ModalOver() {
       <div className={cn('rounded-lg backdrop-blur-sm bg-black/40 px-6 py-10 flex flex-col gap-4')}>
         <h1 className='text-3xl font-bold'>Game Over {name}</h1>
         <p>
-          Time is up! You failed to find {items.length - itemFound} of {items.length} items. Score: {score}
+          Time is up! You failed to find {items.length - itemFound} of {items.length} items.
         </p>
         {items.map((item) => (
           <span key={item.id} className={cn('whitespace-nowrap', item.tagged && 'line-through opacity-40')}>
@@ -25,7 +26,9 @@ export default function ModalOver() {
           </span>
         ))}
         <p>Congrats for reaching level {level}!</p>
-        <p>You earned a badge!</p>
+        <p>
+          Score: {score}0, Badge: {getBadge(score)}
+        </p>
       </div>
 
       {/* EXIT BUTTON */}

@@ -1,6 +1,7 @@
 import { PiPlayFill } from 'react-icons/Pi';
 import { useGame } from '../context/GameProvider';
 import { useNavigationUpdate } from '../context/NavigationProvider';
+import getBadge from '../lib/getBadge';
 import cn from '../lib/tailwindMerge';
 
 export default function ModalSummary() {
@@ -17,7 +18,10 @@ export default function ModalSummary() {
       <div className={cn('rounded-lg backdrop-blur-sm bg-black/40 px-6 py-10 flex flex-col gap-4')}>
         <h1 className='text-3xl font-bold'>Good Work {name}!</h1>
         <p>
-          Level {level} complete! Got find {items.length - itemFound + 1} of {items.length} items. Score: {score}
+          Level {level} complete! Got {items.length - itemFound + 1} of {items.length} items.
+        </p>
+        <p>
+          Score: {score}0, Badge: {getBadge(score)}
         </p>
         {items.map((item) => (
           <span key={item.id} className={cn('whitespace-nowrap', item.tagged && 'line-through opacity-40')}>

@@ -7,7 +7,7 @@ import cn from '../lib/tailwindMerge';
 
 export default function ModalHome() {
   const setContent = useNavigationUpdate();
-  const { setScene, setRevealItems, setLevel, setName } = useGameUpdate();
+  const { setScene, setRevealItems, setLevel, setName, setScore } = useGameUpdate();
   const { setTime } = useTimerUpdate();
   const { initialTime } = useTimer();
 
@@ -16,6 +16,7 @@ export default function ModalHome() {
 
   // ON LOAD
   useEffect(() => {
+    setScore(0);
     setRevealItems(false);
     setTime(initialTime);
     setLevel(0);

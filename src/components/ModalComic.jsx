@@ -14,8 +14,11 @@ export default function ModalComic() {
     setLevel(level + 1);
   }, []);
 
-  const handlePlay = () => {
-    console.log('COMIC!');
+  const handleNext = () => {
+    console.log('Next');
+  };
+
+  const handleSkip = () => {
     navUpdate('levelup');
   };
 
@@ -30,15 +33,31 @@ export default function ModalComic() {
           exercitationem?
         </p>
       </div>
-      <div onClick={handlePlay} className='absolute flex items-center -mt-5 right-12 cursor-pointer'>
-        <span className='backdrop-blur-sm bg-black/70 px-6 py-2 pr-14 rounded-full'>Play Again</span>
-        <div
-          className={cn(
-            'z-10 w-8 aspect-square flex items-center justify-center rounded-full -ml-9',
-            'bg-green-800 hover:bg-green-600'
-          )}
-        >
-          <PiPlayFill />
+      <div className='absolute -mt-5 right-12 flex flex-row gap-4'>
+        {/* SKIP BUTTON */}
+        <div onClick={handleSkip} className='flex items-center cursor-pointer'>
+          <span className='backdrop-blur-sm bg-black/70 px-6 py-2 pr-14 rounded-full'>SKIP</span>
+          <div
+            className={cn(
+              'z-10 w-8 aspect-square flex items-center justify-center rounded-full -ml-9',
+              'bg-green-800 hover:bg-green-600'
+            )}
+          >
+            <PiPlayFill />
+          </div>
+        </div>
+
+        {/* NEXT BUTTON */}
+        <div onClick={handleNext} className='flex items-center cursor-pointer'>
+          <span className='backdrop-blur-sm bg-black/70 px-6 py-2 pr-14 rounded-full'>CONTINUE</span>
+          <div
+            className={cn(
+              'z-10 w-8 aspect-square flex items-center justify-center rounded-full -ml-9',
+              'bg-green-800 hover:bg-green-600'
+            )}
+          >
+            <PiPlayFill />
+          </div>
         </div>
       </div>
     </>

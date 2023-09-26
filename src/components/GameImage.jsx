@@ -30,7 +30,6 @@ export default function GameImage() {
   const handleClick = (e) => {
     const cursorPosition = calculateCursorPercentage(e);
     setCursor({ x: cursorPosition.x, y: cursorPosition.y });
-    // console.log('GAMEIMAGE:', cursorPosition.x, cursorPosition.y);
   };
 
   useEffect(() => {

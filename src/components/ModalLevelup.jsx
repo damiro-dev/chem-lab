@@ -33,7 +33,7 @@ export default function Modallevelup() {
       <div className={cn('rounded-lg backdrop-blur-sm bg-black/40 px-6 py-10 flex flex-col gap-4')}>
         <h1 className='text-3xl font-bold'>Level {level}</h1>
         <p>
-          for only {levelTime} sec, find these {numItems} items:
+          For {levelTime} sec, find these {numItems} items:
         </p>
         {items.map((item) => (
           <span key={item.id} className={cn('whitespace-nowrap', item.tagged && 'line-through opacity-40')}>

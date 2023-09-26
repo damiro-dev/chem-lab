@@ -20,7 +20,9 @@ export default function GameProvider({ children }) {
   const [items, setItems] = useState([]);
   const [numItems, setNumItems] = useState(1);
   const [revealItems, setRevealItems] = useState(false);
+  const [itemFound, setItemFound] = useState(1);
   const [levelTime, setLevelTime] = useState(0);
+  const [score, setScore] = useState(0);
   const [level, setLevel] = useState(0);
 
   const setLevelWrapper = (level) => {
@@ -29,16 +31,14 @@ export default function GameProvider({ children }) {
     setScene(levelDetails.scene);
     setNumItems(levelDetails.items);
     setLevelTime(levelDetails.time);
-    console.log('gpro:', level);
   };
 
   const getRandomItemsWrapper = (items) => {
     const newItems = getRandomItems(items, numItems);
     setItems(newItems);
-    console.log('gri', newItems);
   };
 
-  const contextValue = { inGame, items, numItems, scene, level, revealItems, levelTime, name };
+  const contextValue = { inGame, items, numItems, scene, level, revealItems, levelTime, name, itemFound, score };
   const contextUpdateValue = {
     setLevel: setLevelWrapper,
     setItems: getRandomItemsWrapper,
@@ -46,6 +46,8 @@ export default function GameProvider({ children }) {
     setScene,
     setRevealItems,
     setName,
+    setItemFound,
+    setScore,
   };
 
   return (

@@ -7,8 +7,9 @@ import cn from '../lib/tailwindMerge';
 
 export default function Tooltip() {
   const cursor = useCursor();
-  const { setInGame } = useGameUpdate();
-  const { items, inGame } = useGame();
+  const navUpdate = useNavigationUpdate();
+  const { items, inGame, itemFound } = useGame();
+  const { setInGame, setItemFound, setScore } = useGameUpdate();
   const { isRunning, stopTimer, time, initialTime } = useTimer();
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -16,8 +17,6 @@ export default function Tooltip() {
   const [origin, setOrigin] = useState('origin-top-left');
   const [isHidden, setHidden] = useState(true);
   const [isMoving, setIsMoving] = useState(false);
-  const [itemFound, setItemFound] = useState(1);
-  const navUpdate = useNavigationUpdate();
 
   // RESET FOUND COUNTER
   useEffect(() => {
@@ -36,6 +35,7 @@ export default function Tooltip() {
       clickedItem.y + clickedItem.height > cursor.y
     ) {
       setItemFound((found) => found + 1);
+      setScore((prev) => prev + 1);
       item.tagged = !item.tagged;
       console.log('CORRECT:', clickedItem.name, itemFound, items.length);
       if (itemFound === items.length) {

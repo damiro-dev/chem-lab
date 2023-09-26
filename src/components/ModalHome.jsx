@@ -5,13 +5,13 @@ import { useGameUpdate } from '../context/GameProvider';
 import { useTimer, useTimerUpdate } from '../context/TimerProvider';
 import { useLocalStorage } from '../context/LocalStorageProvider';
 import cn from '../lib/tailwindMerge';
+import getBadge from '../lib/getBadge';
 
 export default function ModalHome() {
   const setContent = useNavigationUpdate();
   const { setScene, setRevealItems, setLevel, setName, setScore } = useGameUpdate();
   const { setTime } = useTimerUpdate();
   const { initialTime } = useTimer();
-
   const { labsGameData } = useLocalStorage();
 
   const [inputChange, setInputChange] = useState('');
@@ -57,9 +57,16 @@ export default function ModalHome() {
           apparatuses, materials, and equipment. A learner or player will embark on a learning journey where they engage
           in memory challenges and interactive tasks related to the laboratory environment.
         </p>
-        <p className='font-bold text-green-600/60'>
-          Title holder: {labsGameData[0].name} {labsGameData[0].score} {labsGameData[0].timestamp}
-        </p>
+
+        {labsGameData.length === 0 ? (
+          <p>No entries to display.</p>
+        ) : (
+          labsGameData.slice(0, 1).map((entry, index) => (
+            <p key={index} className='font-bold text-green-600/60'>
+              Title holder: {getBadge(entry.score)} {entry.name} - {entry.score}0 - {entry.timestamp}
+            </p>
+          ))
+        )}
       </div>
 
       <div className='absolute flex items-center -mt-5 right-12'>

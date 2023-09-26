@@ -20,7 +20,24 @@ export default function LocalStorageProvider({ children }) {
   // Function to add a new 'labsGame' item
   const addLabsGameItem = (newItem) => {
     const currentData = getLabsGameData();
-    const updatedLabsGameData = [...currentData, newItem].sort((a, b) => b.score - a.score);
+
+    // Check if there is an entry with the same name, timestamp, and score
+    const existingEntryIndex = currentData.findIndex(
+      (entry) => entry.name === newItem.name && entry.timestamp === newItem.timestamp && entry.score === newItem.score
+    );
+
+    if (existingEntryIndex !== -1) {
+      // If an entry with the same properties exists, replace it only if the new score is higher
+      currentData[existingEntryIndex] = newItem;
+    } else {
+      // Otherwise, add the new item to the data
+      currentData.push(newItem);
+    }
+
+    // Sort the data based on score in descending order
+    const updatedLabsGameData = currentData.sort((a, b) => b.score - a.score);
+
+    // Update localStorage and state
     localStorage.setItem('labsGame', JSON.stringify(updatedLabsGameData));
     setLabsGameData(updatedLabsGameData);
   };

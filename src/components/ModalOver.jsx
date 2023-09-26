@@ -9,7 +9,7 @@ import cn from '../lib/tailwindMerge';
 export default function ModalOver() {
   const navUpdate = useNavigationUpdate();
   const { items, name, itemFound, level, score } = useGame();
-  const { labsGameData, addLabsGameItem, resetLabsGame } = useLocalStorage();
+  const { addLabsGameItem } = useLocalStorage();
 
   // Function to add a new listing
   const handleAddListing = () => {

@@ -12,7 +12,7 @@ export default function ModalHome() {
   const { setTime } = useTimerUpdate();
   const { initialTime } = useTimer();
 
-  const { labsGameData, addLabsGameItem, resetLabsGame } = useLocalStorage();
+  const { labsGameData } = useLocalStorage();
 
   const [inputChange, setInputChange] = useState('');
   const handleInputChange = (e) => setInputChange(e.currentTarget.value);
@@ -24,7 +24,7 @@ export default function ModalHome() {
     setTime(initialTime);
     setLevel(0);
     setScene('yard');
-    console.log('LISTINGS:', labsGameData);
+    // console.log('LISTINGS:', labsGameData);
   }, []);
 
   const handlePlay = () => {
@@ -46,22 +46,19 @@ export default function ModalHome() {
           onClick={() => setContent('highscore')}
           className='uppercase text-[12px] tracking-[4px] bg-red-600 px-3 py-1 rounded-full cursor-pointer'
         >
-          Highscore
+          Hall of Fame
         </div>
       </div>
 
       <div className={cn('rounded-lg backdrop-blur-sm bg-black/40 px-6 py-10 flex flex-col gap-4')}>
         <h1 className='text-4xl font-bold'>Labs GAME</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur architecto sapiente fugiat reiciendis modi,
-          autem delectus ratione error labore facilis quo eos, nisi vitae quam temporibus quasi nulla iure voluptatibus?
-          Animi, minima minus voluptatibus enim, nam odit quas voluptates harum, voluptatem in exercitationem?
+          Interactive and educational game designed to enhance laboratory skills and familiarity with laboratory
+          apparatuses, materials, and equipment. A learner or player will embark on a learning journey where they engage
+          in memory challenges and interactive tasks related to the laboratory environment.
         </p>
-        <p>
-          Odio veritatis, numquam quidem repellat sequi perspiciatis eveniet debitis, maxime, dolore neque quod
-          accusamus quasi magni totam. Sit, unde. Laboriosam veritatis hic neque nulla maiores odio saepe soluta illum?
-          Cumque sunt quo quas eos quos nesciunt nulla doloremque, hic, tempore asperiores sed consequuntur provident,
-          itaque labore vero.
+        <p className='font-bold text-green-600/60'>
+          Title holder: {labsGameData[0].name} {labsGameData[0].score} {labsGameData[0].timestamp}
         </p>
       </div>
 

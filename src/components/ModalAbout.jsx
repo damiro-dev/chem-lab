@@ -4,7 +4,12 @@ import cn from '../lib/tailwindMerge';
 
 export default function ModalAbout() {
   const setContent = useNavigationUpdate();
-  const { labsGameData, addLabsGameItem, resetLabsGame } = useLocalStorage();
+  const { resetLabsGame } = useLocalStorage();
+
+  const handleReset = () => {
+    console.log('RESET!');
+    resetLabsGame();
+  };
 
   return (
     <>
@@ -20,7 +25,7 @@ export default function ModalAbout() {
             onClick={() => setContent('highscore')}
             className='uppercase text-[12px] tracking-[4px] bg-red-600 px-3 py-1 rounded-full cursor-pointer'
           >
-            Highscore
+            Hall of Fame
           </div>
         </div>
       </div>
@@ -40,7 +45,7 @@ export default function ModalAbout() {
         <div className='flex flex-row gap-4'>
           <span className='w-8 aspect-square bg-black/80 rounded-full'></span>
           <span className='w-8 aspect-square bg-black/80 rounded-full'></span>
-          <span onClick={resetLabsGame} className='w-8 aspect-square bg-black/80 rounded-full'></span>
+          <span onClick={handleReset} className='w-8 aspect-square bg-black/80 rounded-full'></span>
         </div>
       </div>
     </>

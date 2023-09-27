@@ -1,37 +1,33 @@
-import { useEffect } from 'react';
 import { PiPlayFill } from 'react-icons/Pi';
 import { useNavigationUpdate } from '../context/NavigationProvider';
-import { useGame, useGameUpdate } from '../context/GameProvider';
+import { useGame } from '../context/GameProvider';
+import comicsData from '../data/comics';
 import cn from '../lib/tailwindMerge';
 
 export default function ModalComic() {
   const navUpdate = useNavigationUpdate();
   const { level, name } = useGame();
-  const { setLevel } = useGameUpdate();
 
-  // ON LOAD
-  useEffect(() => {
-    setLevel(level + 1);
-  }, []);
+  const comicData = comicsData.find((comicData) => comicData.level === level);
+  if (!comicData) return <h1>Not Found</h1>;
 
-  const handleNext = () => {
-    console.log('Next');
-  };
-
-  const handleSkip = () => {
-    navUpdate('levelup');
-  };
+  const handleSkip = () => navUpdate('levelup');
+  const handleNext = () => console.log('Next');
 
   return (
     <>
       <div className={cn('rounded-lg backdrop-blur-sm bg-black/40 px-6 py-10 flex flex-col gap-4')}>
-        <h1 className='text-3xl font-bold'>Comic {level}</h1>
-        <p>
-          Hello {name}: Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur architecto sapiente fugiat
-          reiciendis modi, autem delectus ratione error labore facilis quo eos, nisi vitae quam temporibus quasi nulla
-          iure voluptatibus? Animi, minima minus voluptatibus enim, nam odit quas voluptates harum, voluptatem in
-          exercitationem?
-        </p>
+        <h1 className='text-3xl font-bold'>
+          {level}: {comicData.scene}
+        </h1>
+        <p>Hello {name}:</p>
+        <div>
+          {comicData.comic.map((comic, index) => (
+            <p key={index}>
+              {comic.character}: {comic.dialog}
+            </p>
+          ))}
+        </div>
       </div>
       <div className='absolute -mt-5 right-12 flex flex-row gap-4'>
         {/* SKIP BUTTON */}

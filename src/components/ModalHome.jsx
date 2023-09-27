@@ -22,12 +22,11 @@ export default function ModalHome() {
     setScore(0);
     setRevealItems(false);
     setTime(initialTime);
-    setLevel(0);
     setScene('yard');
-    // console.log('LISTINGS:', labsGameData);
   }, []);
 
   const handlePlay = () => {
+    setLevel(1);
     setName(inputChange);
     setContent('comic');
     console.log('PLAY!');

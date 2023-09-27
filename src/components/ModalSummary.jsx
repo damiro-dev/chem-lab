@@ -1,15 +1,20 @@
 import { PiPlayFill } from 'react-icons/Pi';
-import { useGame } from '../context/GameProvider';
+import { useGame, useGameUpdate } from '../context/GameProvider';
 import { useNavigationUpdate } from '../context/NavigationProvider';
 import getBadge from '../lib/getBadge';
+import comicsData from '../data/comics';
 import cn from '../lib/tailwindMerge';
 
 export default function ModalSummary() {
   const { name, level, items, itemFound, score } = useGame();
+  const { setLevel } = useGameUpdate();
   const navUpdate = useNavigationUpdate();
 
   const handlePlay = () => {
-    navUpdate('comic');
+    // Lookup in advance if there is a comic in the next level (level + 1)
+    const peekComic = comicsData.find((comicData) => comicData.level === level + 1);
+    peekComic ? navUpdate('comic') : navUpdate('levelup');
+    setLevel(level + 1);
   };
 
   return (

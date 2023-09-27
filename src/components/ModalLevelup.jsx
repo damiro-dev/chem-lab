@@ -25,7 +25,7 @@ export default function Modallevelup() {
     setContent('game');
     setInGame(true);
     startTimer();
-    console.log('GO', items);
+    // console.log('GO', items);
   };
 
   return (

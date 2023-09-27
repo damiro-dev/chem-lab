@@ -39,7 +39,9 @@ export default function ModalHighScore() {
                 <span className='w-8 aspect-square bg-black/80 rounded-full text-[12px] flex items-center justify-center'>
                   {entry.score}
                 </span>
-                <p>{entry.name}</p>
+                <p>
+                  {index + 1}: {entry.name}
+                </p>
               </div>
               <div className='flex flex-row gap-4'>
                 <p>{getBadge(entry.score)}</p>

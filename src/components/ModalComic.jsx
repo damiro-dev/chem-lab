@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { PiPlayFill } from 'react-icons/Pi';
 import { useNavigationUpdate } from '../context/NavigationProvider';
 import { useGame } from '../context/GameProvider';
@@ -7,6 +8,11 @@ import cn from '../lib/tailwindMerge';
 export default function ModalComic() {
   const navUpdate = useNavigationUpdate();
   const { level, name } = useGame();
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    setAnimate(true);
+  }, []);
 
   const comicData = comicsData.find((comicData) => comicData.level === level);
   if (!comicData) return <h1>Not Found</h1>;
@@ -22,7 +28,20 @@ export default function ModalComic() {
       {/* DIALOG */}
       <div className='flex flex-col gap-2 w-full items-center'>
         {comicData.comic.map((comic, index) => (
-          <div key={index} className={cn('flex flex-col w-4/5', index % 2 ? 'items-end' : 'items-start')}>
+          <div
+            key={index}
+            className={cn(
+              'flex flex-col w-4/5',
+              index % 2 ? 'items-end origin-top-right' : 'items-start origin-top-left'
+            )}
+            style={{
+              scale: '100%',
+              transitionDelay: `${(index + 1) * comic.delay}s`,
+              transitionDuration: `${comic.duration}s`,
+              transitionProperty: animate ? 'scale(100%)' : 'scale(0%)',
+              transitionTimingFunction: 'ease',
+            }}
+          >
             <div
               className={cn(
                 index < 2 ? 'flex' : 'hidden',

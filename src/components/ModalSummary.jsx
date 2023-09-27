@@ -1,6 +1,6 @@
 import { PiPlayFill } from 'react-icons/Pi';
-import { useGame, useGameUpdate } from '../context/GameProvider';
 import { useNavigationUpdate } from '../context/NavigationProvider';
+import { useGame, useGameUpdate } from '../context/GameProvider';
 import getBadge from '../lib/getBadge';
 import comicsData from '../data/comics';
 import cn from '../lib/tailwindMerge';

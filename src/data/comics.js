@@ -1,7 +1,7 @@
 const comicsData = [
   {
     level: 1,
-    scene: 'yard',
+    heading: 'Welcome',
     comic: [
       {
         character: 'Xia',
@@ -19,7 +19,7 @@ const comicsData = [
   },
   {
     level: 2,
-    scene: 'yard',
+    heading: 'Looking good ...',
     comic: [
       {
         character: 'Daniel',
@@ -37,7 +37,7 @@ const comicsData = [
   },
   {
     level: 4,
-    scene: 'yard',
+    heading: 'Nice work!',
     comic: [
       {
         character: 'Xia',
@@ -55,7 +55,7 @@ const comicsData = [
   },
   {
     level: 6,
-    scene: 'yard',
+    heading: 'Keep it up!',
     comic: [
       {
         character: 'Daniel',
@@ -67,12 +67,18 @@ const comicsData = [
   },
   {
     level: 25,
-    scene: 'yard',
+    heading: 'You made it here! Congrats!',
     comic: [
       {
         character: 'Daniel',
+        dialog: 'From here on, Its you against the clock. Looking forward to see you secure that elusive 1st place!',
+        duration: 1,
+        delay: 0.5,
+      },
+      {
+        character: 'Xia',
         dialog:
-          'From here on, you are on your own. You are an expert now. Looking forward to secure that elusive 1st place in the hall of fame. Good luck!',
+          'Were pretty sure you know your lab equipment now. Congrats on being an expert! Now nail that 1st place in the hall of fame. Good luck!',
         duration: 1,
         delay: 0.5,
       },

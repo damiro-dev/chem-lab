@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { PiPlayFill } from 'react-icons/Pi';
-import { useGame, useGameUpdate } from '../context/GameProvider';
 import { useNavigationUpdate } from '../context/NavigationProvider';
+import { useGame, useGameUpdate } from '../context/GameProvider';
 import { useTimer, useTimerUpdate } from '../context/TimerProvider';
 import itemsData from '../data/items';
 import cn from '../lib/tailwindMerge';
@@ -25,7 +25,6 @@ export default function Modallevelup() {
     setContent('game');
     setInGame(true);
     startTimer();
-    // console.log('GO', items);
   };
 
   return (

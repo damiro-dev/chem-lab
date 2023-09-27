@@ -30,17 +30,17 @@ export default function ModalHighScore() {
         {labsGameData.length === 0 ? (
           <p>No entries to display.</p>
         ) : (
-          labsGameData.slice(0, 5).map((entry, index) => (
+          labsGameData.slice(0, 10).map((entry, index) => (
             <div
               key={index}
               className='flex flex-row items-center justify-between px-6 py-1 hover:bg-white/10 transition-colors duration-300'
             >
               <div className='flex flex-row gap-4 items-center'>
                 <span className='w-8 aspect-square bg-black/80 rounded-full text-[12px] flex items-center justify-center'>
-                  {entry.score}
+                  {index + 1}
                 </span>
                 <p>
-                  {index + 1}: {entry.name}
+                  {entry.score}0: {entry.name}
                 </p>
               </div>
               <div className='flex flex-row gap-4'>

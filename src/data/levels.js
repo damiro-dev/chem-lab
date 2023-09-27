@@ -1,11 +1,5 @@
 const levelsData = [
   {
-    level: 0,
-    items: 0,
-    time: 0,
-    scene: 'yard',
-  },
-  {
     level: 1,
     items: 1,
     time: 30,

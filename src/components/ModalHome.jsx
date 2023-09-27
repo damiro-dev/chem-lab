@@ -4,8 +4,8 @@ import { useNavigationUpdate } from '../context/NavigationProvider';
 import { useGameUpdate } from '../context/GameProvider';
 import { useTimer, useTimerUpdate } from '../context/TimerProvider';
 import { useLocalStorage } from '../context/LocalStorageProvider';
-import cn from '../lib/tailwindMerge';
 import getBadge from '../lib/getBadge';
+import cn from '../lib/tailwindMerge';
 
 export default function ModalHome() {
   const setContent = useNavigationUpdate();

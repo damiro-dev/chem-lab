@@ -21,6 +21,7 @@ export default function ModalComic() {
 
   return (
     <>
+      {/* TITLE */}
       <h1 className='text-3xl font-bold mb-12 text-black/80 text-center'>
         {comicData.heading} {name}!
       </h1>

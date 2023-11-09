@@ -8,7 +8,7 @@ import cn from '../lib/tailwindMerge';
 
 export default function Modallevelup() {
   const setContent = useNavigationUpdate();
-  const { items, level, levelTime, numItems } = useGame();
+  const { scene, items, level, levelTime, numItems } = useGame();
   const { setInGame, setRevealItems, setItems } = useGameUpdate();
   const { setTime, setInitialTime } = useTimerUpdate();
   const { startTimer } = useTimer();
@@ -18,7 +18,7 @@ export default function Modallevelup() {
     setInitialTime(levelTime);
     setTime(levelTime);
     setRevealItems(false);
-    setItems(itemsData);
+    setItems(itemsData[scene]);
   }, []);
 
   const handlePlay = () => {

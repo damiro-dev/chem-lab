@@ -15,7 +15,7 @@ export function useGameUpdate() {
 
 export default function GameProvider({ children }) {
   const [name, setName] = useState('');
-  const [scene, setScene] = useState('yard');
+  const [scene, setScene] = useState('05');
   const [inGame, setInGame] = useState(false);
   const [items, setItems] = useState([]);
   const [numItems, setNumItems] = useState(1);
@@ -28,7 +28,7 @@ export default function GameProvider({ children }) {
   const setLevelWrapper = (level) => {
     setLevel(level);
     const levelDetails = levelsData.find((levelData) => levelData.level === level);
-    setScene(levelDetails ? levelDetails.scene : 'yard'); // Default on the hardest scene
+    setScene(levelDetails ? levelDetails.scene : '05'); // Default on the hardest scene
     setNumItems(levelDetails ? levelDetails.items : (prev) => prev + 1);
     setLevelTime(levelDetails ? levelDetails.time : 30);
   };

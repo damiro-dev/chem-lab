@@ -94,7 +94,7 @@ export default function GameImage() {
             />
           ))}
 
-          {/* Important! Images should be scaled to 1512/680 */}
+          {/* Important! Images should be scaled to 1512/680 - 6000/ */}
           <img className='w-full h-full object-cover overflow-hidden' src={imageUrl} alt={`Game scene - ${scene}`} />
         </div>
       </div>

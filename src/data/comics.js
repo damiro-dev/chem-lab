@@ -1,7 +1,7 @@
 const comicsData = [
   {
     level: 1,
-    heading: 'Welcome',
+    heading: 'Welcome!',
     comic: [
       {
         character: 'Xia',
@@ -33,11 +33,11 @@ const comicsData = [
   },
   {
     level: 2,
-    heading: 'Looking good',
+    heading: 'Lets step it up ',
     comic: [
       {
         character: 'Daniel',
-        dialog: 'Let us tell you something.',
+        dialog: 'Let us tell you something ...',
         duration: 1,
         delay: 0.5,
       },
@@ -58,7 +58,7 @@ const comicsData = [
   },
   {
     level: 3,
-    heading: 'Nice work',
+    heading: 'New badge acquired: Trainee',
     comic: [
       {
         character: 'Xia',
@@ -88,7 +88,7 @@ const comicsData = [
   },
   {
     level: 6,
-    heading: 'Keep it up',
+    heading: 'New badge acquired: Apprentice',
     comic: [
       {
         character: 'Daniel',
@@ -99,12 +99,49 @@ const comicsData = [
     ],
   },
   {
-    level: 25,
-    heading: 'You made it here! Congrats',
+    level: 11,
+    heading: 'New badge acquired: Supervisor',
     comic: [
       {
         character: 'Daniel',
-        dialog: 'From here on, Its you against the clock. Looking forward to see you secure that elusive 1st place!',
+        dialog: 'Hello?',
+        duration: 1,
+        delay: 0.5,
+      },
+    ],
+  },
+  {
+    level: 16,
+    heading: 'New badge acquired: Manager',
+    comic: [
+      {
+        character: 'Daniel',
+        dialog: 'Hello?',
+        duration: 1,
+        delay: 0.5,
+      },
+    ],
+  },
+  {
+    level: 21,
+    heading: 'New badge acquired: Director',
+    comic: [
+      {
+        character: 'Daniel',
+        dialog: 'Hello?',
+        duration: 1,
+        delay: 0.5,
+      },
+    ],
+  },
+  {
+    level: 26,
+    heading: 'New badge acquired: Expert',
+    comic: [
+      {
+        character: 'Daniel',
+        dialog:
+          'Wow! We cant believe you easily made it here, congrats! From here on, Its you against the clock. Looking forward to see you secure that elusive 1st place!',
         duration: 1,
         delay: 0.5,
       },

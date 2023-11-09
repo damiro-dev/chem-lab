@@ -89,7 +89,7 @@ export default function GameImage() {
               style={{ left: `${item.x}%`, top: `${item.y}%`, width: `${item.width}%`, height: `${item.height}%` }}
               className={cn(
                 revealItems ? null : !item.tagged && 'hidden',
-                'absolute border-white border-2 border-dashed rounded-xl'
+                'absolute outline-white outline-dashed outline-offset-8 rounded-xl'
               )}
             />
           ))}

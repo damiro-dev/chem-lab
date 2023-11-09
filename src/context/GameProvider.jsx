@@ -29,8 +29,8 @@ export default function GameProvider({ children }) {
     setLevel(level);
     const levelDetails = levelsData.find((levelData) => levelData.level === level);
     setScene(levelDetails ? levelDetails.scene : 4); // Default on the hardest scene
-    setNumItems(levelDetails ? levelDetails.items : (prev) => prev + 1);
-    setLevelTime(levelDetails ? levelDetails.time : 30);
+    setNumItems(levelDetails ? levelDetails.items : (prev) => prev + 1); // item+1 when lvl26 is reached
+    setLevelTime(levelDetails ? levelDetails.time : 25);
   };
 
   const getRandomItemsWrapper = (items) => {

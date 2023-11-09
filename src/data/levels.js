@@ -1,9 +1,9 @@
 const levelsData = [
   {
     level: 1,
-    items: 100,
+    items: 1,
     time: 30,
-    scene: 0,
+    scene: 1,
   },
   {
     level: 2,
@@ -33,7 +33,7 @@ const levelsData = [
     level: 6,
     items: 4,
     time: 30,
-    scene: 5,
+    scene: 2,
   },
   {
     level: 7,
@@ -123,31 +123,31 @@ const levelsData = [
     level: 21,
     items: 5,
     time: 30,
-    scene: 5,
+    scene: 4,
   },
   {
     level: 22,
     items: 5,
     time: 30,
-    scene: 5,
+    scene: 4,
   },
   {
     level: 23,
     items: 5,
     time: 30,
-    scene: 5,
+    scene: 4,
   },
   {
     level: 24,
     items: 5,
     time: 30,
-    scene: 5,
+    scene: 4,
   },
   {
     level: 25,
     items: 5,
     time: 30,
-    scene: 5,
+    scene: 4,
   },
 ];
 

@@ -22,7 +22,7 @@ export default function ModalHome() {
     setScore(0);
     setRevealItems(false);
     setTime(initialTime);
-    setScene('yard');
+    setScene(4);
   }, []);
 
   const handlePlay = () => {

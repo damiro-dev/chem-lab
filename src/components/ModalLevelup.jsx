@@ -17,7 +17,7 @@ export default function Modallevelup() {
   useEffect(() => {
     setInitialTime(levelTime);
     setTime(levelTime);
-    setRevealItems(false);
+    setRevealItems(true);
     setItems(itemsData[scene]);
   }, []);
 
@@ -29,7 +29,13 @@ export default function Modallevelup() {
 
   return (
     <>
-      <div className={cn('rounded-lg backdrop-blur-sm bg-black/40 px-6 py-10 flex flex-col gap-4')}>
+      <div
+        className={cn(
+          'rounded-lg backdrop-blur-sm bg-black/40 px-6 py-10 flex flex-col gap-4',
+          // 'opacity-0 for setting up items in development
+          'opacity-0'
+        )}
+      >
         <h1 className='text-3xl font-bold'>Level {level}</h1>
         <p>
           For {levelTime} sec, find these {numItems} items:

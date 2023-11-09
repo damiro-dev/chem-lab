@@ -82,7 +82,7 @@ export default function GameImage() {
         >
           <div className='absolute z-[2] w-full h-full bg-transparent overflow-hidden' />
 
-          {/* List of objects to find */}
+          {/* List of objects in the scene to find */}
           {items.map((item) => (
             <div
               key={item.id}

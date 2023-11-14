@@ -7,6 +7,7 @@ import { useLocalStorage } from '../context/LocalStorageProvider';
 import getBadge from '../lib/getBadge';
 import cn from '../lib/tailwindMerge';
 import Badge from '../assets/badge';
+import Logo from '../assets/Logo';
 
 export default function ModalHome() {
   const setContent = useNavigationUpdate();
@@ -35,60 +36,60 @@ export default function ModalHome() {
 
   return (
     <>
-      <div className='mb-16'>
-        <Badge color='gold' />
-      </div>
-      <div className='absolute z-10 flex gap-4 -mt-3 right-12 justify-end'>
-        <div
-          onClick={() => setContent('about')}
-          className='uppercase text-[12px] tracking-[4px] bg-red-600 px-3 py-1 rounded-full cursor-pointer'
-        >
-          About
+      <div>
+        <div className='absolute z-10 flex gap-3 -mt-4 left-1/2 -translate-x-1/2'>
+          <div
+            onClick={() => setContent('highscore')}
+            className='font-semibold uppercase text-[12px] tracking-[4px] bg-black/70 hover:bg-black/60 pl-6 pr-4 py-2 rounded-full cursor-pointer shadow-md'
+          >
+            LEADERBOARD
+          </div>
+          <div
+            onClick={() => setContent('about')}
+            className='min-w-[34px] font-semibold uppercase text-[12px] bg-black/70 hover:bg-black/60 px-0 py-2 rounded-full cursor-pointer text-center shadow-md'
+          >
+            ?
+          </div>
         </div>
-        <div
-          onClick={() => setContent('highscore')}
-          className='uppercase text-[12px] tracking-[4px] bg-red-600 px-3 py-1 rounded-full cursor-pointer'
-        >
-          Hall of Fame
+
+        <div className='rounded-2xl backdrop-blur-sm bg-black/40 px-8 md:px-20 pt-10 pb-16 flex flex-col gap-4 shadow-md'>
+          <div className='flex items-center justify-center mx-auto aspect-square w-[200px] rounded-full border-2 my-0 md:my-10 border-white shadow-md scale-75 md:scale-100'>
+            <Logo className={'drop-shadow-md'} />
+          </div>
+          <p className='text-sm text-white/50'>
+            Gear up for the ultimate challenge as the Labs Game beckons you to claim the top spot on the leaderboard and
+            snag all the coveted badges! Become the lab virtuoso by tackling brain-teasing tasks, showcasing your
+            skills, and outsmarting the competition. Are you ready to rise to the occasion and etch your name in the
+            annals of laboratory greatness? Aim high, aim for the stars, and let the badge collection begin!
+          </p>
+          <div className='text-sm font-bold text-white/70 uppercase'>
+            {labsGameData.length !== 0 &&
+              labsGameData.slice(0, 1).map((entry, index) => (
+                <span key={index}>
+                  TO BEAT: {entry.name} - {getBadge(entry.score)} - {entry.score}0 - {entry.timestamp}
+                </span>
+              ))}
+          </div>
         </div>
-      </div>
 
-      <div className={cn('rounded-lg backdrop-blur-sm bg-black/40 px-6 py-10 flex flex-col gap-4')}>
-        <h1 className='text-4xl font-bold'>Labs GAME</h1>
-        <p>
-          Interactive and educational game designed to enhance laboratory skills and familiarity with laboratory
-          apparatuses, materials, and equipment. A learner or player will embark on a learning journey where they engage
-          in memory challenges and interactive tasks related to the laboratory environment.
-        </p>
-
-        {labsGameData.length === 0 ? (
-          <p>No entries to display.</p>
-        ) : (
-          labsGameData.slice(0, 1).map((entry, index) => (
-            <p key={index} className='font-bold text-green-600/60'>
-              Title holder: {getBadge(entry.score)} {entry.name} - {entry.score}0 - {entry.timestamp}
-            </p>
-          ))
-        )}
-      </div>
-
-      <div className='absolute flex items-center -mt-5 right-12'>
-        <input
-          name='inputName'
-          type='text'
-          onChange={handleInputChange}
-          value={inputChange}
-          placeholder='Input name to play'
-          className='backdrop-blur-sm bg-black/70 px-6 py-2 pr-12 rounded-full'
-        />
-        <div
-          onClick={handlePlay}
-          className={cn(
-            'z-10 w-8 aspect-square flex items-center justify-center rounded-full -ml-9',
-            'cursor-pointer bg-green-800 hover:bg-green-600'
-          )}
-        >
-          <PiPlayFill />
+        <div className='absolute flex items-center -mt-6 left-1/2 -translate-x-1/2'>
+          <input
+            name='inputName'
+            type='text'
+            onChange={handleInputChange}
+            value={inputChange}
+            placeholder='Enter name to play'
+            className='backdrop-blur-sm bg-white/70 placeholder-black/40 text-black px-6 py-3 w-[280px] rounded-full uppercase tracking-widest'
+          />
+          <div
+            onClick={handlePlay}
+            className={cn(
+              'z-10 w-10 aspect-square flex items-center justify-center rounded-full -ml-11',
+              'cursor-pointer bg-black/70 hover:bg-black/60'
+            )}
+          >
+            <PiPlayFill className='scale-110' />
+          </div>
         </div>
       </div>
     </>

@@ -6,7 +6,7 @@ import cn from '../lib/tailwindMerge';
 import BadgeRibbon from './BadgeRibbon';
 import BadgeStarGroup from './BadgeStarGroup';
 
-export default function Badge({ color }) {
+export default function Badge({ color, stars = 0, text }) {
   return (
     <div className='flex items-center justify-center'>
       <div
@@ -28,10 +28,10 @@ export default function Badge({ color }) {
         </div>
       </div>
       <div className='absolute mb-[94px]'>
-        <BadgeStarGroup color={color} stars={5} />
+        <BadgeStarGroup color={color} stars={stars} />
       </div>
-      <div className='absolute mt-28'>
-        <BadgeRibbon color={color} text='supervisor' className='drop-shadow-md' />
+      <div className={cn(text !== '' ? 'hidden' : 'absolute mt-28')}>
+        <BadgeRibbon color={color} text={text} className='drop-shadow-md' />
       </div>
     </div>
   );

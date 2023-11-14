@@ -32,7 +32,7 @@ export default function BadgeStarGroup({ stars = 5, color = 'white' }) {
           <BadgeStar color={color} className='drop-shadow-md mt-[22px] ml-[20px]' />
         </div>
       );
-    default:
+    case 5:
       return (
         <div className='flex flex-row'>
           <BadgeStar color={color} className='drop-shadow-md mt-7 mr-[12px]' />
@@ -42,5 +42,7 @@ export default function BadgeStarGroup({ stars = 5, color = 'white' }) {
           <BadgeStar color={color} className='drop-shadow-md mt-7 ml-[12px]' />
         </div>
       );
+    default:
+      return null;
   }
 }

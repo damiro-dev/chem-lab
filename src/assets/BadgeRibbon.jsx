@@ -1,4 +1,4 @@
-export default function BadgeRibbon({ color = 'white', text = 'apprentice', className }) {
+export default function BadgeRibbon({ color = 'white', text = '', className }) {
   return (
     <div className='flex justify-center'>
       <span className='absolute z-10 text-black/60 pt-0.5 tracking-widest font-bold uppercase'>{text}</span>

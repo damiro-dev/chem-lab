@@ -4,6 +4,9 @@ import { useNavigationUpdate } from '../context/NavigationProvider';
 import { useGame } from '../context/GameProvider';
 import comicsData from '../data/comics';
 import cn from '../lib/tailwindMerge';
+import CharDanHead from '../assets/CharDanHead';
+import CharXiaHead from '../assets/CharXiaHead';
+import Badge from '../assets/badge';
 
 export default function ModalComic() {
   const navUpdate = useNavigationUpdate();
@@ -20,40 +23,41 @@ export default function ModalComic() {
   const handleContinue = () => navUpdate('levelup');
 
   return (
-    <>
+    <div className='flex flex-col gap-10'>
       {/* TITLE */}
-      <h1 className='text-3xl font-bold mb-12 text-black/80 text-center'>{comicData.heading}</h1>
+      <div className='flex flex-col items-center mb-10'>
+        <Badge color={'#7E7E7E'} />
+        <span
+          style={{ color: '#7E7E7E' }}
+          className='bg-black/70 uppercase text-lg text-center font-semibold tracking-[8px] px-6 py-1 pl-10 -mt-[46px] rounded-full drop-shadow-md'
+        >
+          {comicData.heading}
+        </span>
+      </div>
 
       {/* DIALOG */}
-      <div className='flex flex-col gap-2 w-full items-center'>
+      <div className='flex flex-col gap-1 w-full items-center'>
         {comicData.comic.map((comic, index) => (
           <div
             key={index}
             className={cn(
-              'flex flex-col w-4/5',
+              'flex flex-col w-2/3',
               index % 2 ? 'items-end origin-top-right' : 'items-start origin-top-left'
             )}
-            style={{
-              scale: '100%',
-              transitionDelay: `${(index + 1) * comic.delay}s`,
-              transitionDuration: `${comic.duration}s`,
-              transitionProperty: animate ? 'scale(100%)' : 'scale(0%)',
-              transitionTimingFunction: 'ease',
-            }}
           >
             <div
               className={cn(
                 index < 2 ? 'flex' : 'hidden',
-                index % 2 ? 'translate-x-28' : '-translate-x-28',
-                comic.character === 'Daniel' ? 'bg-blue-800/80' : 'bg-red-800/80',
-                'absolute rounded-full w-24 aspect-square items-center justify-center -translate-y-8 text-4xl'
+                index % 2 ? 'translate-x-[105px]' : '-translate-x-[105px]',
+                comic.character === 'Daniel' ? 'bg-blue-800/20' : 'bg-red-800/20',
+                'absolute rounded-full w-24 h-24 items-center justify-center -translate-y-10 text-4xl'
               )}
             >
-              {comic.character === 'Daniel' ? 'D' : 'X'}
+              {comic.character === 'Daniel' ? <CharDanHead /> : <CharXiaHead />}
             </div>
             <div
               className={cn(
-                'z-10 bg-black/80 pl-4 pr-3 py-2 -mb-4 rounded-full text-[10px] uppercase tracking-widest',
+                'z-10 bg-black/80 pl-6 pr-6 py-2 -mb-4 rounded-full text-[10px] uppercase tracking-widest',
                 index % 2 ? 'rounded-br-none' : 'rounded-bl-none'
               )}
             >
@@ -61,7 +65,7 @@ export default function ModalComic() {
             </div>
             <div
               className={cn(
-                'rounded-xl backdrop-blur-sm bg-black/40 px-8 py-6 flex flex-col w-4/5',
+                'rounded-xl backdrop-blur-sm bg-black/40 px-6 py-5 flex flex-col w-4/5 text-sm',
                 index % 2 ? 'text-right rounded-tr-none' : 'text-left rounded-tl-none'
               )}
             >
@@ -72,17 +76,17 @@ export default function ModalComic() {
       </div>
 
       {/* CONTINUE BUTTON */}
-      <div onClick={handleContinue} className='flex items-center justify-center pt-12 cursor-pointer'>
-        <span className='backdrop-blur-sm bg-black/70 px-6 py-2 pr-14 rounded-full'>CONTINUE</span>
+      <div onClick={handleContinue} className='flex items-center justify-center cursor-pointer'>
+        <span className='backdrop-blur-sm bg-black/70 px-8 py-4 pr-16 tracking-[0.3em] rounded-full'>CONTINUE</span>
         <div
           className={cn(
-            'z-10 w-8 aspect-square flex items-center justify-center rounded-full -ml-9',
-            'bg-green-800 hover:bg-green-600'
+            'z-10 w-10 aspect-square flex items-center justify-center rounded-full -ml-12',
+            'bg-white/60 hover:bg-white/80'
           )}
         >
-          <PiPlayFill />
+          <PiPlayFill className='text-black/70 scale-110' />
         </div>
       </div>
-    </>
+    </div>
   );
 }

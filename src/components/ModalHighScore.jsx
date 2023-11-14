@@ -1,7 +1,7 @@
 import { useNavigationUpdate } from '../context/NavigationProvider';
 import { useLocalStorage } from '../context/LocalStorageProvider';
 import getBadge from '../lib/getBadge';
-import cn from '../lib/tailwindMerge';
+import Logo from '../assets/Logo';
 
 export default function ModalHighScore() {
   const setContent = useNavigationUpdate();
@@ -9,43 +9,44 @@ export default function ModalHighScore() {
 
   return (
     <>
+      <div className='flex flex-col gap-2 items-center justify-center mx-auto my-10 scale-75 md:scale-100'>
+        <Logo orientation='horizontal' className={'drop-shadow-md'} />
+        <h2 className='text-xl text-white font-semibold tracking-[8px] -mr-4 drop-shadow-md'>LEADERBOARD</h2>
+      </div>
       <div>
-        <div className='absolute z-10 flex gap-4 -mt-3 right-12 justify-end'>
+        <div className='absolute z-10 flex gap-3 -mt-4 left-1/2 -translate-x-1/2'>
           <div
             onClick={() => setContent('home')}
-            className='uppercase text-[12px] tracking-[4px] bg-red-600 px-3 py-1 rounded-full cursor-pointer'
+            className='font-semibold uppercase text-[12px] tracking-[4px] bg-black/70 hover:bg-black/60 pl-6 pr-4 py-2 rounded-full cursor-pointer shadow-md'
           >
             Play
           </div>
           <div
             onClick={() => setContent('about')}
-            className='uppercase text-[12px] tracking-[4px] bg-red-600 px-3 py-1 rounded-full cursor-pointer'
+            className='min-w-[34px] font-semibold uppercase text-[12px] bg-black/70 hover:bg-black/60 px-0 py-2 rounded-full cursor-pointer text-center shadow-md'
           >
-            About
+            ?
           </div>
         </div>
       </div>
-      <div className={cn('rounded-lg backdrop-blur-sm bg-black/40 flex flex-col py-10')}>
-        <h1 className='text-4xl font-bold px-6 pb-6'>Hall of Fame</h1>
+      <div className='rounded-2xl backdrop-blur-sm bg-black/40 flex flex-col py-10'>
         {labsGameData.length === 0 ? (
           <p>No entries to display.</p>
         ) : (
           labsGameData.slice(0, 10).map((entry, index) => (
             <div
               key={index}
-              className='flex flex-row items-center justify-between px-6 py-1 hover:bg-white/10 transition-colors duration-300'
+              className='flex flex-row items-center justify-between px-4 md:px-16 py-1 hover:bg-white/10 transition-colors duration-300 cursor-default'
             >
               <div className='flex flex-row gap-4 items-center'>
-                <span className='w-8 aspect-square bg-black/80 rounded-full text-[12px] flex items-center justify-center'>
-                  {index + 1}
+                <span className='px-3 py-1 bg-black/60 rounded-full text-[12px] flex items-center justify-center'>
+                  {entry.score}0
                 </span>
-                <p>
-                  {entry.score}0: {entry.name}
-                </p>
+                <span className='font-semibold uppercase tracking-widest'>{entry.name}</span>
               </div>
-              <div className='flex flex-row gap-4'>
-                <p>{getBadge(entry.score)}</p>
-                <span className='text-white/40'>{entry.timestamp}</span>
+              <div className='flex flex-row items-end gap-4 opacity-60'>
+                <p className='uppercase text-sm'>{getBadge(entry.score)}</p>
+                <span className='text-white/40 hidden md:block text-[12px] uppercase font-mono'>{entry.timestamp}</span>
               </div>
             </div>
           ))

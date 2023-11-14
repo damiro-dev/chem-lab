@@ -101,15 +101,15 @@ const itemsData = [
     },
     {
       id: 13,
-      name: 'beam balance',
+      name: 'gas tube',
       x: 90.8,
       y: 28.5,
       width: 6.5,
       height: 24.5,
     },
     {
-      id: 'beam balance',
-      name: 'gas tube',
+      id: '14',
+      name: 'beam balance',
       x: 59.8,
       y: 25.7,
       width: 30.3,
@@ -689,14 +689,6 @@ const itemsData = [
     },
     {
       id: 16,
-      name: 'laser',
-      x: 76.7,
-      y: 59.5,
-      width: 5.8,
-      height: 9.8,
-    },
-    {
-      id: 17,
       name: 'timer',
       x: 58.5,
       y: 13,
@@ -704,7 +696,7 @@ const itemsData = [
       height: 13.5,
     },
     {
-      id: 18,
+      id: 17,
       name: 'red rubber',
       x: 45,
       y: 31.6,
@@ -712,7 +704,7 @@ const itemsData = [
       height: 8.5,
     },
     {
-      id: 19,
+      id: 18,
       name: 'brush',
       x: 67,
       y: 41.6,
@@ -720,7 +712,7 @@ const itemsData = [
       height: 10.6,
     },
     {
-      id: 20,
+      id: 19,
       name: 'earth core',
       x: 76,
       y: 0,
@@ -885,14 +877,6 @@ const itemsData = [
     },
     {
       id: 20,
-      name: 'chem electricity ckt',
-      x: 85.2,
-      y: 40.8,
-      width: 10,
-      height: 40,
-    },
-    {
-      id: 21,
       name: 'petri dish',
       x: 3,
       y: 82,
@@ -900,7 +884,7 @@ const itemsData = [
       height: 11,
     },
     {
-      id: 22,
+      id: 21,
       name: 'large tong',
       x: 24.6,
       y: 71,
@@ -908,7 +892,7 @@ const itemsData = [
       height: 21.4,
     },
     {
-      id: 23,
+      id: 22,
       name: 'thermometer',
       x: 26.4,
       y: 41,
@@ -916,7 +900,7 @@ const itemsData = [
       height: 25,
     },
     {
-      id: 24,
+      id: 23,
       name: 'chacko',
       x: 17,
       y: 26,
@@ -924,7 +908,7 @@ const itemsData = [
       height: 13.8,
     },
     {
-      id: 25,
+      id: 24,
       name: 'tripod',
       x: 4,
       y: 61,

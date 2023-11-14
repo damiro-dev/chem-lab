@@ -6,6 +6,8 @@ import { useTimer, useTimerUpdate } from '../context/TimerProvider';
 import { useLocalStorage } from '../context/LocalStorageProvider';
 import getBadge from '../lib/getBadge';
 import cn from '../lib/tailwindMerge';
+import BadgeFlaskAngled from '../assets/badge-flask-angled';
+import Badge from '../assets/badge';
 
 export default function ModalHome() {
   const setContent = useNavigationUpdate();
@@ -34,6 +36,9 @@ export default function ModalHome() {
 
   return (
     <>
+      <div className='mb-16'>
+        <Badge color='#FFD700' />
+      </div>
       <div className='absolute z-10 flex gap-4 -mt-3 right-12 justify-end'>
         <div
           onClick={() => setContent('about')}

@@ -8,7 +8,7 @@ import cn from '../lib/tailwindMerge';
 
 export default function ModalOver() {
   const navUpdate = useNavigationUpdate();
-  const { items, name, itemFound, level, score } = useGame();
+  const { items, numItems, name, itemFound, level, score } = useGame();
   const { addLabsGameItem } = useLocalStorage();
 
   // Function to add a new listing
@@ -36,7 +36,7 @@ export default function ModalOver() {
       <div className={cn('rounded-lg backdrop-blur-sm bg-black/40 px-6 py-10 flex flex-col gap-4')}>
         <h1 className='text-3xl font-bold'>Game Over {name}</h1>
         <p>
-          Time is up! You only found {items.length - itemFound} of {items.length} items.
+          Time is up! You only found {numItems - itemFound} of {numItems} {numItems === 1 ? 'item' : 'items'}.
         </p>
         {items.map((item) => (
           <span key={item.id} className={cn('whitespace-nowrap', item.tagged && 'line-through opacity-40')}>

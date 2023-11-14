@@ -22,9 +22,7 @@ export default function ModalComic() {
   return (
     <>
       {/* TITLE */}
-      <h1 className='text-3xl font-bold mb-12 text-black/80 text-center'>
-        {comicData.heading} {name}!
-      </h1>
+      <h1 className='text-3xl font-bold mb-12 text-black/80 text-center'>{comicData.heading}</h1>
 
       {/* DIALOG */}
       <div className='flex flex-col gap-2 w-full items-center'>

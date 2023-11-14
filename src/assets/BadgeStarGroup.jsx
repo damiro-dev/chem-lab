@@ -1,4 +1,4 @@
-import BadgeStar from './badge-star';
+import BadgeStar from './BadgeStar';
 
 export default function BadgeStarGroup({ stars = 5, color = 'white' }) {
   switch (stars) {

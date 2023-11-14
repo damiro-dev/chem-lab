@@ -6,7 +6,6 @@ import { useTimer, useTimerUpdate } from '../context/TimerProvider';
 import { useLocalStorage } from '../context/LocalStorageProvider';
 import getBadge from '../lib/getBadge';
 import cn from '../lib/tailwindMerge';
-import BadgeFlaskAngled from '../assets/badge-flask-angled';
 import Badge from '../assets/badge';
 
 export default function ModalHome() {

@@ -1,10 +1,10 @@
 import React from 'react';
-import BadgeFlaskAngled from './badge-flask-angled';
-import BadgeFlaskRound from './badge-flask-round';
-import BadgeTestTube from './badge-test-tube';
+import BadgeFlaskAngled from './BadgeFlaskAngled';
+import BadgeFlaskRound from './BadgeFlaskRound';
+import BadgeTestTube from './BadgeTestTube';
 import cn from '../lib/tailwindMerge';
-import BadgeRibbon from './badge-ribbon';
-import BadgeStarGroup from './badge-star-group';
+import BadgeRibbon from './BadgeRibbon';
+import BadgeStarGroup from './BadgeStarGroup';
 
 export default function Badge({ color }) {
   return (

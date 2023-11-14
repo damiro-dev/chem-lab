@@ -37,7 +37,7 @@ export default function ModalHome() {
   return (
     <>
       <div className='mb-16'>
-        <Badge color='#FFD700' />
+        <Badge color='gold' />
       </div>
       <div className='absolute z-10 flex gap-4 -mt-3 right-12 justify-end'>
         <div

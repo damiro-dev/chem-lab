@@ -4,6 +4,7 @@ import BadgeFlaskRound from './badge-flask-round';
 import BadgeTestTube from './badge-test-tube';
 import cn from '../lib/tailwindMerge';
 import BadgeRibbon from './badge-ribbon';
+import BadgeStarGroup from './badge-star-group';
 
 export default function Badge({ color }) {
   return (
@@ -25,6 +26,9 @@ export default function Badge({ color }) {
             <BadgeTestTube color={color} className='drop-shadow-md rotate-12' />
           </div>
         </div>
+      </div>
+      <div className='absolute mb-[94px]'>
+        <BadgeStarGroup color={color} stars={5} />
       </div>
       <div className='absolute mt-28'>
         <BadgeRibbon color={color} text='supervisor' className='drop-shadow-md' />

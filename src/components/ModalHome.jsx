@@ -29,7 +29,11 @@ export default function ModalHome() {
 
   const handlePlay = () => {
     setLevel(1);
-    setName(inputChange);
+    if (inputChange.length > 16) {
+      setName(inputChange.slice(0, 16));
+    } else {
+      setName(inputChange);
+    }
     setContent('comic');
     console.log('PLAY!');
   };

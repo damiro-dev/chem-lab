@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useGame } from '../context/GameProvider';
+import { useGame, useGameUpdate } from '../context/GameProvider';
 import { useNavigationUpdate } from '../context/NavigationProvider';
 import { PiPlayFill } from 'react-icons/Pi';
 import { FaCheckCircle } from 'react-icons/fa';
@@ -11,8 +11,9 @@ import cn from '../lib/tailwindMerge';
 
 export default function ModalOver() {
   const navUpdate = useNavigationUpdate();
-  const { items, numItems, name, itemFound, level, score } = useGame();
-  const { labsGameData, addLabsGameItem } = useLocalStorage();
+  const { items, numItems, name, itemFound, level, score, revealItems } = useGame();
+  const { setRevealItems } = useGameUpdate();
+  const { addLabsGameItem } = useLocalStorage();
 
   // Function to add a new listing
   const handleAddListing = () => {
@@ -27,6 +28,7 @@ export default function ModalOver() {
   // ON LOAD
   useEffect(() => {
     handleAddListing();
+    setRevealItems(false);
   }, []);
 
   const handleExit = () => {
@@ -35,10 +37,20 @@ export default function ModalOver() {
 
   return (
     <div className='max-h-screen -my-10 py-20 overflow-scroll'>
-      <div className='rounded-2xl backdrop-blur-sm bg-black/40 px-4 md:px-8 pt-28 pb-12 flex flex-col gap-4 shadow-md'>
+      <div
+        className={cn(
+          revealItems ? 'bg-black/40 shadow-md' : 'bg-black/0 shadow-none',
+          'rounded-2xl backdrop-blur-sm px-4 md:px-8 pt-28 pb-12 flex flex-col gap-4'
+        )}
+      >
         {/* TITLE */}
-        <div className='absolute -top-16 left-1/2 -translate-x-1/2 flex flex-col items-center -mb-4 md:mb-4 scale-75 md:scale-100'>
-          <Badge color={getColor(level)} stars={level % 5 === 0 ? 5 : level % 5} icon={level} text={getBadge(level)} />
+        <div className='absolute -top-20 left-1/2 -translate-x-1/2 flex flex-col items-center -mb-4 md:mb-4 scale-75 md:scale-100'>
+          <Badge
+            color={getColor(level)}
+            stars={level % 5 === 0 ? 4 : (level % 5) - 1}
+            icon={level - 1}
+            text={getBadge(level)}
+          />
         </div>
 
         <div className='flex flex-col gap-1 pb-4'>
@@ -46,10 +58,15 @@ export default function ModalOver() {
             Game Over
           </span>
           <span className='mx-auto text-sm text-center uppercase tracking-widest font-semibold drop-shadow-md'>
-            Time is up! You only found {numItems - itemFound} of {numItems} {numItems === 1 ? 'item' : 'items'}
+            Time is up! Found {numItems - itemFound} of {numItems} {numItems === 1 ? 'item' : 'items'}
           </span>
-          <span className='mx-auto text-sm text-center uppercase tracking-widest font-semibold drop-shadow-md'>
-            Congrats for reaching level {level} ({score}0)
+          <span
+            className={cn(
+              score <= 0 && 'hidden',
+              'mx-auto text-sm text-center uppercase tracking-widest font-semibold opacity-70 drop-shadow-md'
+            )}
+          >
+            Congrats for reaching level {level} ({score}0 POINTS)
           </span>
         </div>
 

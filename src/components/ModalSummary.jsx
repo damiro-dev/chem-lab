@@ -41,8 +41,8 @@ export default function ModalSummary() {
             Good Work {name}!
           </span>
           <span className='mx-auto text-sm text-center uppercase tracking-widest font-semibold drop-shadow-md'>
-            Level {level} Cleared: Got {items.length - itemFound + 1} of {items.length}{' '}
-            {items.length === 1 ? 'item' : 'items'}
+            Level {level} Cleared: {score}0 Points
+            {/* Got {items.length - itemFound + 1} of {items.length} {items.length === 1 ? 'item' : 'items'} */}
           </span>
         </div>
 

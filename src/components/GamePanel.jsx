@@ -42,7 +42,7 @@ export default function GamePanel() {
   };
 
   return (
-    <>
+    <div className={cn(!isRunning && 'hidden')}>
       <section className={cn(!inGame && 'hidden')}>
         {/* TIMER */}
         <div
@@ -57,8 +57,8 @@ export default function GamePanel() {
         </div>
         <span
           className={cn(
-            'absolute z-20 left-1/2 -translate-x-1/2 top-14',
-            'uppercase text-[10px] tracking-widest bg-red-600 px-3 py-1 rounded-full whitespace-nowrap'
+            'absolute z-20 left-1/2 -translate-x-1/2 top-14 whitespace-nowrap',
+            'font-semibold uppercase text-[12px] tracking-[4px] bg-black/70 hover:bg-black/60 pl-6 pr-4 py-2 rounded-full cursor-pointer shadow-md'
           )}
         >
           {isRunning ? 'SEC REMAINING' : 'PAUSED'}
@@ -69,19 +69,20 @@ export default function GamePanel() {
       <section
         className={cn(
           inGame ? 'flex' : 'hidden',
-          'absolute z-20 bottom-0 left-1/2 -translate-x-1/2 backdrop-blur-sm bg-black/40 px-6 py-3 mb-2 rounded-full',
-          'flex-row items-center justify-center gap-4'
+          'absolute z-20 bottom-0 left-1/2 -translate-x-1/2 backdrop-blur-sm bg-black/40 px-6 py-3 mb-2 rounded-xl md:rounded-full',
+          'flex-row items-center justify-center'
         )}
       >
         <span
           className={cn(
-            'absolute z-20 left-1/2 -translate-x-1/2 -top-4',
-            'uppercase text-[10px] tracking-widest bg-red-600 px-3 py-1 rounded-full whitespace-nowrap'
+            'absolute z-20 left-1/2 -translate-x-1/2 -top-4 whitespace-nowrap',
+            'font-semibold uppercase text-[12px] tracking-[4px] bg-black/70 hover:bg-black/60 pl-6 pr-4 py-2 rounded-full cursor-pointer shadow-md'
           )}
         >
           {'Missing Equipment'}
         </span>
-        <div className='flex flex-row items-center justify-center gap-6'>
+
+        <div className='flex flex-row flex-wrap leading-0 items-center justify-center py-2 px-6 gap-x-6 font-semibold uppercase tracking-wider'>
           {items.map((item) => (
             <span key={item.id} className={cn('whitespace-nowrap', item.tagged && 'line-through opacity-40')}>
               {item.name}
@@ -89,6 +90,6 @@ export default function GamePanel() {
           ))}
         </div>
       </section>
-    </>
+    </div>
   );
 }

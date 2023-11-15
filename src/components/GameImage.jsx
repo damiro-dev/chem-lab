@@ -103,6 +103,7 @@ export default function GameImage() {
       <button
         onClick={() => scroll(distance * -1)}
         className={cn(
+          !isRunning ? 'opacity-0' : 'opacity-100',
           inGame ? 'flex' : 'hidden',
           'absolute z-20 top-1/2 left-0 -translate-y-1/2 w-12 aspect-square ml-4 bg-black/30 backdrop-blur-sm rounded-full items-center justify-center',
           !canScrollLeft && 'hidden'
@@ -114,6 +115,7 @@ export default function GameImage() {
       <button
         onClick={() => scroll(distance)}
         className={cn(
+          !isRunning ? 'opacity-0' : 'opacity-100',
           inGame ? 'flex' : 'hidden',
           'absolute z-20 top-1/2 right-0 -translate-y-1/2 w-12 aspect-square mr-4 bg-black/30 backdrop-blur-sm rounded-full items-center justify-center',
           !canScrollRight && 'hidden'

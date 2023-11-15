@@ -6,7 +6,7 @@ import cn from '../lib/tailwindMerge';
 import BadgeRibbon from './BadgeRibbon';
 import BadgeStarGroup from './BadgeStarGroup';
 
-export default function Badge({ color, stars = 0, text, className, icon }) {
+export default function Badge({ color, stars = 0, text = '', className, icon }) {
   const renderIcon = () => {
     if (icon <= 10) {
       return <BadgeTestTube color={color} className='drop-shadow-md rotate-12' />;
@@ -37,10 +37,12 @@ export default function Badge({ color, stars = 0, text, className, icon }) {
           </div>
         </div>
       </div>
+
       <div className='absolute mb-[94px]'>
         <BadgeStarGroup color={color} stars={stars} />
       </div>
-      <div className={cn(text !== '' ? 'hidden' : 'absolute mt-28')}>
+
+      <div className={cn(text === '' ? 'hidden' : 'absolute mt-28')}>
         <BadgeRibbon color={color} text={text} className='drop-shadow-md' />
       </div>
     </div>

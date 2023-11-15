@@ -1,15 +1,15 @@
-export default function getBadge(score) {
-  if (score <= 7) {
+export default function getBadge(level) {
+  if (level <= 2) {
     return 'Novice';
-  } else if (score <= 16) {
+  } else if (level <= 5) {
     return 'Trainee';
-  } else if (score <= 36) {
+  } else if (level <= 10) {
     return 'Apprentice';
-  } else if (score <= 56) {
+  } else if (level <= 15) {
     return 'Supervisor';
-  } else if (score <= 76) {
+  } else if (level <= 20) {
     return 'Manager';
-  } else if (score <= 96) {
+  } else if (level <= 25) {
     return 'Director';
   } else {
     return 'Expert';

@@ -58,7 +58,7 @@ const comicsData = [
   },
   {
     level: 3,
-    heading: 'New badge acquired: Trainee',
+    heading: 'Trainee',
     comic: [
       {
         character: 'Xia',
@@ -88,7 +88,7 @@ const comicsData = [
   },
   {
     level: 6,
-    heading: 'New badge acquired: Apprentice',
+    heading: 'Apprentice',
     comic: [
       {
         character: 'Daniel',
@@ -100,7 +100,7 @@ const comicsData = [
   },
   {
     level: 11,
-    heading: 'New badge acquired: Supervisor',
+    heading: 'Supervisor',
     comic: [
       {
         character: 'Daniel',
@@ -112,7 +112,7 @@ const comicsData = [
   },
   {
     level: 16,
-    heading: 'New badge acquired: Manager',
+    heading: 'Manager',
     comic: [
       {
         character: 'Daniel',
@@ -124,7 +124,7 @@ const comicsData = [
   },
   {
     level: 21,
-    heading: 'New badge acquired: Director',
+    heading: 'Director',
     comic: [
       {
         character: 'Daniel',
@@ -136,7 +136,7 @@ const comicsData = [
   },
   {
     level: 26,
-    heading: 'New badge acquired: Expert',
+    heading: 'Expert',
     comic: [
       {
         character: 'Daniel',

@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { PiPlayFill } from 'react-icons/Pi';
+import { FaCheckCircle } from 'react-icons/fa';
 import { useNavigationUpdate } from '../context/NavigationProvider';
 import { useGame, useGameUpdate } from '../context/GameProvider';
 import { useTimer, useTimerUpdate } from '../context/TimerProvider';
-import itemsData from '../data/items';
 import cn from '../lib/tailwindMerge';
 import Badge from '../assets/badge';
-import comicsData from '../data/comics';
+import itemsData from '../data/items';
 import getColor from '../lib/getColor';
 
 export default function Modallevelup() {
@@ -66,20 +66,16 @@ export default function Modallevelup() {
               <div
                 key={item.id}
                 className={cn(
-                  'min-w-[120px] flex p-4 rounded-2xl backdrop-blur-sm bg-black/40',
+                  'min-w-[130px] flex p-4 rounded-2xl backdrop-blur-sm bg-black/40',
                   items.length < 3 ? 'flex-row gap-4' : 'flex-col gap-3'
                 )}
               >
+                <div className={cn(!item.tagged && 'hidden', 'absolute top-6 left-6')}>
+                  <FaCheckCircle size={32} />
+                </div>
                 <div className='min-h-[120px] w-full rounded-sm bg-white/30' />
                 <div className='flex flex-col gap-2.5'>
-                  <span
-                    className={cn(
-                      'uppercase tracking-wide text-sm font-semibold',
-                      item.tagged && 'line-through opacity-40'
-                    )}
-                  >
-                    {item.name}
-                  </span>
+                  <span className='uppercase tracking-wide text-sm font-semibold'>{item.name}</span>
                   <p className='text-sm opacity-70'>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
                 </div>
               </div>

@@ -1,19 +1,16 @@
 import cn from '../lib/tailwindMerge';
 import { PiPlayFill } from 'react-icons/Pi';
-import { useGame, useGameUpdate } from '../context/GameProvider';
-import { useTimer, useTimerUpdate } from '../context/TimerProvider';
+import { useGame } from '../context/GameProvider';
+import { useTimer } from '../context/TimerProvider';
 import { useNavigationUpdate } from '../context/NavigationProvider';
 import Badge from '../assets/badge';
 import getColor from '../lib/getColor';
 import getBadge from '../lib/getBadge';
 
 export default function ModalPaused() {
-  const { name, inGame, scene, items, revealItems, level, levelTime, numItems } = useGame();
-  const { setRevealItems, setInGame } = useGameUpdate();
-  const { time, isRunning, startTimer, stopTimer, initialTime } = useTimer();
-  const { setIsCountdown, setTime } = useTimerUpdate();
+  const { name, inGame, level } = useGame();
+  const { isRunning, startTimer, stopTimer } = useTimer();
   const navUpdate = useNavigationUpdate();
-  const handlePlay = () => {};
 
   // ON PAUSE
   const toggleTimer = () => {
@@ -32,7 +29,7 @@ export default function ModalPaused() {
   return (
     <>
       {/* TITLE */}
-      <div className='flex flex-col items-center mb-10 scale-75 md:scale-100'>
+      <div className='flex flex-col items-center mb-4 md:mb-10 scale-75 md:scale-100'>
         <Badge
           color={getColor(level)}
           stars={level % 5 === 0 ? 4 : (level % 5) - 1}

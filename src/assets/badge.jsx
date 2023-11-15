@@ -21,7 +21,7 @@ export default function Badge({ color, stars = 0, text = '', className, icon }) 
     <div className={cn('flex items-center justify-center', className)}>
       <div
         className={cn(
-          'w-[160px] h-[160px] backdrop-blur-sm bg-black/40 rounded-full',
+          'w-[160px] h-[160px] backdrop-blur-sm bg-black/60 rounded-full',
           'flex items-center justify-center shadow-md shadow-black/40'
         )}
       >

@@ -2,6 +2,7 @@ import { useNavigationUpdate } from '../context/NavigationProvider';
 import { useLocalStorage } from '../context/LocalStorageProvider';
 import getBadge from '../lib/getBadge';
 import Logo from '../assets/Logo';
+import getColor from '../lib/getColor';
 
 export default function ModalHighScore() {
   const setContent = useNavigationUpdate();
@@ -29,11 +30,12 @@ export default function ModalHighScore() {
           </div>
         </div>
         {labsGameData.length === 0 ? (
-          <p>No entries to display.</p>
+          <p className='uppercase text-center tracking-widest'>No entries to display</p>
         ) : (
           labsGameData.slice(0, 10).map((entry, index) => (
             <div
               key={index}
+              style={{ color: getColor(entry.level) }}
               className='flex flex-row items-center justify-between px-4 md:px-16 py-1 hover:bg-white/10 transition-colors duration-300 cursor-default'
             >
               <div className='flex flex-row gap-4 items-center'>
@@ -43,8 +45,8 @@ export default function ModalHighScore() {
                 <span className='font-semibold uppercase tracking-widest'>{entry.name}</span>
               </div>
               <div className='flex flex-row items-end gap-4 opacity-60'>
-                <p className='uppercase text-sm'>{getBadge(entry.score)}</p>
-                <span className='text-white/40 hidden md:block text-[12px] uppercase font-mono'>{entry.timestamp}</span>
+                <p className='uppercase text-sm'>{getBadge(entry.level)}</p>
+                <span className='hidden md:block text-[12px] uppercase font-mono'>{entry.timestamp}</span>
               </div>
             </div>
           ))

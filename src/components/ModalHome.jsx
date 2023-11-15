@@ -14,7 +14,7 @@ export default function ModalHome() {
   const { setScene, setRevealItems, setLevel, setName, setScore } = useGameUpdate();
   const { setTime } = useTimerUpdate();
   const { initialTime } = useTimer();
-  const { labsGameData } = useLocalStorage();
+  const { labsGameData, resetLabsGame } = useLocalStorage();
 
   const [inputChange, setInputChange] = useState('');
   const handleInputChange = (e) => setInputChange(e.currentTarget.value);
@@ -25,6 +25,7 @@ export default function ModalHome() {
     setRevealItems(false);
     setTime(initialTime);
     setScene(4);
+    // resetLabsGame(); // Reset the 'labsGame' data
   }, []);
 
   const handlePlay = () => {
@@ -44,7 +45,10 @@ export default function ModalHome() {
         <div className='absolute z-10 flex gap-3 -top-4 left-1/2 -translate-x-1/2'>
           <div
             onClick={() => setContent('highscore')}
-            className='font-semibold uppercase text-[12px] tracking-[4px] bg-black/70 hover:bg-black/60 pl-6 pr-4 py-2 rounded-full cursor-pointer shadow-md'
+            className={cn(
+              // labsGameData.length === 0 && 'hidden',
+              'font-semibold uppercase text-[12px] tracking-[4px] bg-black/70 hover:bg-black/60 pl-6 pr-4 py-2 rounded-full cursor-pointer shadow-md'
+            )}
           >
             LEADERBOARD
           </div>

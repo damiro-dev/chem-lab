@@ -20,6 +20,7 @@ export default function ModalOver() {
     const newListing = {
       name: name,
       score: score,
+      level: level,
       timestamp: new Date().toLocaleString(),
     };
     addLabsGameItem(newListing);

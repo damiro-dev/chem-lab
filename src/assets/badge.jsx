@@ -6,7 +6,17 @@ import cn from '../lib/tailwindMerge';
 import BadgeRibbon from './BadgeRibbon';
 import BadgeStarGroup from './BadgeStarGroup';
 
-export default function Badge({ color, stars = 0, text, className }) {
+export default function Badge({ color, stars = 0, text, className, icon }) {
+  const renderIcon = () => {
+    if (icon <= 10) {
+      return <BadgeTestTube color={color} className='drop-shadow-md rotate-12' />;
+    } else if (icon <= 20) {
+      return <BadgeFlaskRound color={color} className='drop-shadow-md rotate-12' />;
+    } else {
+      return <BadgeFlaskAngled color={color} className='drop-shadow-md rotate-12' />;
+    }
+  };
+
   return (
     <div className={cn('flex items-center justify-center', className)}>
       <div
@@ -23,7 +33,7 @@ export default function Badge({ color, stars = 0, text, className }) {
             style={{ borderColor: color }}
             className='w-[95px] h-[95px] border border-dashed rounded-full flex items-center justify-center'
           >
-            <BadgeTestTube color={color} className='drop-shadow-md rotate-12' />
+            {renderIcon()}
           </div>
         </div>
       </div>

@@ -66,7 +66,7 @@ export default function GameImage() {
   }, [scrollRef]);
 
   return (
-    <section className='overflow-hidden'>
+    <section className='overflow-hidden max-h-screen'>
       <div
         ref={scrollRef}
         className={cn(

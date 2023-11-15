@@ -6,9 +6,9 @@ import cn from '../lib/tailwindMerge';
 import BadgeRibbon from './BadgeRibbon';
 import BadgeStarGroup from './BadgeStarGroup';
 
-export default function Badge({ color, stars = 0, text }) {
+export default function Badge({ color, stars = 0, text, className }) {
   return (
-    <div className='flex items-center justify-center'>
+    <div className={cn('flex items-center justify-center', className)}>
       <div
         className={cn(
           'w-[160px] h-[160px] backdrop-blur-sm bg-black/40 rounded-full',

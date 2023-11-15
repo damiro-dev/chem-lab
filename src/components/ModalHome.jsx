@@ -35,9 +35,9 @@ export default function ModalHome() {
   };
 
   return (
-    <>
-      <div>
-        <div className='absolute z-10 flex gap-3 -mt-4 left-1/2 -translate-x-1/2'>
+    <div className='max-h-screen -my-10 py-10 overflow-scroll'>
+      <div className='rounded-2xl backdrop-blur-sm bg-black/40 px-8 md:px-20 pt-10 pb-16 flex flex-col gap-4 shadow-md'>
+        <div className='absolute z-10 flex gap-3 -top-4 left-1/2 -translate-x-1/2'>
           <div
             onClick={() => setContent('highscore')}
             className='font-semibold uppercase text-[12px] tracking-[4px] bg-black/70 hover:bg-black/60 pl-6 pr-4 py-2 rounded-full cursor-pointer shadow-md'
@@ -52,27 +52,27 @@ export default function ModalHome() {
           </div>
         </div>
 
-        <div className='rounded-2xl backdrop-blur-sm bg-black/40 px-8 md:px-20 pt-10 pb-16 flex flex-col gap-4 shadow-md'>
-          <div className='flex items-center justify-center mx-auto aspect-square w-[200px] rounded-full border-2 my-0 md:my-10 border-white shadow-md scale-75 md:scale-100'>
-            <Logo className={'drop-shadow-md'} />
-          </div>
-          <p className='text-sm text-white/50'>
-            Gear up for the ultimate challenge as the Labs Game beckons you to claim the top spot on the leaderboard and
-            snag all the coveted badges! Become the lab virtuoso by tackling brain-teasing tasks, showcasing your
-            skills, and outsmarting the competition. Are you ready to rise to the occasion and etch your name in the
-            annals of laboratory greatness? Aim high, aim for the stars, and let the badge collection begin!
-          </p>
-          <div className='text-sm font-bold text-white/70 uppercase'>
-            {labsGameData.length !== 0 &&
-              labsGameData.slice(0, 1).map((entry, index) => (
-                <span key={index}>
-                  TO BEAT: {entry.name} - {getBadge(entry.score)} - {entry.score}0 - {entry.timestamp}
-                </span>
-              ))}
-          </div>
+        <div className='flex items-center justify-center mx-auto aspect-square w-[200px] rounded-full border-2 my-0 md:my-10 border-white shadow-md scale-75 md:scale-100'>
+          <Logo className={'drop-shadow-md'} />
         </div>
 
-        <div className='absolute flex items-center -mt-6 left-1/2 -translate-x-1/2'>
+        <p className='text-sm text-white/50'>
+          Gear up for the ultimate challenge as the Labs Game beckons you to claim the top spot on the leaderboard and
+          snag all the coveted badges! Become the lab virtuoso by tackling brain-teasing tasks, showcasing your skills,
+          and outsmarting the competition. Are you ready to rise to the occasion and etch your name in the annals of
+          laboratory greatness? Aim high, aim for the stars, and let the badge collection begin!
+        </p>
+
+        <div className='text-sm font-bold text-white/70 uppercase'>
+          {labsGameData.length !== 0 &&
+            labsGameData.slice(0, 1).map((entry, index) => (
+              <span key={index}>
+                TO BEAT: {entry.name} - {getBadge(entry.score)} - {entry.score}0 - {entry.timestamp}
+              </span>
+            ))}
+        </div>
+
+        <div className='absolute flex items-center -bottom-6 left-1/2 -translate-x-1/2'>
           <input
             name='inputName'
             type='text'
@@ -92,6 +92,6 @@ export default function ModalHome() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

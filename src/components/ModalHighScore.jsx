@@ -8,13 +8,13 @@ export default function ModalHighScore() {
   const { labsGameData } = useLocalStorage();
 
   return (
-    <>
-      <div className='flex flex-col gap-2 items-center justify-center mx-auto my-10 scale-75 md:scale-100'>
+    <div className='max-h-screen -my-10 py-10 overflow-scroll'>
+      <div className='flex flex-col gap-2 items-center justify-center mx-auto mb-10 scale-75 md:scale-100'>
         <Logo orientation='horizontal' className={'drop-shadow-md'} />
         <h2 className='text-xl text-white font-semibold tracking-[8px] -mr-4 drop-shadow-md'>LEADERBOARD</h2>
       </div>
-      <div>
-        <div className='absolute z-10 flex gap-3 -mt-4 left-1/2 -translate-x-1/2'>
+      <div className='rounded-2xl backdrop-blur-sm bg-black/40 flex flex-col py-10'>
+        <div className='absolute z-10 flex gap-3 -top-4 left-1/2 -translate-x-1/2'>
           <div
             onClick={() => setContent('home')}
             className='font-semibold uppercase text-[12px] tracking-[4px] bg-black/70 hover:bg-black/60 pl-6 pr-4 py-2 rounded-full cursor-pointer shadow-md'
@@ -28,8 +28,6 @@ export default function ModalHighScore() {
             ?
           </div>
         </div>
-      </div>
-      <div className='rounded-2xl backdrop-blur-sm bg-black/40 flex flex-col py-10'>
         {labsGameData.length === 0 ? (
           <p>No entries to display.</p>
         ) : (
@@ -52,6 +50,6 @@ export default function ModalHighScore() {
           ))
         )}
       </div>
-    </>
+    </div>
   );
 }

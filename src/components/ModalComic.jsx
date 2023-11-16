@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { PiPlayFill } from 'react-icons/Pi';
 import { useNavigationUpdate } from '../context/NavigationProvider';
 import { useGame } from '../context/GameProvider';
-import comicsData from '../data/comics';
 import cn from '../lib/tailwindMerge';
-import CharDanHead from '../assets/CharDanHead';
-import CharXiaHead from '../assets/CharXiaHead';
+import comicsData from '../data/comics';
+import CharHeadDan from '../assets/CharHeadDan';
+import CharHeadXia from '../assets/CharHeadXia';
 import Badge from '../assets/badge';
 import getColor from '../lib/getColor';
 import getTrophy from '../lib/getTrophy';
@@ -57,8 +57,12 @@ export default function ModalComic() {
         >
           <div
             className={cn(
-              comicData.type === 'dialog' ? 'hidden' : comicData.type === 'banner' ? 'py-24 px-4 ' : 'py-12 px-4',
-              'rounded-xl text-black/60 bg-black/30 uppercase tracking-widest text-center flex flex-col outline-dashed outline-[3px] outline-offset-[-12px] outline-black/30 '
+              comicData.type === 'dialog'
+                ? 'hidden'
+                : comicData.type === 'banner'
+                ? 'py-24 px-4 rounded-xl text-black/60 bg-black/30 uppercase tracking-widest text-center flex flex-col outline-dashed outline-[3px] outline-offset-[-12px] outline-black/30 '
+                : 'py-12 px-4 rounded-xl text-black/60 bg-black/30 uppercase tracking-widest text-center flex flex-col outline-dashed outline-[3px] outline-offset-[-12px] outline-black/30 ',
+              ''
             )}
           >
             <span className='text-2xl md:text-3xl font-bold'>Congrats {name}!</span>
@@ -85,7 +89,7 @@ export default function ModalComic() {
                     'absolute rounded-full w-24 h-24 items-center justify-center -translate-y-10 text-4xl shadow-md'
                   )}
                 >
-                  {comic.character === 'Daniel' ? <CharDanHead /> : <CharXiaHead />}
+                  {comic.character === 'Daniel' ? <CharHeadDan /> : <CharHeadXia />}
                 </div>
                 <div
                   className={cn(

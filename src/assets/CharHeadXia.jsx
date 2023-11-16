@@ -1,4 +1,4 @@
-export default function CharXiaHead({ className }) {
+export default function CharHeadXia({ className }) {
   return (
     <svg
       className={className}

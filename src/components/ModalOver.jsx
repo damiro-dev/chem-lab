@@ -38,14 +38,9 @@ export default function ModalOver() {
 
   return (
     <div className='max-h-screen -my-10 pt-28 pb-10 overflow-scroll'>
-      <div
-        className={cn(
-          revealItems ? 'bg-black/40 shadow-md' : 'bg-black/0 shadow-none',
-          'rounded-2xl backdrop-blur-sm pt-28 pb-12 flex flex-col gap-4'
-        )}
-      >
+      <div className='flex flex-col gap-4'>
         {/* TITLE */}
-        <div className='absolute -top-20 left-1/2 -translate-x-1/2 flex flex-col items-center -mb-4 md:mb-4 scale-75 md:scale-100'>
+        <div className='flex flex-col items-center -mb-4 md:mb-4 scale-75 md:scale-100'>
           <Badge
             color={getColor(level)}
             stars={level % 5 === 0 ? 4 : (level % 5) - 1}
@@ -102,10 +97,7 @@ export default function ModalOver() {
         </div>
 
         {/* EXIT BUTTON */}
-        <div
-          onClick={handleExit}
-          className='absolute -bottom-7 left-1/2 -translate-x-1/2 flex items-center justify-center cursor-pointer'
-        >
+        <div onClick={handleExit} className='flex items-center justify-center cursor-pointer'>
           <span className='backdrop-blur-sm bg-black/70 px-8 py-4 pr-16 tracking-[0.3em] rounded-full shadow-md'>
             EXIT
           </span>

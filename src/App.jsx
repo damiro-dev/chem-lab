@@ -9,6 +9,7 @@ import Modal from './components/Modal';
 import Tooltip from './components/Tooltip';
 import Follower from './components/Follower';
 import GameImage from './components/GameImage';
+import Characters from './components/Characters';
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           <CursorProvider>
             <TimerProvider>
               <Container>
+                <Characters />
                 <GamePanel />
                 <Tooltip />
                 <Modal />

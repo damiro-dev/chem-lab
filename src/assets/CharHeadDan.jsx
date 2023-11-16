@@ -1,4 +1,4 @@
-export default function CharDanHead({ className }) {
+export default function CharHeadDan({ className }) {
   return (
     <svg
       className={className}

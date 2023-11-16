@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { useGame, useGameUpdate } from '../context/GameProvider';
-import { useNavigationUpdate } from '../context/NavigationProvider';
 import { PiPlayFill } from 'react-icons/Pi';
 import { FaCheckCircle } from 'react-icons/fa';
+import { useGame, useGameUpdate } from '../context/GameProvider';
+import { useNavigationUpdate } from '../context/NavigationProvider';
 import { useLocalStorage } from '../context/LocalStorageProvider';
 import getBadge from '../lib/getBadge';
 import getColor from '../lib/getColor';

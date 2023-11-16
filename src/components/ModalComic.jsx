@@ -8,6 +8,7 @@ import CharDanHead from '../assets/CharDanHead';
 import CharXiaHead from '../assets/CharXiaHead';
 import Badge from '../assets/badge';
 import getColor from '../lib/getColor';
+import getTrophy from '../lib/getTrophy';
 
 export default function ModalComic() {
   const navUpdate = useNavigationUpdate();
@@ -56,15 +57,12 @@ export default function ModalComic() {
         >
           <div
             className={cn(
-              comicData.type === 'dialog'
-                ? 'hidden'
-                : comicData.type === 'banner'
-                ? 'py-24 px-4 rounded-xl text-white/80 bg-black/30 uppercase tracking-widest text-center flex flex-col'
-                : 'py-12 px-4 rounded-xl text-white/80 bg-black/30 uppercase tracking-widest text-center flex flex-col'
+              comicData.type === 'dialog' ? 'hidden' : comicData.type === 'banner' ? 'py-24 px-4 ' : 'py-12 px-4',
+              'rounded-xl text-black/60 bg-black/30 uppercase tracking-widest text-center flex flex-col outline-dashed outline-[3px] outline-offset-[-12px] outline-black/30 '
             )}
           >
-            <span className='text-sm md:text-md'>New badge unlocked</span>
             <span className='text-2xl md:text-3xl font-bold'>Congrats {name}!</span>
+            <span className='text-sm font-extrabold md:text-md'>{getTrophy(level)}</span>
           </div>
         </div>
 

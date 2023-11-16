@@ -19,8 +19,8 @@ export default function App() {
             <TimerProvider>
               <Container>
                 <GamePanel />
-                <Modal />
                 <Tooltip />
+                <Modal />
                 <Follower />
                 <GameImage />
               </Container>

@@ -31,7 +31,7 @@ export default function Badge({ color, stars = 0, text = '', className, icon }) 
         >
           <div
             style={{ borderColor: color }}
-            className='w-[95px] h-[95px] border border-dashed rounded-full flex items-center justify-center'
+            className='w-[95px] h-[95px] border-[2px] border-dashed rounded-full flex items-center justify-center'
           >
             {renderIcon()}
           </div>

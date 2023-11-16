@@ -87,7 +87,7 @@ export default function ModalHome() {
             onChange={handleInputChange}
             value={inputChange}
             placeholder='Enter name to play'
-            className='backdrop-blur-sm bg-white/70 placeholder-black/40 text-black px-6 py-3 w-[280px] rounded-full uppercase tracking-widest'
+            className='backdrop-blur-sm bg-white/70 placeholder-black/40 text-black px-6 py-3 w-[280px] rounded-full uppercase tracking-widest shadow-md'
           />
           <div
             onClick={handlePlay}

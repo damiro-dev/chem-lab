@@ -1,7 +1,7 @@
-// Units are in percentage positions of the image
+// Units are in percentage positions of the scene image
 
 const itemsData = [
-  // SCENE-0
+  // SCENE-0 14 ITEMS
   [
     {
       id: 1,
@@ -117,7 +117,7 @@ const itemsData = [
     },
   ],
 
-  // SCENE-1
+  // SCENE-1 25 ITEMS
   [
     {
       id: 1,
@@ -321,7 +321,7 @@ const itemsData = [
     },
   ],
 
-  // SCENE-2
+  // SCENE-2 30 ITEMS
   [
     {
       id: 1,
@@ -565,7 +565,7 @@ const itemsData = [
     },
   ],
 
-  // SCENE-3
+  // SCENE-3 19 ITEMS
   [
     {
       id: 1,
@@ -721,7 +721,7 @@ const itemsData = [
     },
   ],
 
-  // SCENE-4
+  // SCENE-4 24 ITEMS
   [
     {
       id: 1,

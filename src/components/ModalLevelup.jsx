@@ -35,7 +35,7 @@ export default function Modallevelup() {
       <div className='flex flex-col gap-4'>
         {/* TITLE */}
         <div className='flex flex-col items-center -mb-4 md:mb-4 scale-75 md:scale-100'>
-          <Badge color={getColor(level)} stars={level % 5 === 0 ? 4 : (level % 5) - 1} icon={level - 1} />
+          <Badge color={getColor(level)} stars={level % 5 === 0 ? 4 : (level % 5) - 1} icon={level} />
           <span
             style={{ color: getColor(level) }}
             className='bg-black/70 uppercase text-sm text-center font-semibold tracking-[8px] px-6 py-2 pl-10 -mt-[46px] rounded-full drop-shadow-md'
@@ -85,7 +85,9 @@ export default function Modallevelup() {
 
         {/* GAME ON BUTTON */}
         <div onClick={handlePlay} className='flex items-center justify-center cursor-pointer'>
-          <span className='backdrop-blur-sm bg-black/70 px-8 py-4 pr-16 tracking-[0.3em] rounded-full'>GAME ON!</span>
+          <span className='backdrop-blur-sm bg-black/70 px-8 py-4 pr-16 tracking-[0.3em] rounded-full shadow-md'>
+            GAME ON!
+          </span>
           <div
             className={cn(
               'z-10 w-10 aspect-square flex items-center justify-center rounded-full -ml-12',

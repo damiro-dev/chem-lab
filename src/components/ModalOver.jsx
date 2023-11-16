@@ -37,11 +37,11 @@ export default function ModalOver() {
   };
 
   return (
-    <div className='max-h-screen -my-10 py-20 overflow-scroll'>
+    <div className='max-h-screen -my-10 pt-28 pb-10 overflow-scroll'>
       <div
         className={cn(
           revealItems ? 'bg-black/40 shadow-md' : 'bg-black/0 shadow-none',
-          'rounded-2xl backdrop-blur-sm px-4 md:px-8 pt-28 pb-12 flex flex-col gap-4'
+          'rounded-2xl backdrop-blur-sm pt-28 pb-12 flex flex-col gap-4'
         )}
       >
         {/* TITLE */}
@@ -67,7 +67,7 @@ export default function ModalOver() {
               'mx-auto text-sm text-center uppercase tracking-widest font-semibold opacity-70 drop-shadow-md'
             )}
           >
-            Congrats for reaching level {level} ({score}0 POINTS)
+            Congrats {name} for reaching level {level} ({score}0 POINTS)
           </span>
         </div>
 
@@ -84,7 +84,7 @@ export default function ModalOver() {
               <div
                 key={item.id}
                 className={cn(
-                  'min-w-[140px] flex p-4 rounded-2xl backdrop-blur-sm bg-black/40',
+                  'min-w-[130px] flex p-4 rounded-2xl backdrop-blur-sm bg-black/40',
                   items.length < 3 ? 'flex-row gap-4' : 'flex-col gap-3'
                 )}
               >
@@ -106,7 +106,9 @@ export default function ModalOver() {
           onClick={handleExit}
           className='absolute -bottom-7 left-1/2 -translate-x-1/2 flex items-center justify-center cursor-pointer'
         >
-          <span className='backdrop-blur-sm bg-black/70 px-8 py-4 pr-16 tracking-[0.3em] rounded-full'>EXIT</span>
+          <span className='backdrop-blur-sm bg-black/70 px-8 py-4 pr-16 tracking-[0.3em] rounded-full shadow-md'>
+            EXIT
+          </span>
           <div
             className={cn(
               'z-10 w-10 aspect-square flex items-center justify-center rounded-full -ml-12',

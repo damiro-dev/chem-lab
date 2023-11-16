@@ -7,9 +7,10 @@ import cn from '../lib/tailwindMerge';
 import Badge from '../assets/badge';
 import { useLocalStorage } from '../context/LocalStorageProvider';
 import getColor from '../lib/getColor';
+import getBadge from '../lib/getBadge';
 
 export default function ModalSummary() {
-  const { name, level, items, itemFound, score } = useGame();
+  const { name, level, items, score } = useGame();
   const { setLevel } = useGameUpdate();
   const navUpdate = useNavigationUpdate();
   const { labsGameData } = useLocalStorage();
@@ -27,10 +28,10 @@ export default function ModalSummary() {
       <div className='flex flex-col gap-4'>
         {/* TITLE */}
         <div className='flex flex-col items-center -mb-4 md:mb-4 scale-75 md:scale-100'>
-          <Badge color={getColor(level)} stars={level % 5 === 0 ? 5 : level % 5} icon={level} />
+          <Badge color={getColor(level)} stars={level % 5 === 0 ? 5 : level % 5} icon={level} text={getBadge(level)} />
           <span
             style={{ color: getColor(level) }}
-            className='bg-black/70 uppercase text-sm text-center font-semibold tracking-[8px] px-6 py-2 pl-10 -mt-[46px] rounded-full drop-shadow-md'
+            className='hidden bg-black/70 uppercase text-sm text-center font-semibold tracking-[8px] px-6 py-2 pl-10 -mt-[46px] rounded-full drop-shadow-md'
           >
             Level {level}
           </span>
@@ -59,7 +60,7 @@ export default function ModalSummary() {
               <div
                 key={item.id}
                 className={cn(
-                  'min-w-[140px] flex p-4 rounded-2xl backdrop-blur-sm bg-black/40',
+                  'min-w-[130px] flex p-4 rounded-2xl backdrop-blur-sm bg-black/40',
                   items.length < 3 ? 'flex-row gap-4' : 'flex-col gap-3'
                 )}
               >
@@ -78,7 +79,9 @@ export default function ModalSummary() {
 
         {/* CONTINUE BUTTON */}
         <div onClick={handlePlay} className='flex items-center justify-center cursor-pointer'>
-          <span className='backdrop-blur-sm bg-black/70 px-8 py-4 pr-16 tracking-[0.3em] rounded-full'>CONTINUE</span>
+          <span className='backdrop-blur-sm bg-black/70 px-8 py-4 pr-16 tracking-[0.3em] rounded-full shadow-md'>
+            CONTINUE
+          </span>
           <div
             className={cn(
               'z-10 w-10 aspect-square flex items-center justify-center rounded-full -ml-12',

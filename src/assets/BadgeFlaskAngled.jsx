@@ -14,8 +14,8 @@ export default function BadgeFlaskAngled({ color = 'white', className }) {
         fillOpacity='0.3'
       />
       <path
-        fill-rule='evenodd'
-        clip-rule='evenodd'
+        fillRule='evenodd'
+        clipRule='evenodd'
         d='M25.1582 7.20202C25.1582 6.20701 24.3516 5.40039 23.3566 5.40039C22.3616 5.40039 21.555 6.20701 21.555 7.20202V21.4556L7.05773 46.308C6.55637 47.1675 6.84667 48.2707 7.70615 48.772C8.56562 49.2734 9.66879 48.9831 10.1702 48.1236L24.887 22.8947C25.0589 22.6187 25.1582 22.2927 25.1582 21.9436V7.20202Z'
         fill={color}
         fillOpacity='0.5'

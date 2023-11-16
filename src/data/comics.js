@@ -2,6 +2,7 @@ const comicsData = [
   {
     level: 1,
     heading: 'Welcome!',
+    type: 'dialog',
     comic: [
       {
         character: 'Xia',
@@ -25,7 +26,7 @@ const comicsData = [
       },
       {
         character: 'Daniel',
-        dialog: 'Oh, please be aware of the time limit. You only have 60 seconds to find your first item. Good luck!',
+        dialog: 'Oh, please be aware of the time limit. You only have 30 seconds to find your first item. Good luck!',
         duration: 1,
         delay: 0.5,
       },
@@ -34,6 +35,7 @@ const comicsData = [
   {
     level: 2,
     heading: 'Lets step it up ',
+    type: 'dialog',
     comic: [
       {
         character: 'Daniel',
@@ -59,6 +61,7 @@ const comicsData = [
   {
     level: 3,
     heading: 'Trainee',
+    type: 'both',
     comic: [
       {
         character: 'Xia',
@@ -89,54 +92,31 @@ const comicsData = [
   {
     level: 6,
     heading: 'Apprentice',
-    comic: [
-      {
-        character: 'Daniel',
-        dialog: 'Hello?',
-        duration: 1,
-        delay: 0.5,
-      },
-    ],
+    type: 'banner',
+    comic: [],
   },
   {
     level: 11,
     heading: 'Supervisor',
-    comic: [
-      {
-        character: 'Daniel',
-        dialog: 'Hello?',
-        duration: 1,
-        delay: 0.5,
-      },
-    ],
+    type: 'banner',
+    comic: [],
   },
   {
     level: 16,
     heading: 'Manager',
-    comic: [
-      {
-        character: 'Daniel',
-        dialog: 'Hello?',
-        duration: 1,
-        delay: 0.5,
-      },
-    ],
+    type: 'banner',
+    comic: [],
   },
   {
     level: 21,
     heading: 'Director',
-    comic: [
-      {
-        character: 'Daniel',
-        dialog: 'Hello?',
-        duration: 1,
-        delay: 0.5,
-      },
-    ],
+    type: 'banner',
+    comic: [],
   },
   {
     level: 26,
     heading: 'Expert',
+    type: 'both',
     comic: [
       {
         character: 'Daniel',

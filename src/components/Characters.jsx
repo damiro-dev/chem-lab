@@ -11,6 +11,8 @@ export default function Characters() {
   const content = useNavigation();
   const [ref, bounds] = useMeasure();
 
+  console.log('right here!');
+
   return (
     <>
       <div

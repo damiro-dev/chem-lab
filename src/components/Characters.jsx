@@ -19,7 +19,7 @@ export default function Characters() {
         ref={ref}
         className='absolute container w-full max-w-md z-20 mx-0 top-0 left-1/2 -translate-x-1/2 bg-red-800/70 h-1'
       />
-      <div className={cn(content === 'game' && 'hidden')}>
+      <div className={cn(content === 'game' && 'hidden', 'bg-red-400 min-w-screen min-h-screen overflow-hidden')}>
         {/* HOME */}
         <section className={cn(content === 'home' ? 'relative z-30' : 'hidden')}>
           <AnimateJump bounds={bounds}>

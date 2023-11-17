@@ -17,6 +17,7 @@ export default function ModalHome() {
   const { labsGameData, resetLabsGame } = useLocalStorage();
 
   const [inputChange, setInputChange] = useState('');
+  const [feedback, setFeedback] = useState(' ');
   const handleInputChange = (e) => setInputChange(e.currentTarget.value);
 
   // ON LOAD
@@ -29,18 +30,21 @@ export default function ModalHome() {
   }, []);
 
   const handlePlay = () => {
-    setLevel(1);
-    if (inputChange.length > 16) {
-      setName(inputChange.slice(0, 16));
+    const newName = inputChange.trim().substring(0, 16);
+    // Remove leading and trailing spaces, and limit to 16 characters
+
+    if (newName.length >= 3) {
+      setName(newName);
+      setLevel(1);
+      setContent('comic');
+      console.log('PLAY!');
     } else {
-      setName(inputChange);
+      setFeedback('Invalid Name, Please try again!');
     }
-    setContent('comic');
-    console.log('PLAY!');
   };
 
   return (
-    <div className='max-h-screen -my-10 py-10 overflow-scroll'>
+    <div className='max-h-screen -my-10 py-20 overflow-scroll'>
       <div className='rounded-2xl backdrop-blur-sm bg-black/40 px-8 md:px-20 pt-10 pb-16 flex flex-col gap-4 shadow-md'>
         <div className='absolute z-10 flex gap-3 -top-4 left-1/2 -translate-x-1/2'>
           <div
@@ -80,24 +84,28 @@ export default function ModalHome() {
             ))}
         </div>
 
-        <div className='absolute flex items-center -bottom-6 left-1/2 -translate-x-1/2'>
-          <input
-            name='inputName'
-            type='text'
-            onChange={handleInputChange}
-            value={inputChange}
-            placeholder='Enter name to play'
-            className='backdrop-blur-sm bg-white/70 placeholder-black/40 text-black px-6 py-3 w-[280px] rounded-full uppercase tracking-widest shadow-md'
-          />
-          <div
-            onClick={handlePlay}
-            className={cn(
-              'z-10 w-10 aspect-square flex items-center justify-center rounded-full -ml-11',
-              'cursor-pointer bg-black/70 hover:bg-black/60'
-            )}
-          >
-            <PiPlayFill className='scale-110' />
+        {/* INPUT NAME */}
+        <div className='absolute -bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 h-10'>
+          <div className='flex items-center'>
+            <input
+              name='inputName'
+              type='text'
+              onChange={handleInputChange}
+              value={inputChange}
+              placeholder='Enter name to play'
+              className='backdrop-blur-sm bg-white/70 placeholder-black/40 text-black px-6 py-3 w-[280px] rounded-full uppercase tracking-widest shadow-md'
+            />
+            <div
+              onClick={handlePlay}
+              className={cn(
+                'z-10 w-10 aspect-square flex items-center justify-center rounded-full -ml-11',
+                'cursor-pointer bg-black/70 hover:bg-black/60'
+              )}
+            >
+              <PiPlayFill className='scale-110' />
+            </div>
           </div>
+          <span className='text-sm font-semibold text-red-800 tracking-wide'>{feedback}</span>
         </div>
       </div>
     </div>

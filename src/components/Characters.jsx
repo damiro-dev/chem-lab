@@ -11,10 +11,6 @@ export default function Characters() {
   const content = useNavigation();
   const [ref, bounds] = useMeasure();
 
-  // useEffect(() => {
-  //   console.log('CHAR:', bounds.right);
-  // }, [bounds]);
-
   return (
     <>
       <div
@@ -23,9 +19,7 @@ export default function Characters() {
       />
       <div className={cn(content === 'game' && 'hidden')}>
         {/* HOME */}
-        <section
-          className={cn(content === 'home' ? 'relative z-30' : 'hidden')}
-        >
+        <section className={cn(content === 'home' ? 'relative z-30' : 'hidden')}>
           <AnimateJump bounds={bounds}>
             <CharHomeDan className={'drop-shadow-md scale-50 lg:scale-75'} />
           </AnimateJump>
@@ -34,9 +28,7 @@ export default function Characters() {
         {/* ABOUT */}
         <section
           className={cn(
-            content === 'about'
-              ? 'absolute z-20 bg-red-800/60 w-full min-h-screen flex items-center'
-              : 'hidden'
+            content === 'about' ? 'absolute z-20 bg-red-800/60 w-full min-h-screen flex items-center' : 'hidden'
           )}
         >
           ABOUT
@@ -45,9 +37,7 @@ export default function Characters() {
         {/* LEADERBOARD */}
         <section
           className={cn(
-            content === 'highscore'
-              ? 'absolute z-20 bg-red-800/60 w-full min-h-screen flex items-center'
-              : 'hidden'
+            content === 'highscore' ? 'absolute z-20 bg-red-800/60 w-full min-h-screen flex items-center' : 'hidden'
           )}
         >
           LEADERBOARD
@@ -56,9 +46,7 @@ export default function Characters() {
         {/* PAUSED */}
         <section
           className={cn(
-            content === 'paused'
-              ? 'absolute z-20 bg-red-800/60 w-full min-h-screen flex items-center'
-              : 'hidden'
+            content === 'paused' ? 'absolute z-20 bg-red-800/60 w-full min-h-screen flex items-center' : 'hidden'
           )}
         >
           PAUSED
@@ -67,9 +55,7 @@ export default function Characters() {
         {/* GAME OVER */}
         <section
           className={cn(
-            content === 'over'
-              ? 'absolute z-20 bg-red-800/60 w-full min-h-screen flex items-center'
-              : 'hidden'
+            content === 'over' ? 'absolute z-20 bg-red-800/60 w-full min-h-screen flex items-center' : 'hidden'
           )}
         >
           GAME OVER
@@ -78,9 +64,7 @@ export default function Characters() {
         {/* LEVEL UP */}
         <section
           className={cn(
-            content === 'levelup'
-              ? 'absolute z-20 bg-red-800/60 w-full min-h-screen flex items-center'
-              : 'hidden'
+            content === 'levelup' ? 'absolute z-20 bg-red-800/60 w-full min-h-screen flex items-center' : 'hidden'
           )}
         >
           LEVEL UP
@@ -89,9 +73,7 @@ export default function Characters() {
         {/* COMIC */}
         <section
           className={cn(
-            content === 'comic'
-              ? 'absolute z-20 bg-red-800/60 w-full min-h-screen flex items-center'
-              : 'hidden'
+            content === 'comic' ? 'absolute z-20 bg-red-800/60 w-full min-h-screen flex items-center' : 'hidden'
           )}
         >
           COMIC
@@ -100,9 +82,7 @@ export default function Characters() {
         {/* SUMMARY */}
         <section
           className={cn(
-            content === 'summary'
-              ? 'absolute z-20 bg-red-800/60 w-full min-h-screen flex items-center'
-              : 'hidden'
+            content === 'summary' ? 'absolute z-20 bg-red-800/60 w-full min-h-screen flex items-center' : 'hidden'
           )}
         >
           SUMMARY

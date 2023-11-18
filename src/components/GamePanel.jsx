@@ -56,7 +56,6 @@ export default function GamePanel() {
     <div className={cn(!isRunning && 'hidden')}>
       <section className={cn(!inGame && 'hidden')}>
         {/* TIMER */}
-
         <div
           className={cn(
             'absolute z-20 left-1/2 -translate-x-1/2 top-7 scale-75 whitespace-nowrap',

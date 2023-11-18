@@ -13,7 +13,7 @@ export default function ModalHome() {
   const { setScene, setRevealItems, setLevel, setName, setScore } = useGameUpdate();
   const { setTime } = useTimerUpdate();
   const { initialTime } = useTimer();
-  const { labsGameData, resetLabsGame } = useLocalStorage();
+  const { labsGameData } = useLocalStorage();
 
   const [inputChange, setInputChange] = useState('');
   const [feedback, setFeedback] = useState(' ');
@@ -25,7 +25,6 @@ export default function ModalHome() {
     setRevealItems(false);
     setTime(initialTime);
     setScene(4);
-    // resetLabsGame(); // Reset the 'labsGame' data
   }, []);
 
   const handlePlay = () => {

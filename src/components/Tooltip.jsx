@@ -9,9 +9,9 @@ import referenceData from '../data/reference';
 export default function Tooltip() {
   const cursor = useCursor();
   const navUpdate = useNavigationUpdate();
-  const { items, inGame, itemFound } = useGame();
+  const { items, inGame, itemFound, level } = useGame();
   const { setInGame, setItemFound, setScore } = useGameUpdate();
-  const { isRunning, stopTimer, time, initialTime } = useTimer();
+  const { isRunning, stopTimer } = useTimer();
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [orientation, setOrientation] = useState({ v: false, h: false });
@@ -25,7 +25,7 @@ export default function Tooltip() {
   }, [inGame]);
 
   const checkCorrectness = (item) => {
-    const clickedItem = items.filter((i) => i.reference === item.reference)[0];
+    const clickedItem = items.filter((index) => index.reference === item.reference)[0];
 
     // check if click is in between (x & width && y & height) && if (item === reference)
     if (clickedItem.reference !== item.reference) return;
@@ -38,10 +38,12 @@ export default function Tooltip() {
       setItemFound((found) => found + 1);
       setScore((prev) => prev + 1);
       item.tagged = !item.tagged;
+      console.log('CORRECT:', 'item', clickedItem.reference, '|', itemFound, 'found in total', items.length);
       if (itemFound === items.length) {
         stopTimer();
         setInGame(false);
         navUpdate('summary');
+        console.log('LEVEL', level, 'COMPLETE:', items);
       }
     }
   };

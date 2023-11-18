@@ -100,7 +100,7 @@ const itemsData = [
       height: 14,
     },
     {
-      id: '13',
+      id: 13,
       reference: 14,
       x: 59.8,
       y: 25.7,
@@ -273,6 +273,7 @@ const itemsData = [
     },
     {
       id: 20,
+      reference: 31,
       x: 73.6,
       y: 0.8,
       width: 5.8,
@@ -576,7 +577,7 @@ const itemsData = [
     },
     {
       id: 2,
-      reference: '14',
+      reference: 14,
       x: 18.2,
       y: 4,
       width: 16.5,
@@ -804,7 +805,7 @@ const itemsData = [
     },
     {
       id: 11,
-      reference: '14',
+      reference: 14,
       x: 33,
       y: 51.8,
       width: 9.2,
@@ -812,7 +813,7 @@ const itemsData = [
     },
     {
       id: 12,
-      reference: '1',
+      reference: 1,
       x: 34.2,
       y: 72,
       width: 7.3,

@@ -109,6 +109,7 @@ export default function ModalOver() {
             )}
           >
             {items.map((item) => renderItem(item))}
+            {console.log(items)}
           </div>
         </div>
 

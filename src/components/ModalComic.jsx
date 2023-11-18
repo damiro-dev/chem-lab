@@ -115,7 +115,7 @@ export default function ModalComic() {
           <div
             onClick={handleContinue}
             className={cn(
-              'flex items-center justify-center cursor-pointer',
+              'flex mx-auto rounded-full scale-75 md:scale-100 items-center justify-center cursor-pointer',
               comicData.type === 'banner' && 'absolute bottom-12 left-1/2 -translate-x-1/2'
             )}
           >

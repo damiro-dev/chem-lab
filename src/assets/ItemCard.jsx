@@ -20,7 +20,7 @@ export default function ItemCard({ reference, item, length }) {
           )}
         />
       </div>
-      {item.tagged && <FaCheckCircle size={32} className='absolute top-6 left-6' />}
+      {item.tagged && <FaCheckCircle size={32} className='absolute top-6 left-6 scale-75 md:scale-100 text-white' />}
       <div className={cn('flex flex-col gap-1.5')}>
         <span className='uppercase tracking-wide text-sm font-semibold'>{reference.name}</span>
         <p className='text-sm opacity-70'>{reference.description}</p>

@@ -80,7 +80,7 @@ export default function ModalHome() {
         </div>
 
         {/* INPUT NAME */}
-        <div className='absolute -bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 h-10'>
+        <div className='absolute -bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 h-10 scale-75 md:scale-100'>
           <div className='flex items-center'>
             <input
               name='inputName'

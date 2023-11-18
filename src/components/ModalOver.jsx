@@ -114,7 +114,10 @@ export default function ModalOver() {
         </div>
 
         {/* EXIT BUTTON */}
-        <div onClick={handleExit} className='flex items-center justify-center cursor-pointer'>
+        <div
+          onClick={handleExit}
+          className='flex mx-auto rounded-full scale-75 md:scale-100 items-center justify-center cursor-pointer'
+        >
           <span className='backdrop-blur-sm bg-black/70 px-8 py-4 pr-16 tracking-[0.3em] rounded-full shadow-md'>
             EXIT
           </span>

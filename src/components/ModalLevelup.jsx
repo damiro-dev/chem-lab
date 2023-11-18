@@ -96,7 +96,10 @@ export default function Modallevelup() {
         </div>
 
         {/* GAME ON BUTTON */}
-        <div onClick={handlePlay} className='flex items-center justify-center cursor-pointer'>
+        <div
+          onClick={handlePlay}
+          className='flex mx-auto rounded-full scale-75 md:scale-100 items-center justify-center cursor-pointer'
+        >
           <span className='backdrop-blur-sm bg-black/70 px-8 py-4 pr-16 tracking-[0.3em] rounded-full shadow-md'>
             GAME ON!
           </span>

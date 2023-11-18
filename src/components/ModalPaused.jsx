@@ -49,7 +49,10 @@ export default function ModalPaused() {
       </div>
 
       {/* GAME ON BUTTON */}
-      <div onClick={toggleTimer} className='-mt-7 flex items-center justify-center cursor-pointer'>
+      <div
+        onClick={toggleTimer}
+        className='-mt-7 flex mx-auto rounded-full scale-75 md:scale-100 items-center justify-center cursor-pointer'
+      >
         <span className='backdrop-blur-sm bg-black/70 px-8 py-4 pr-16 tracking-[0.3em] rounded-full shadow-md'>
           CONTINUE
         </span>

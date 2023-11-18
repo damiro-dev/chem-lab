@@ -8,6 +8,7 @@ import referenceData from '../data/reference';
 import cn from '../lib/tailwindMerge';
 import getColor from '../lib/getColor';
 import Badge from '../assets/badge';
+import ItemCard from '../assets/ItemCard';
 
 export default function Modallevelup() {
   const setContent = useNavigationUpdate();
@@ -33,29 +34,7 @@ export default function Modallevelup() {
   const renderItem = (item) => {
     const ref = referenceData.find((refData) => refData.reference === item.reference);
     if (!ref) return null;
-
-    return (
-      <div
-        key={item.id}
-        className={cn(
-          'min-w-[130px] w-full flex p-4 rounded-2xl backdrop-blur-sm shadow-md bg-black/40',
-          items.length < 3 ? 'flex-row gap-4' : 'flex-col gap-3'
-        )}
-      >
-        <span
-          className={cn(
-            'min-h-[120px] w-full rounded-md bg-white/30',
-            items.length < 3 ? 'max-w-[180px]' : 'max-w-[260px]'
-          )}
-        >
-          {ref.reference}
-        </span>
-        <div className='flex flex-col gap-1.5'>
-          <span className='uppercase tracking-wide text-sm font-semibold'>{ref.name}</span>
-          <p className='text-sm opacity-70'>{ref.description}</p>
-        </div>
-      </div>
-    );
+    return <ItemCard key={item.id} item={item} reference={ref} length={items.length} />;
   };
 
   return (

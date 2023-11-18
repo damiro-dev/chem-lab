@@ -93,21 +93,16 @@ export default function GamePanel() {
             'font-semibold uppercase text-[12px] tracking-[4px] bg-black/70 hover:bg-black/60 pl-6 pr-10 py-2 rounded-full cursor-pointer shadow-md'
           )}
         >
-          {'Missing items'}
+          <span>Missing items</span>
           <FaCircleChevronUp
             className={cn(!hideList && 'rotate-180', 'absolute right-2.5 top-1/2 -translate-y-1/2 scale-[2]')}
           />
         </span>
-
-        <div
-          className={cn(
-            hideList
-              ? 'hidden opacity-0'
-              : 'flex flex-row flex-wrap leading-0 items-center justify-center py-1 px-4 gap-x-6 text-sm font-semibold uppercase tracking-wider opacity-100'
-          )}
-        >
-          {items.map((item) => renderItem(item))}
-        </div>
+        {!hideList && (
+          <div className='flex flex-row flex-wrap leading-0 items-center justify-center py-1 px-4 gap-x-6 text-sm font-semibold uppercase tracking-wider'>
+            {items.map((item) => renderItem(item))}
+          </div>
+        )}
       </section>
     </div>
   );

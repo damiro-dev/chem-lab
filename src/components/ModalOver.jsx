@@ -9,6 +9,7 @@ import cn from '../lib/tailwindMerge';
 import Badge from '../assets/badge';
 import getBadge from '../lib/getBadge';
 import getColor from '../lib/getColor';
+import ItemCard from '../assets/ItemCard';
 
 export default function ModalOver() {
   const navUpdate = useNavigationUpdate();
@@ -40,32 +41,7 @@ export default function ModalOver() {
   const renderItem = (item) => {
     const ref = referenceData.find((refData) => refData.reference === item.reference);
     if (!ref) return null;
-
-    return (
-      <div
-        key={item.id}
-        className={cn(
-          'min-w-[130px] w-full flex p-4 rounded-2xl backdrop-blur-sm shadow-md bg-black/40',
-          items.length < 3 ? 'flex-row gap-4' : 'flex-col gap-3'
-        )}
-      >
-        {item.tagged && <FaCheckCircle size={32} className='absolute top-6 left-6' />}
-        <span
-          className={cn(
-            'min-h-[120px] w-full rounded-md bg-white/30',
-            items.length < 3 ? 'max-w-[180px]' : 'max-w-[260px]'
-          )}
-        >
-          {ref.reference}
-        </span>
-        <div className='flex flex-col gap-1.5'>
-          <span className={cn('uppercase tracking-wide text-sm font-semibold', !item.tagged && 'opacity-50')}>
-            {ref.name}
-          </span>
-          <p className='text-sm opacity-70'>{ref.description}</p>
-        </div>
-      </div>
-    );
+    return <ItemCard key={item.id} item={item} reference={ref} length={items.length} />;
   };
 
   return (

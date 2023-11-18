@@ -5,6 +5,7 @@ import { useNavigationUpdate } from '../context/NavigationProvider';
 import { PiPlayFill } from 'react-icons/Pi';
 import { FaCircleChevronUp } from 'react-icons/fa6';
 import cn from '../lib/tailwindMerge';
+import referenceData from '../data/reference';
 
 export default function GamePanel() {
   const { inGame, items, revealItems, level } = useGame();
@@ -23,7 +24,6 @@ export default function GamePanel() {
   // ON GAMEOVER
   useEffect(() => {
     if (inGame && time === 0) {
-      console.log('gp GAMEOVER');
       navUpdate('over');
       setRevealItems(true);
       setInGame(false);
@@ -33,14 +33,23 @@ export default function GamePanel() {
   // ON PAUSE
   const toggleTimer = () => {
     if (inGame && isRunning) {
-      console.log('gp PAUSED');
       stopTimer();
       navUpdate('paused');
     } else {
-      console.log('gp RESUMED');
       startTimer();
       navUpdate('game');
     }
+  };
+
+  const renderItem = (item) => {
+    const ref = referenceData.find((refData) => refData.reference === item.reference);
+    if (!ref) return null;
+
+    return (
+      <span key={item.id} className={cn('whitespace-nowrap', item.tagged && 'line-through opacity-40')}>
+        {ref.name}
+      </span>
+    );
   };
 
   return (
@@ -98,11 +107,7 @@ export default function GamePanel() {
               : 'flex flex-row flex-wrap leading-0 items-center justify-center py-1 px-4 gap-x-6 text-sm font-semibold uppercase tracking-wider opacity-100'
           )}
         >
-          {items.map((item) => (
-            <span key={item.id} className={cn('whitespace-nowrap', item.tagged && 'line-through opacity-40')}>
-              {item.name}
-            </span>
-          ))}
+          {items.map((item) => renderItem(item))}
         </div>
       </section>
     </div>

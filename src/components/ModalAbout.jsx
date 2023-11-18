@@ -8,7 +8,6 @@ export default function ModalAbout() {
   const { resetLabsGame } = useLocalStorage();
 
   const handleReset = () => {
-    console.log('RESET!');
     resetLabsGame();
   };
 

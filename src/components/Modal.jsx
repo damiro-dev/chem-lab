@@ -16,7 +16,7 @@ export default function Modal() {
       <section
         className={cn(
           content === 'game' && 'hidden',
-          'absolute w-full container max-w-4xl z-20 p-6 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
+          'absolute w-full container max-w-4xl z-20 p-3 md:p-6 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible'
         )}
       >
         {content === 'home' && <ModalHome />}

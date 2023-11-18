@@ -1,5 +1,5 @@
-import useMeasure from 'react-use-measure';
 import { useEffect } from 'react';
+import useMeasure from 'react-use-measure';
 import { useNavigation } from '../context/NavigationProvider';
 import cn from '../lib/tailwindMerge';
 import randomBetween from '../lib/randomBetween';
@@ -11,14 +11,9 @@ export default function Characters() {
   const content = useNavigation();
   const [ref, bounds] = useMeasure();
 
-  console.log('right here!');
-
   return (
     <>
-      <div
-        ref={ref}
-        className='absolute container w-full max-w-md z-20 mx-0 top-0 left-1/2 -translate-x-1/2 bg-red-800/70 h-1'
-      />
+      <div ref={ref} className='absolute container w-full max-w-md z-20 mx-0 top-0 left-1/2 -translate-x-1/2 h-1' />
       <div className={cn(content === 'game' && 'hidden', 'bg-red-400 min-w-screen min-h-screen overflow-hidden')}>
         {/* HOME */}
         <section className={cn(content === 'home' ? 'relative z-30' : 'hidden')}>

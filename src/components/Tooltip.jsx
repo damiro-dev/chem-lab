@@ -4,6 +4,7 @@ import { useTimer } from '../context/TimerProvider';
 import { useGame, useGameUpdate } from '../context/GameProvider';
 import { useNavigationUpdate } from '../context/NavigationProvider';
 import cn from '../lib/tailwindMerge';
+import referenceData from '../data/reference';
 
 export default function Tooltip() {
   const cursor = useCursor();
@@ -24,10 +25,10 @@ export default function Tooltip() {
   }, [inGame]);
 
   const checkCorrectness = (item) => {
-    const clickedItem = items.filter((index) => index.name === item.name)[0];
+    const clickedItem = items.filter((i) => i.reference === item.reference)[0];
 
-    // check if click is in between (x & width && y & height) && if (item === name)
-    if (clickedItem.name !== item.name) return;
+    // check if click is in between (x & width && y & height) && if (item === reference)
+    if (clickedItem.reference !== item.reference) return;
     if (
       clickedItem.x < cursor.x &&
       clickedItem.x + clickedItem.width > cursor.x &&
@@ -37,12 +38,10 @@ export default function Tooltip() {
       setItemFound((found) => found + 1);
       setScore((prev) => prev + 1);
       item.tagged = !item.tagged;
-      console.log('CORRECT:', clickedItem.name, itemFound, items.length);
       if (itemFound === items.length) {
         stopTimer();
         setInGame(false);
         navUpdate('summary');
-        console.log('LEVEL COMPLETE', time, '/', initialTime);
       }
     }
   };
@@ -92,6 +91,24 @@ export default function Tooltip() {
     }
   }, [inGame]);
 
+  const renderItem = (item) => {
+    const ref = referenceData.find((refData) => refData.reference === item.reference);
+    if (!ref) return null;
+
+    return (
+      <button
+        key={item.id}
+        onClick={() => handleClick(true, item)}
+        className={cn(
+          'w-full px-8 py-1 text-left hover:bg-orange-400 hover:text-gray-800 uppercase tracking-wider',
+          item.tagged && 'hidden'
+        )}
+      >
+        {ref.name}
+      </button>
+    );
+  };
+
   return (
     <div
       onMouseOver={() => setToHide(false)}
@@ -109,18 +126,7 @@ export default function Tooltip() {
       <span className='px-8 font-bold text-gray-400 cursor-default'>What is this?</span>
       <ol className='flex flex-col items-start pt-4 gap-0'>
         {/* List of game objects */}
-        {items.map((item) => (
-          <button
-            key={item.id}
-            onClick={() => handleClick(true, item)}
-            className={cn(
-              'w-full px-8 py-1 text-left hover:bg-orange-400 hover:text-gray-800 uppercase tracking-wider',
-              item.tagged && 'hidden'
-            )}
-          >
-            {item.name}
-          </button>
-        ))}
+        {items.map((item) => renderItem(item))}
       </ol>
     </div>
   );

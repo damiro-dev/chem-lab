@@ -14,13 +14,10 @@ export default function ModalPaused() {
 
   // ON PAUSE
   const toggleTimer = () => {
-    console.log('PAUSED!');
     if (inGame && isRunning) {
-      console.log('gp PAUSED');
       stopTimer();
       navUpdate('paused');
     } else {
-      console.log('gp RESUMED');
       startTimer();
       navUpdate('game');
     }

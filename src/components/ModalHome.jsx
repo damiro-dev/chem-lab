@@ -4,9 +4,8 @@ import { useNavigationUpdate } from '../context/NavigationProvider';
 import { useGameUpdate } from '../context/GameProvider';
 import { useTimer, useTimerUpdate } from '../context/TimerProvider';
 import { useLocalStorage } from '../context/LocalStorageProvider';
-import getBadge from '../lib/getBadge';
 import cn from '../lib/tailwindMerge';
-import Badge from '../assets/badge';
+import getBadge from '../lib/getBadge';
 import Logo from '../assets/Logo';
 
 export default function ModalHome() {
@@ -30,16 +29,13 @@ export default function ModalHome() {
   }, []);
 
   const handlePlay = () => {
-    const newName = inputChange.trim().substring(0, 16);
-    // Remove leading and trailing spaces, and limit to 16 characters
-
+    const newName = inputChange.trim().substring(0, 16); // Remove leading and trailing spaces, and limit to 16 characters
     if (newName.length >= 3) {
       setName(newName);
       setLevel(1);
       setContent('comic');
-      console.log('PLAY!');
     } else {
-      setFeedback('Invalid Name, Please try again!');
+      setFeedback('Name must be at least 3 characters long');
     }
   };
 

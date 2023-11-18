@@ -14,10 +14,6 @@ export default function AnimateJump({ children, bounds }) {
     return randomBetween(0, 2) === 0 ? 'left' : 'right';
   };
 
-  useEffect(() => {
-    setSide(randomSide());
-  }, []);
-
   return (
     <motion.div
       initial={{ top: window.innerHeight }}
@@ -29,8 +25,11 @@ export default function AnimateJump({ children, bounds }) {
         delay: 0.5,
         repeatType: 'reverse',
       }}
-      style={{ left: side === 'left' ? randomBetween(0, bounds.left) : randomBetween(bounds.right, window.innerWidth) }}
-      className={cn(side === 'left' && 'scale-x-[-100%]', 'absolute -translate-x-1/2 origin-center')}
+      style={{
+        left: randomSide() === 'left' ? randomBetween(0, bounds.left) : randomBetween(bounds.right, window.innerWidth),
+        top: window.innerHeight,
+      }}
+      className={cn(randomSide() === 'left' && 'scale-x-[-100%]', 'absolute -translate-x-1/2 origin-center')}
     >
       {children}
     </motion.div>

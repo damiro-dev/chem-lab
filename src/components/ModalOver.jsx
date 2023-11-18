@@ -4,10 +4,11 @@ import { FaCheckCircle } from 'react-icons/fa';
 import { useGame, useGameUpdate } from '../context/GameProvider';
 import { useNavigationUpdate } from '../context/NavigationProvider';
 import { useLocalStorage } from '../context/LocalStorageProvider';
+import referenceData from '../data/reference';
+import cn from '../lib/tailwindMerge';
+import Badge from '../assets/badge';
 import getBadge from '../lib/getBadge';
 import getColor from '../lib/getColor';
-import Badge from '../assets/badge';
-import cn from '../lib/tailwindMerge';
 
 export default function ModalOver() {
   const navUpdate = useNavigationUpdate();
@@ -36,6 +37,37 @@ export default function ModalOver() {
     navUpdate('home');
   };
 
+  const renderItem = (item) => {
+    const ref = referenceData.find((refData) => refData.reference === item.reference);
+    if (!ref) return null;
+
+    return (
+      <div
+        key={item.id}
+        className={cn(
+          'min-w-[130px] w-full flex p-4 rounded-2xl backdrop-blur-sm shadow-md bg-black/40',
+          items.length < 3 ? 'flex-row gap-4' : 'flex-col gap-3'
+        )}
+      >
+        {item.tagged && <FaCheckCircle size={32} className='absolute top-6 left-6' />}
+        <span
+          className={cn(
+            'min-h-[120px] w-full rounded-md bg-white/30',
+            items.length < 3 ? 'max-w-[180px]' : 'max-w-[260px]'
+          )}
+        >
+          {ref.reference}
+        </span>
+        <div className='flex flex-col gap-1.5'>
+          <span className={cn('uppercase tracking-wide text-sm font-semibold', !item.tagged && 'opacity-50')}>
+            {ref.name}
+          </span>
+          <p className='text-sm opacity-70'>{ref.description}</p>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className='max-h-screen -my-10 pt-28 pb-10 overflow-scroll'>
       <div className='flex flex-col gap-4'>
@@ -49,6 +81,7 @@ export default function ModalOver() {
           />
         </div>
 
+        {/* STATS */}
         <div className='flex flex-col gap-1 pb-4'>
           <span className='mx-auto text-3xl text-center uppercase tracking-widest font-semibold drop-shadow-md'>
             Game Over
@@ -67,32 +100,15 @@ export default function ModalOver() {
         </div>
 
         {/* ITEMS */}
-        <div className='overflow-scroll pb-4'>
+        <div className='overflow-scroll pb-6'>
           <div
             className={cn(
               // hide to use for development purposes: mapping of items
               'flex gap-3 mx-auto',
-              items.length < 3 ? 'flex-col max-w-[400px]' : 'flex-row max-w-4xl'
+              items.length < 3 ? 'flex-col max-w-[400px]' : 'flex-row w-4xl'
             )}
           >
-            {items.map((item) => (
-              <div
-                key={item.id}
-                className={cn(
-                  'min-w-[130px] flex p-4 rounded-2xl backdrop-blur-sm bg-black/40',
-                  items.length < 3 ? 'flex-row gap-4' : 'flex-col gap-3'
-                )}
-              >
-                <div className={cn(!item.tagged && 'hidden', 'absolute top-6 left-6')}>
-                  <FaCheckCircle size={32} />
-                </div>
-                <div className='min-h-[120px] w-full rounded-sm bg-white/30' />
-                <div className='flex flex-col gap-2.5'>
-                  <span className='uppercase tracking-wide text-sm font-semibold'>{item.name}</span>
-                  <p className='text-sm opacity-70'>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-                </div>
-              </div>
-            ))}
+            {items.map((item) => renderItem(item))}
           </div>
         </div>
 

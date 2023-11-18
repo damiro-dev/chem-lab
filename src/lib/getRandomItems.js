@@ -2,7 +2,6 @@
 // const inputArray = ['Item 1', 'Item 2', 'Item 3', /* ... */ 'Item 20'];
 // const numRandomItems = 4;
 // const randomItems = getRandomItems(inputArray, numRandomItems);
-// console.log(randomItems);
 
 export default function getRandomItems(inputArray, numItems) {
   const shuffledArray = [...inputArray]; // Create a copy to avoid modifying the original array

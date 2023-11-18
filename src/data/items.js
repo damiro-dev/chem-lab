@@ -5,7 +5,7 @@ const itemsData = [
   [
     {
       id: 1,
-      name: 'microscope',
+      reference: 1,
       x: 3,
       y: 16,
       width: 19,
@@ -13,7 +13,7 @@ const itemsData = [
     },
     {
       id: 2,
-      name: 'stop watch',
+      reference: 2,
       x: 11,
       y: 79,
       width: 17,
@@ -21,7 +21,7 @@ const itemsData = [
     },
     {
       id: 3,
-      name: 'lens',
+      reference: 3,
       x: 21.8,
       y: 56,
       width: 21,
@@ -29,7 +29,7 @@ const itemsData = [
     },
     {
       id: 4,
-      name: 'pandikdik',
+      reference: 4,
       x: 24.2,
       y: 40,
       width: 10.4,
@@ -37,7 +37,7 @@ const itemsData = [
     },
     {
       id: 5,
-      name: 'spring weigh',
+      reference: 5,
       x: 30.2,
       y: 0,
       width: 2.5,
@@ -45,7 +45,7 @@ const itemsData = [
     },
     {
       id: 6,
-      name: 'blue ring test tube',
+      reference: 6,
       x: 40,
       y: 19,
       width: 5,
@@ -53,7 +53,7 @@ const itemsData = [
     },
     {
       id: 7,
-      name: 'flame tripod',
+      reference: 7,
       x: 45.7,
       y: 57,
       width: 18.5,
@@ -61,7 +61,7 @@ const itemsData = [
     },
     {
       id: 8,
-      name: 'test tube rack',
+      reference: 8,
       x: 45.7,
       y: 28,
       width: 11,
@@ -69,7 +69,7 @@ const itemsData = [
     },
     {
       id: 9,
-      name: 'gas bottle',
+      reference: 9,
       x: 63,
       y: 57,
       width: 8.2,
@@ -77,7 +77,7 @@ const itemsData = [
     },
     {
       id: 10,
-      name: 'big tong',
+      reference: 10,
       x: 69.4,
       y: 60,
       width: 19,
@@ -85,7 +85,7 @@ const itemsData = [
     },
     {
       id: 11,
-      name: 'gloves',
+      reference: 11,
       x: 72,
       y: 70,
       width: 24.2,
@@ -93,27 +93,27 @@ const itemsData = [
     },
     {
       id: 12,
-      name: 'specimen dish',
+      reference: 12,
       x: 88.8,
       y: 53,
       width: 9.5,
       height: 14,
     },
     {
-      id: 13,
-      name: 'gas tube',
-      x: 90.8,
-      y: 28.5,
-      width: 6.5,
-      height: 24.5,
-    },
-    {
-      id: '14',
-      name: 'beam balance',
+      id: '13',
+      reference: 14,
       x: 59.8,
       y: 25.7,
       width: 30.3,
       height: 32,
+    },
+    {
+      id: 14,
+      reference: 13,
+      x: 90.8,
+      y: 28.5,
+      width: 6.5,
+      height: 24.5,
     },
   ],
 
@@ -121,7 +121,7 @@ const itemsData = [
   [
     {
       id: 1,
-      name: 'red pump',
+      reference: 15,
       x: 3.2,
       y: 65.5,
       width: 7,
@@ -129,7 +129,7 @@ const itemsData = [
     },
     {
       id: 2,
-      name: 'tong',
+      reference: 16,
       x: 11.4,
       y: 73,
       width: 5,
@@ -137,7 +137,7 @@ const itemsData = [
     },
     {
       id: 3,
-      name: 'dark botelya',
+      reference: 17,
       x: 20.6,
       y: 63,
       width: 4.2,
@@ -145,7 +145,7 @@ const itemsData = [
     },
     {
       id: 4,
-      name: 'disecting set',
+      reference: 18,
       x: 0,
       y: 74.5,
       width: 10.4,
@@ -153,7 +153,7 @@ const itemsData = [
     },
     {
       id: 5,
-      name: 'dikdikan',
+      reference: 4,
       x: 7.6,
       y: 57.5,
       width: 7.5,
@@ -161,7 +161,7 @@ const itemsData = [
     },
     {
       id: 6,
-      name: 'malaking test tube',
+      reference: 6,
       x: 22,
       y: 32.5,
       width: 3.5,
@@ -169,7 +169,7 @@ const itemsData = [
     },
     {
       id: 7,
-      name: 'mataas na flask',
+      reference: 19,
       x: 26,
       y: 37,
       width: 4,
@@ -177,7 +177,7 @@ const itemsData = [
     },
     {
       id: 8,
-      name: 'screen',
+      reference: 20,
       x: 31.2,
       y: 0,
       width: 10.5,
@@ -185,7 +185,7 @@ const itemsData = [
     },
     {
       id: 9,
-      name: 'spoontula',
+      reference: 21,
       x: 39.2,
       y: 31.5,
       width: 2.3,
@@ -193,7 +193,7 @@ const itemsData = [
     },
     {
       id: 10,
-      name: 'malaking termometer',
+      reference: 22,
       x: 25.5,
       y: 61.5,
       width: 7.8,
@@ -201,7 +201,7 @@ const itemsData = [
     },
     {
       id: 11,
-      name: 'test tube rack',
+      reference: 8,
       x: 28.8,
       y: 71,
       width: 8.7,
@@ -209,7 +209,7 @@ const itemsData = [
     },
     {
       id: 12,
-      name: 'vials',
+      reference: 23,
       x: 36.3,
       y: 58,
       width: 5.8,
@@ -217,7 +217,7 @@ const itemsData = [
     },
     {
       id: 13,
-      name: 'red Ts',
+      reference: 24,
       x: 43,
       y: 66.8,
       width: 8,
@@ -225,7 +225,7 @@ const itemsData = [
     },
     {
       id: 14,
-      name: 'paper strips',
+      reference: 25,
       x: 40.5,
       y: 77,
       width: 8,
@@ -233,7 +233,7 @@ const itemsData = [
     },
     {
       id: 15,
-      name: 'paper de hapon',
+      reference: 26,
       x: 38.5,
       y: 86,
       width: 11,
@@ -241,7 +241,7 @@ const itemsData = [
     },
     {
       id: 16,
-      name: 'slides',
+      reference: 27,
       x: 49.2,
       y: 74,
       width: 9.2,
@@ -249,7 +249,7 @@ const itemsData = [
     },
     {
       id: 17,
-      name: 'flat weight',
+      reference: 28,
       x: 55.5,
       y: 66,
       width: 16.8,
@@ -257,7 +257,7 @@ const itemsData = [
     },
     {
       id: 18,
-      name: 'brush for bottle',
+      reference: 29,
       x: 50,
       y: 5.5,
       width: 14,
@@ -265,7 +265,7 @@ const itemsData = [
     },
     {
       id: 19,
-      name: 'plastic pitsel',
+      reference: 30,
       x: 64,
       y: 1.7,
       width: 4.6,
@@ -273,7 +273,6 @@ const itemsData = [
     },
     {
       id: 20,
-      name: 'bottle with takip',
       x: 73.6,
       y: 0.8,
       width: 5.8,
@@ -281,7 +280,7 @@ const itemsData = [
     },
     {
       id: 21,
-      name: 'spring weight',
+      reference: 5,
       x: 70,
       y: 80,
       width: 10.7,
@@ -289,7 +288,7 @@ const itemsData = [
     },
     {
       id: 22,
-      name: 'magnet',
+      reference: 32,
       x: 67,
       y: 87.5,
       width: 9.5,
@@ -297,7 +296,7 @@ const itemsData = [
     },
     {
       id: 23,
-      name: 'inertia tube',
+      reference: 33,
       x: 67.3,
       y: 93.5,
       width: 13.5,
@@ -305,7 +304,7 @@ const itemsData = [
     },
     {
       id: 24,
-      name: 'microscope',
+      reference: 1,
       x: 83,
       y: 49.5,
       width: 12.8,
@@ -313,7 +312,7 @@ const itemsData = [
     },
     {
       id: 25,
-      name: 'magnifying glass',
+      reference: 34,
       x: 82.2,
       y: 23.5,
       width: 6.5,
@@ -325,7 +324,7 @@ const itemsData = [
   [
     {
       id: 1,
-      name: 'thermometer',
+      reference: 35,
       x: 6.2,
       y: 0,
       width: 1.5,
@@ -333,7 +332,7 @@ const itemsData = [
     },
     {
       id: 2,
-      name: 'barometer',
+      reference: 36,
       x: 11.8,
       y: 47.8,
       width: 7,
@@ -341,7 +340,7 @@ const itemsData = [
     },
     {
       id: 3,
-      name: 'beaker',
+      reference: 37,
       x: 22,
       y: 59.5,
       width: 7.2,
@@ -349,7 +348,7 @@ const itemsData = [
     },
     {
       id: 4,
-      name: 'glass stirer',
+      reference: 38,
       x: 11,
       y: 78.2,
       width: 16.8,
@@ -357,7 +356,7 @@ const itemsData = [
     },
     {
       id: 5,
-      name: 'dropper',
+      reference: 39,
       x: 8,
       y: 90,
       width: 8.5,
@@ -365,7 +364,7 @@ const itemsData = [
     },
     {
       id: 6,
-      name: 'ceramic bowl',
+      reference: 40,
       x: 34.5,
       y: 71.5,
       width: 6,
@@ -373,7 +372,7 @@ const itemsData = [
     },
     {
       id: 7,
-      name: 'dark glass',
+      reference: 17,
       x: 34,
       y: 47,
       width: 4.5,
@@ -381,7 +380,7 @@ const itemsData = [
     },
     {
       id: 8,
-      name: 'long neck flask',
+      reference: 19,
       x: 40.2,
       y: 27.3,
       width: 4.5,
@@ -389,7 +388,7 @@ const itemsData = [
     },
     {
       id: 9,
-      name: 'clear vessle',
+      reference: 31,
       x: 44.6,
       y: 44,
       width: 4.5,
@@ -397,7 +396,7 @@ const itemsData = [
     },
     {
       id: 10,
-      name: 'soil tester',
+      reference: 41,
       x: 48,
       y: 17,
       width: 2.4,
@@ -405,7 +404,7 @@ const itemsData = [
     },
     {
       id: 11,
-      name: 'tall test tube',
+      reference: 6,
       x: 52.4,
       y: 16.4,
       width: 3.5,
@@ -413,7 +412,7 @@ const itemsData = [
     },
     {
       id: 12,
-      name: 'metal tray',
+      reference: 42,
       x: 55,
       y: 30,
       width: 10.4,
@@ -421,7 +420,7 @@ const itemsData = [
     },
     {
       id: 13,
-      name: 'litmus paper',
+      reference: 25,
       x: 42,
       y: 67.8,
       width: 5.4,
@@ -429,7 +428,7 @@ const itemsData = [
     },
     {
       id: 14,
-      name: 'glass dish',
+      reference: 43,
       x: 42.8,
       y: 77.4,
       width: 7,
@@ -437,7 +436,7 @@ const itemsData = [
     },
     {
       id: 15,
-      name: 'cork',
+      reference: 44,
       x: 45.2,
       y: 85,
       width: 6.6,
@@ -445,7 +444,7 @@ const itemsData = [
     },
     {
       id: 16,
-      name: 'rubber cork',
+      reference: 45,
       x: 56.3,
       y: 85.5,
       width: 6.6,
@@ -453,7 +452,7 @@ const itemsData = [
     },
     {
       id: 17,
-      name: 'magnet',
+      reference: 32,
       x: 52.6,
       y: 74,
       width: 8.8,
@@ -461,7 +460,7 @@ const itemsData = [
     },
     {
       id: 18,
-      name: 'brush bottle',
+      reference: 29,
       x: 48,
       y: 58,
       width: 13,
@@ -469,7 +468,7 @@ const itemsData = [
     },
     {
       id: 19,
-      name: 'flash light',
+      reference: 46,
       x: 55.4,
       y: 49,
       width: 7.8,
@@ -477,7 +476,7 @@ const itemsData = [
     },
     {
       id: 20,
-      name: 'glass funnel',
+      reference: 47,
       x: 60,
       y: 37,
       width: 9.5,
@@ -485,7 +484,7 @@ const itemsData = [
     },
     {
       id: 21,
-      name: 'chem electricity ckt',
+      reference: 48,
       x: 65.8,
       y: 21,
       width: 13,
@@ -493,7 +492,7 @@ const itemsData = [
     },
     {
       id: 22,
-      name: 'disecting set',
+      reference: 18,
       x: 60,
       y: 60,
       width: 19.5,
@@ -501,7 +500,7 @@ const itemsData = [
     },
     {
       id: 23,
-      name: 'plastic thermometer',
+      reference: 22,
       x: 67.5,
       y: 48,
       width: 5,
@@ -509,7 +508,7 @@ const itemsData = [
     },
     {
       id: 24,
-      name: 'red T',
+      reference: 24,
       x: 75.6,
       y: 48,
       width: 6.8,
@@ -517,7 +516,7 @@ const itemsData = [
     },
     {
       id: 25,
-      name: 'lens set',
+      reference: 3,
       x: 77.6,
       y: 41,
       width: 9.6,
@@ -525,7 +524,7 @@ const itemsData = [
     },
     {
       id: 26,
-      name: 'test tube rack',
+      reference: 8,
       x: 83.5,
       y: 23.5,
       width: 6.8,
@@ -533,7 +532,7 @@ const itemsData = [
     },
     {
       id: 27,
-      name: 'square plate weigh',
+      reference: 49,
       x: 81.5,
       y: 66,
       width: 15.3,
@@ -541,7 +540,7 @@ const itemsData = [
     },
     {
       id: 28,
-      name: 'dikdikan',
+      reference: 4,
       x: 64.8,
       y: 14,
       width: 4.5,
@@ -549,7 +548,7 @@ const itemsData = [
     },
     {
       id: 29,
-      name: 'microscope',
+      reference: 1,
       x: 70.6,
       y: 0,
       width: 6.9,
@@ -557,7 +556,7 @@ const itemsData = [
     },
     {
       id: 30,
-      name: 'plastic dish case',
+      reference: 50,
       x: 29.5,
       y: 82,
       width: 10.4,
@@ -569,7 +568,7 @@ const itemsData = [
   [
     {
       id: 1,
-      name: 'test tube rack',
+      reference: 8,
       x: 2.6,
       y: 28,
       width: 7.2,
@@ -577,7 +576,7 @@ const itemsData = [
     },
     {
       id: 2,
-      name: 'beam balance',
+      reference: '14',
       x: 18.2,
       y: 4,
       width: 16.5,
@@ -585,7 +584,7 @@ const itemsData = [
     },
     {
       id: 3,
-      name: 'chem electricity ckt',
+      reference: 48,
       x: 35.9,
       y: 8.6,
       width: 9.6,
@@ -593,7 +592,7 @@ const itemsData = [
     },
     {
       id: 4,
-      name: 'glass funnel',
+      reference: 47,
       x: 47,
       y: 19.6,
       width: 9,
@@ -601,7 +600,7 @@ const itemsData = [
     },
     {
       id: 5,
-      name: 'vials',
+      reference: 23,
       x: 29.6,
       y: 26,
       width: 7.8,
@@ -609,7 +608,7 @@ const itemsData = [
     },
     {
       id: 6,
-      name: 'tall large test tube',
+      reference: 6,
       x: 27,
       y: 37,
       width: 4,
@@ -617,7 +616,7 @@ const itemsData = [
     },
     {
       id: 7,
-      name: 'long neck flask',
+      reference: 19,
       x: 21.3,
       y: 42,
       width: 4.8,
@@ -625,7 +624,7 @@ const itemsData = [
     },
     {
       id: 8,
-      name: 'flask',
+      reference: 51,
       x: 13.8,
       y: 36.6,
       width: 5.5,
@@ -633,7 +632,7 @@ const itemsData = [
     },
     {
       id: 9,
-      name: 'ammeter',
+      reference: 52,
       x: 31.5,
       y: 55.5,
       width: 6.6,
@@ -641,7 +640,7 @@ const itemsData = [
     },
     {
       id: 10,
-      name: 'gas burner',
+      reference: 9,
       x: 40.6,
       y: 70.4,
       width: 6.7,
@@ -649,7 +648,7 @@ const itemsData = [
     },
     {
       id: 11,
-      name: 'gas pipe',
+      reference: 13,
       x: 37.2,
       y: 28.8,
       width: 4.3,
@@ -657,7 +656,7 @@ const itemsData = [
     },
     {
       id: 12,
-      name: 'slides set',
+      reference: 27,
       x: 44.4,
       y: 44,
       width: 10.6,
@@ -665,7 +664,7 @@ const itemsData = [
     },
     {
       id: 13,
-      name: 'barometer',
+      reference: 36,
       x: 57,
       y: 55,
       width: 6.8,
@@ -673,7 +672,7 @@ const itemsData = [
     },
     {
       id: 14,
-      name: 'specimen dish',
+      reference: 12,
       x: 65.8,
       y: 61.6,
       width: 9.2,
@@ -681,7 +680,7 @@ const itemsData = [
     },
     {
       id: 15,
-      name: 'laser',
+      reference: 53,
       x: 76.7,
       y: 59.5,
       width: 5.8,
@@ -689,7 +688,7 @@ const itemsData = [
     },
     {
       id: 16,
-      name: 'timer',
+      reference: 2,
       x: 58.5,
       y: 13,
       width: 5.1,
@@ -697,7 +696,7 @@ const itemsData = [
     },
     {
       id: 17,
-      name: 'red rubber',
+      reference: 15,
       x: 45,
       y: 31.6,
       width: 5.1,
@@ -705,7 +704,7 @@ const itemsData = [
     },
     {
       id: 18,
-      name: 'brush',
+      reference: 29,
       x: 67,
       y: 41.6,
       width: 10.5,
@@ -713,7 +712,7 @@ const itemsData = [
     },
     {
       id: 19,
-      name: 'earth core',
+      reference: 54,
       x: 76,
       y: 0,
       width: 20,
@@ -725,7 +724,7 @@ const itemsData = [
   [
     {
       id: 1,
-      name: 'disecting set',
+      reference: 18,
       x: 1.4,
       y: 23.7,
       width: 13.8,
@@ -733,7 +732,7 @@ const itemsData = [
     },
     {
       id: 2,
-      name: 'voltmeter',
+      reference: 55,
       x: 17.8,
       y: 18.3,
       width: 5.8,
@@ -741,7 +740,7 @@ const itemsData = [
     },
     {
       id: 3,
-      name: 'chem electricity ckt',
+      reference: 48,
       x: 25.8,
       y: 5.3,
       width: 9.6,
@@ -749,7 +748,7 @@ const itemsData = [
     },
     {
       id: 4,
-      name: 'slide set',
+      reference: 27,
       x: 35,
       y: 12.8,
       width: 8,
@@ -757,7 +756,7 @@ const itemsData = [
     },
     {
       id: 5,
-      name: 'rubber cork',
+      reference: 45,
       x: 44.6,
       y: 10,
       width: 2.6,
@@ -765,7 +764,7 @@ const itemsData = [
     },
     {
       id: 6,
-      name: 'cork',
+      reference: 44,
       x: 47,
       y: 12,
       width: 2.6,
@@ -773,7 +772,7 @@ const itemsData = [
     },
     {
       id: 7,
-      name: 'gloves',
+      reference: 11,
       x: 50.8,
       y: 16,
       width: 6.2,
@@ -781,7 +780,7 @@ const itemsData = [
     },
     {
       id: 8,
-      name: 'tin pan',
+      reference: 42,
       x: 36.6,
       y: 33.8,
       width: 9.5,
@@ -789,7 +788,7 @@ const itemsData = [
     },
     {
       id: 9,
-      name: 'prism',
+      reference: 56,
       x: 33,
       y: 42,
       width: 5.5,
@@ -797,7 +796,7 @@ const itemsData = [
     },
     {
       id: 10,
-      name: 'plastic droper container',
+      reference: 39,
       x: 29.6,
       y: 40.8,
       width: 3.6,
@@ -805,7 +804,7 @@ const itemsData = [
     },
     {
       id: 11,
-      name: 'beam balance',
+      reference: '14',
       x: 33,
       y: 51.8,
       width: 9.2,
@@ -813,7 +812,7 @@ const itemsData = [
     },
     {
       id: 12,
-      name: 'microscope',
+      reference: '1',
       x: 34.2,
       y: 72,
       width: 7.3,
@@ -821,7 +820,7 @@ const itemsData = [
     },
     {
       id: 13,
-      name: 'spoontula',
+      reference: 21,
       x: 44.8,
       y: 89.3,
       width: 5,
@@ -829,7 +828,7 @@ const itemsData = [
     },
     {
       id: 14,
-      name: 'flat white weigh',
+      reference: 49,
       x: 41.2,
       y: 63.3,
       width: 10.4,
@@ -837,7 +836,7 @@ const itemsData = [
     },
     {
       id: 15,
-      name: 'goggles',
+      reference: 57,
       x: 59.3,
       y: 20.8,
       width: 4,
@@ -845,7 +844,7 @@ const itemsData = [
     },
     {
       id: 16,
-      name: 'lens set',
+      reference: 3,
       x: 60.8,
       y: 80,
       width: 12.4,
@@ -853,7 +852,7 @@ const itemsData = [
     },
     {
       id: 17,
-      name: 'laser',
+      reference: 53,
       x: 75,
       y: 87,
       width: 4.8,
@@ -861,7 +860,7 @@ const itemsData = [
     },
     {
       id: 18,
-      name: 'flash light',
+      reference: 46,
       x: 79.8,
       y: 88,
       width: 15.5,
@@ -869,7 +868,7 @@ const itemsData = [
     },
     {
       id: 19,
-      name: 'barometer',
+      reference: 36,
       x: 79,
       y: 74,
       width: 9,
@@ -877,7 +876,7 @@ const itemsData = [
     },
     {
       id: 20,
-      name: 'petri dish',
+      reference: 12,
       x: 3,
       y: 82,
       width: 10,
@@ -885,7 +884,7 @@ const itemsData = [
     },
     {
       id: 21,
-      name: 'large tong',
+      reference: 10,
       x: 24.6,
       y: 71,
       width: 3.8,
@@ -893,7 +892,7 @@ const itemsData = [
     },
     {
       id: 22,
-      name: 'thermometer',
+      reference: 35,
       x: 26.4,
       y: 41,
       width: 2,
@@ -901,7 +900,7 @@ const itemsData = [
     },
     {
       id: 23,
-      name: 'chacko',
+      reference: 58,
       x: 17,
       y: 26,
       width: 13.2,
@@ -909,7 +908,7 @@ const itemsData = [
     },
     {
       id: 24,
-      name: 'tripod',
+      reference: 7,
       x: 4,
       y: 61,
       width: 10.8,

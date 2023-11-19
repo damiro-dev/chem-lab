@@ -1,7 +1,6 @@
 import { PiPlayFill } from 'react-icons/Pi';
 import { useNavigationUpdate } from '../context/NavigationProvider';
 import { useGame, useGameUpdate } from '../context/GameProvider';
-import { FaCheckCircle } from 'react-icons/fa';
 import { useLocalStorage } from '../context/LocalStorageProvider';
 import comicsData from '../data/comics';
 import referenceData from '../data/reference';

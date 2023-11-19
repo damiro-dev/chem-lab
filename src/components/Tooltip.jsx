@@ -102,7 +102,7 @@ export default function Tooltip() {
         key={item.id}
         onClick={() => handleClick(true, item)}
         className={cn(
-          'w-full px-8 py-1 text-left hover:bg-orange-400 hover:text-gray-800 uppercase tracking-wider',
+          'w-full px-8 py-2 text-left hover:bg-white/80 hover:text-black font-semibold uppercase tracking-widest text-sm',
           item.tagged && 'hidden'
         )}
       >
@@ -118,14 +118,14 @@ export default function Tooltip() {
       style={{ left: `${position.x}px`, top: `${position.y}px` }}
       className={cn(
         !isRunning && 'hidden',
-        'absolute z-10 py-4 rounded-xl bg-black/50 backdrop-blur-md whitespace-nowrap origin-top-left',
+        'absolute z-10 py-4 rounded-xl bg-black/50 backdrop-blur-md whitespace-nowrap origin-top-left shadow-md',
         orientation.v && '-translate-y-full',
         orientation.h && '-translate-x-full',
         origin,
         isHidden ? 'scale-[0]' : 'scale-100'
       )}
     >
-      <span className='px-8 font-bold text-gray-400 cursor-default'>What is this?</span>
+      <span className='px-8 font-semibold text-sm text-white/50 cursor-default tracking-wider'>What is this?</span>
       <ol className='flex flex-col items-start pt-4 gap-0'>
         {/* List of game objects */}
         {items.map((item) => renderItem(item))}

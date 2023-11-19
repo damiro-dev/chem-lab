@@ -9,18 +9,18 @@ export default function ItemCard({ reference, item, length }) {
         length < 3 ? 'flex-row gap-4' : 'flex-col gap-3'
       )}
     >
-      <div className='bg-black/30 overflow-hidden rounded-md'>
+      <div className='overflow-hidden rounded-md'>
         <img
           src={'game-items/' + item.reference + '.png'}
           alt={reference.name}
           className={cn(
-            'min-h-[130px] w-full rounded-md bg-white/30 object-cover',
-            length < 3 ? 'max-w-[180px]' : 'max-w-[260px]',
+            'w-full rounded-md object-contain',
+            length < 3 ? 'max-w-[180px] [130px]' : 'max-w-[260px] h-[130px]',
             !item.tagged && 'blur-md'
           )}
         />
       </div>
-      {item.tagged && <FaCheckCircle size={32} className='absolute top-6 left-6 scale-75 md:scale-100 text-white' />}
+      {item.tagged && <FaCheckCircle size={32} className='absolute top-4 left-4 scale-75 md:scale-100 text-white' />}
       <div className={cn('flex flex-col gap-1.5')}>
         <span className='uppercase tracking-wide text-sm font-semibold'>{reference.name}</span>
         <p className='text-sm opacity-70'>{reference.description}</p>

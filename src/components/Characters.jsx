@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import useMeasure from 'react-use-measure';
 import { useNavigation } from '../context/NavigationProvider';
 import cn from '../lib/tailwindMerge';
@@ -13,12 +12,21 @@ export default function Characters() {
 
   return (
     <>
-      <div ref={ref} className='absolute container w-full max-w-md z-20 mx-0 top-0 left-1/2 -translate-x-1/2 h-1' />
+      {/* BOUNDS */}
+      <div
+        ref={ref}
+        className='absolute container w-full max-w-md z-20 mx-0 top-0 left-1/2 -translate-x-1/2 h-1 bg-red-500'
+      />
+
+      {/* CHARACTERS */}
       <div className={cn(content === 'game' && 'hidden', 'min-w-screen min-h-screen overflow-hidden')}>
         {/* HOME */}
         <section className={cn(content === 'home' ? 'relative z-30' : 'hidden')}>
-          <AnimateJump bounds={bounds}>
+          <AnimateJump>
             <CharHomeDan className={'drop-shadow-md scale-50 lg:scale-75'} />
+          </AnimateJump>
+          <AnimateJump>
+            <CharHomeXia className={'drop-shadow-md scale-50 lg:scale-75'} />
           </AnimateJump>
         </section>
 

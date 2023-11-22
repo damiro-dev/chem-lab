@@ -340,7 +340,7 @@ const referenceData = [
   },
   {
     reference: 65,
-    name: 'Reagent Bottle',
+    name: 'Amber Reagent Bottle',
     description: 'It is used to store a highly reactive chemical solution safely.',
   },
   {

@@ -4,12 +4,12 @@ export default function getTrophy(level) {
   } else if (level <= 10) {
     return 'Copper Test Tube';
   } else if (level <= 15) {
-    return 'Copper Round Flask';
+    return 'Copper Florence Flask';
   } else if (level <= 20) {
-    return 'Silver Round Flask';
+    return 'Silver Florence Flask';
   } else if (level <= 25) {
-    return 'Silver Angled Flask';
+    return 'Silver Erlenmeyer Flask';
   } else {
-    return 'Golden Angled Flask'; // 26 up
+    return 'Golden Erlenmeyer Flask'; // 26 up
   }
 }

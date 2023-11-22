@@ -15,7 +15,7 @@ export default function ItemCard({ reference, item, length }) {
           alt={reference.name}
           className={cn(
             'w-full rounded-md object-contain',
-            length < 3 ? 'max-w-[180px] [130px]' : 'max-w-[260px] h-[130px]',
+            length < 3 ? 'w-[420px] h-[130px]' : 'max-w-[260px] h-[130px]',
             !item.tagged && 'blur-md'
           )}
         />

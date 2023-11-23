@@ -53,7 +53,7 @@ export default function ModalSummary() {
             {/* TITLE */}
             <div className='flex flex-col items-center -mb-4 md:mb-4 scale-75 md:scale-100'>
               <motion.div
-                initial={{ opacity: 0, y: -100 }}
+                initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.3 }}
               >

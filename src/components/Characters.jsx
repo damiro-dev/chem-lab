@@ -13,11 +13,13 @@ import CharPauseDan from '../assets/CharPauseDan';
 import CharPauseXia from '../assets/CharPauseXia';
 import CharTumblingDan from '../assets/CharTumblingDan';
 import CharTumblingXia from '../assets/CharTumblingXia';
+import CharOverDan from '../assets/CharOverDan';
+import CharOverXia from '../assets/CharOverXia';
 import AnimatePopUp from './AnimatePopUp';
 
 export default function Characters() {
   const content = useNavigation();
-  const { level, name } = useGame();
+  const { level } = useGame();
 
   const comicData = comicsData.find((comicData) => comicData.level === level);
 
@@ -64,7 +66,11 @@ export default function Characters() {
         {content === 'paused' && (
           <section className='absolute z-20 min-h-screen'>
             <AnimatePopUp>
-              <CharPauseDan className={'drop-shadow-md scale-100 lg:scale-150'} />
+              {randomBetween(0, 2) === 1 ? (
+                <CharPauseDan className={'drop-shadow-md scale-100 lg:scale-150'} />
+              ) : (
+                <CharPauseXia className={'drop-shadow-md scale-100 lg:scale-150'} />
+              )}
             </AnimatePopUp>
           </section>
         )}

@@ -20,7 +20,7 @@ export default function Follower() {
       style={{ left: `${position.x}px`, top: `${position.y}px` }}
       className={cn(
         inGame ? 'flex' : 'hidden',
-        'absolute z-[2] w-16 aspect-square rounded-full border-white border-2 border-dashed -translate-x-1/2 -translate-y-1/2 overflow-hidden items-center justify-center'
+        'absolute z-[2] w-16 aspect-square rounded-full border-white border-[3px] border-dashed -translate-x-1/2 -translate-y-1/2 overflow-hidden items-center justify-center'
       )}
     />
   );

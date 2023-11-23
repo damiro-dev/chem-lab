@@ -90,29 +90,33 @@ export default function GameImage() {
           <div className='absolute z-[2] w-full h-full bg-transparent overflow-hidden' />
 
           {/* List of objects in the scene to find */}
-          {items.map((item) => (
-            <div
-              key={item.id}
-              style={{ left: `${item.x}%`, top: `${item.y}%`, width: `${item.width}%`, height: `${item.height}%` }}
-              className={cn(
-                revealItems ? null : !item.tagged && 'hidden',
-                'absolute outline-white outline-dashed outline-offset-8 rounded-xl'
-              )}
-            />
-          ))}
+          <div className='absolute w-full h-full z-[1]'>
+            {items.map((item) => (
+              <div
+                key={item.id}
+                style={{ left: `${item.x}%`, top: `${item.y}%`, width: `${item.width}%`, height: `${item.height}%` }}
+                className={cn(
+                  revealItems ? null : !item.tagged && 'hidden',
+                  'absolute outline-white outline-[3px] outline-dashed outline-offset-8 rounded-xl'
+                )}
+              />
+            ))}
+          </div>
 
           {/* Important! Images should be scaled to 1512/680 - 6000/ */}
-          {imageUrls.map((url, index) => (
-            <img
-              key={index}
-              src={url}
-              alt={`Scene ${index}`}
-              className={cn(
-                'absolute top-0 left-0 w-full h-full object-cover overflow-hidden transition-all duration-700',
-                scene === index ? 'opacity-100' : 'opacity-0'
-              )}
-            />
-          ))}
+          <div className='absolute w-full h-full'>
+            {imageUrls.map((url, index) => (
+              <img
+                key={index}
+                src={url}
+                alt={`Scene ${index}`}
+                className={cn(
+                  'absolute w-full h-full object-cover overflow-hidden transition-all duration-700',
+                  scene === index ? 'opacity-100' : 'opacity-0'
+                )}
+              />
+            ))}
+          </div>
         </div>
       </div>
 

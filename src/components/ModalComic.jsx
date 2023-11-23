@@ -44,7 +44,7 @@ export default function ModalComic() {
             {/* BADGE */}
             <div className='flex z-10 flex-col items-center -mb-16 md:-mb-12 scale-75 md:scale-100'>
               <motion.div
-                initial={{ opacity: 0, y: -100 }}
+                initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.3 }}
               >

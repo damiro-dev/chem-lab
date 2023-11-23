@@ -42,8 +42,8 @@ export default function ModalPaused() {
       <AnimatePresence>
         {animate && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 50 }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
             className='flex flex-col gap-4'

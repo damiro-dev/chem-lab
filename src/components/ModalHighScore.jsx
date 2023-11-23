@@ -26,10 +26,10 @@ export default function ModalHighScore() {
     <AnimatePresence>
       {animate && (
         <motion.div
-          initial={{ opacity: 0, y: 100 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 100 }}
-          transition={{ duration: 0.3 }}
+          exit={{ opacity: 0, y: 50 }}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
           className='max-h-screen -my-10 py-10 overflow-scroll'
         >
           <motion.div
@@ -67,8 +67,8 @@ export default function ModalHighScore() {
             ) : (
               labsGameData.slice(0, 10).map((entry, index) => (
                 <motion.div
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 50, scale: 0.5 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{ duration: 0.3, delay: (index + 1) * 0.1 }}
                   key={index}
                   style={{ color: getColor(entry.level) }}

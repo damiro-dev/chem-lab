@@ -8,9 +8,16 @@ import { useGame } from '../context/GameProvider';
 
 export default function GameImage() {
   const { inGame, items, scene, revealItems } = useGame();
-  const imageUrl = `game-images/scene-${scene}.webp`;
   const imageRef = useRef(null);
   const { isRunning } = useTimer();
+
+  const imageUrls = [
+    'game-images/scene-0.webp',
+    'game-images/scene-1.webp',
+    'game-images/scene-2.webp',
+    'game-images/scene-3.webp',
+    'game-images/scene-4.webp',
+  ];
 
   const calculateCursorPercentage = useCallback((e) => {
     if (!imageRef.current) return { x: 0, y: 0 };
@@ -95,7 +102,17 @@ export default function GameImage() {
           ))}
 
           {/* Important! Images should be scaled to 1512/680 - 6000/ */}
-          <img className='w-full h-full object-cover overflow-hidden' src={imageUrl} alt={`Game scene - ${scene}`} />
+          {imageUrls.map((url, index) => (
+            <img
+              key={index}
+              src={url}
+              alt={`Scene ${index}`}
+              className={cn(
+                'absolute top-0 left-0 w-full h-full object-cover overflow-hidden transition-all duration-700',
+                scene === index ? 'opacity-100' : 'opacity-0'
+              )}
+            />
+          ))}
         </div>
       </div>
 

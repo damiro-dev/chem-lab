@@ -29,10 +29,10 @@ export default function ModalAbout() {
     <AnimatePresence>
       {animate && (
         <motion.div
-          initial={{ opacity: 0, y: 100 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 100 }}
-          transition={{ duration: 0.3 }}
+          exit={{ opacity: 0, y: 50 }}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
           className='max-h-screen -my-10 py-10 overflow-scroll'
         >
           <motion.div

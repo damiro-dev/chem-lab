@@ -26,7 +26,7 @@ export default function ModalHome() {
     setScore(0);
     setRevealItems(false);
     setTime(initialTime);
-    setScene(0);
+    setScene(4);
     setAnimate(true);
   }, []);
 
@@ -56,10 +56,10 @@ export default function ModalHome() {
       <AnimatePresence>
         {animate && (
           <motion.div
-            initial={{ opacity: 0, y: 100 }}
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 100 }}
-            transition={{ duration: 0.3 }}
+            exit={{ opacity: 0, y: 50 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
             className='rounded-2xl backdrop-blur-sm bg-black/40 px-8 md:px-20 pt-10 pb-16 flex flex-col gap-4 shadow-md'
           >
             {/* TOP BUTTONS */}

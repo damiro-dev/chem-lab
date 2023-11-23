@@ -58,7 +58,7 @@ export default function ModalComic() {
               <motion.span
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.6 }}
+                transition={{ duration: 0.3, delay: 1.5 }}
                 style={{ color: getColor(level) }}
                 className={cn(
                   comicData.type !== 'dialog'
@@ -140,9 +140,9 @@ export default function ModalComic() {
 
               {/* CONTINUE BUTTON */}
               <motion.div
-                initial={{ opacity: 0, bottom: -50 }}
+                initial={{ opacity: 0, bottom: 0 }}
                 animate={{ opacity: 1, bottom: 44 }}
-                transition={{ duration: 0.3, delay: 1.5, ease: 'easeOut' }}
+                transition={{ duration: 0.3, delay: 1, ease: 'easeOut' }}
                 onClick={handleContinue}
                 className={cn(
                   comicData.type === 'banner' && 'absolute right-1/2 translate-x-1/2',

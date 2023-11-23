@@ -372,11 +372,6 @@ const referenceData = [
   },
   {
     reference: 71,
-    name: 'Filter Paper',
-    description: 'It is used for separating solids from liquids or for performing gravimetric analysis.',
-  },
-  {
-    reference: 72,
     name: 'Clear Reagent Bottle',
     description: 'It is used to store a highly reactive chemical solution safely.',
   },

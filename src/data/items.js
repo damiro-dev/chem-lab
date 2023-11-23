@@ -21,7 +21,7 @@ const itemsData = [
     },
     {
       id: 3,
-      reference: 19,
+      reference: 5,
       x: 21.8,
       y: 56,
       width: 21,
@@ -273,7 +273,7 @@ const itemsData = [
     },
     {
       id: 20,
-      reference: 72,
+      reference: 71,
       x: 73.6,
       y: 0.8,
       width: 5.8,
@@ -389,7 +389,7 @@ const itemsData = [
     },
     {
       id: 9,
-      reference: 72,
+      reference: 71,
       x: 44.6,
       y: 44,
       width: 4.5,

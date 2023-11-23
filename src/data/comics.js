@@ -20,7 +20,7 @@ const comicsData = [
       },
       {
         character: 'Xia',
-        dialog: 'Lets try 1 item for now. It should be easy.',
+        dialog: 'Lets try 1 item for now. It should be easy. You can PAUSE by tapping on the timer.',
         duration: 1,
         delay: 0.5,
       },
@@ -38,19 +38,19 @@ const comicsData = [
     type: 'dialog',
     comic: [
       {
-        character: 'Daniel',
+        character: 'Xia',
         dialog: 'Let us tell you something ...',
         duration: 1,
         delay: 0.5,
       },
       {
-        character: 'Xia',
+        character: 'Daniel',
         dialog: 'Most of the time, you need to find multiple items to get the job done. Lets try 3 items now.',
         duration: 1,
         delay: 0.5,
       },
       {
-        character: 'Daniel',
+        character: 'Xia',
         dialog:
           'Thats 3 items in 30 seconds. Ill give you a tip, scroll left and right, you might find some items there. Good luck!',
         duration: 1,
@@ -119,14 +119,14 @@ const comicsData = [
     type: 'both',
     comic: [
       {
-        character: 'Daniel',
+        character: 'Xia',
         dialog:
           'Wow! We cant believe you easily made it here, congrats! From here on, Its you against the clock. Looking forward to see you secure that elusive 1st place!',
         duration: 1,
         delay: 0.5,
       },
       {
-        character: 'Xia',
+        character: 'Daniel',
         dialog:
           'Were pretty sure you know your lab equipment now. Congrats on being an expert! Now nail that 1st place in the hall of fame. Good luck!',
         duration: 1,

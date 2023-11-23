@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import cn from '../lib/tailwindMerge';
 import randomBetween from '../lib/randomBetween';
 
 export default function AnimateJump({ children }) {
-  const windowWidth = window.innerWidth;
-  const windowHeight = window.innerWidth;
+  const windowWidth = window.innerWidth - 200;
+  const windowHeight = window.innerHeight;
   const leftLimit = windowWidth / 2 - 200;
   const rightLimit = windowWidth / 2 + 200;
 
@@ -30,15 +30,15 @@ export default function AnimateJump({ children }) {
       initial={{ x: 0, y: windowHeight, rotate: '0deg' }}
       animate={{ x: [x], y: [windowHeight, windowHeight, y], rotate: [rotate] }}
       transition={{
-        duration: 0.6, // windowHeight - y * 0.01,
-        ease: 'easeOut',
-        delay: randomBetween(0, 30) * 0.1,
+        duration: (windowHeight - y) * 0.001, // 0.6
+        delay: randomBetween(5, 30) * 0.1,
         times: [0, 0.05, 0.6],
         repeat: 1,
         repeatType: 'reverse',
+        ease: 'easeOut',
       }}
       onAnimationComplete={() => getNewValues()}
-      className={cn(side === 'left' && 'scale-x-[-100%]', 'absolute scale-x-[100%] -translate-x-1/2 origin-center')}
+      className={cn(side === 'left' && 'scale-x-[-100%]', 'absolute -translate-x-1/2 origin-center')}
       style={{ x: x, y: y }}
     >
       {children}

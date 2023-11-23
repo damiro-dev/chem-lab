@@ -38,19 +38,6 @@ export default function Characters() {
           </section>
         )}
 
-        {/* PAUSED */}
-        {content === 'paused' && (
-          <section className='fixed z-20 min-h-screen min-w-screen'>
-            <AnimatePopUp>
-              {randomBetween(0, 2) === 1 ? (
-                <CharPauseDan className={'drop-shadow-md scale-100 lg:scale-150'} />
-              ) : (
-                <CharPauseXia className={'drop-shadow-md scale-100 lg:scale-150'} />
-              )}
-            </AnimatePopUp>
-          </section>
-        )}
-
         {/* COMIC */}
         {content === 'comic' && (
           <section className='relative z-20 min-h-screen overflow-hidden'>
@@ -75,8 +62,30 @@ export default function Characters() {
           </section>
         )}
 
+        {/* PAUSED */}
+        {content === 'paused' && (
+          <section className='fixed z-20 min-h-screen min-w-screen'>
+            <AnimatePopUp>
+              {randomBetween(0, 2) === 1 ? (
+                <CharPauseDan className={'drop-shadow-md scale-100 lg:scale-150'} />
+              ) : (
+                <CharPauseXia className={'drop-shadow-md scale-100 lg:scale-150'} />
+              )}
+            </AnimatePopUp>
+          </section>
+        )}
+
         {/* GAME OVER */}
-        {content === 'over' && <section className='absolute z-20 min-h-screen overflow-hidden'>GAME OVER</section>}
+        {content === 'over' && (
+          <section className='fixed z-20 min-h-screen min-w-screen'>
+            <AnimateSlide side={'left'} index={1}>
+              <CharOverXia className={'drop-shadow-md scale-50 lg:scale-75'} />
+            </AnimateSlide>
+            <AnimateSlide side={'right'} index={2}>
+              <CharOverDan className={'drop-shadow-md scale-50 lg:scale-75'} />
+            </AnimateSlide>
+          </section>
+        )}
       </div>
     </>
   );

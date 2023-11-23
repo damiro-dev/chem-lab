@@ -21,7 +21,7 @@ export default function AnimatePopUp({ children }) {
 
   return (
     <motion.div
-      initial={{ x: 0, y: windowHeight }}
+      initial={{ x: 0, y: windowHeight + 100 }}
       animate={{ x: [x], y: [windowHeight, windowHeight, y] }}
       transition={{
         duration: 0.7,

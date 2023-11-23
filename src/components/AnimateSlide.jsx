@@ -27,7 +27,11 @@ export default function AnimateSlide({ children, side, index, rotate }) {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0, x: side === 'left' ? -100 : 100 }}
+              exit={{
+                opacity: 0,
+                x: side === 'left' ? -100 : 100,
+                rotate: rotate && (side === 'left' ? '-180deg' : '180deg'),
+              }}
               transition={{ duration: 0.4, ease: 'easeOut' }}
             >
               {children}

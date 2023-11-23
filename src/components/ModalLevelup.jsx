@@ -37,10 +37,10 @@ export default function Modallevelup() {
     }, 320);
   };
 
-  const renderItem = (item) => {
+  const renderItem = (item, index) => {
     const ref = referenceData.find((refData) => refData.reference === item.reference);
     if (!ref) return null;
-    return <ItemCard item={item} reference={ref} length={items.length} />;
+    return <ItemCard key={index} index={index} reference={ref} item={item} />;
   };
 
   return (
@@ -114,7 +114,7 @@ export default function Modallevelup() {
                       items.length < 3 ? 'flex-col gap-3 md:flex-row md:gap-4' : 'flex-col gap-3'
                     )}
                   >
-                    {renderItem(item)}
+                    {renderItem(item, index)}
                   </motion.div>
                 ))}
               </div>

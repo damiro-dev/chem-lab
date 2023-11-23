@@ -38,9 +38,22 @@ export default function Characters() {
           </section>
         )}
 
+        {/* PAUSED */}
+        {content === 'paused' && (
+          <section className='fixed z-20 min-h-screen min-w-screen'>
+            <AnimatePopUp>
+              {randomBetween(0, 2) === 1 ? (
+                <CharPauseDan className={'drop-shadow-md scale-100 lg:scale-150'} />
+              ) : (
+                <CharPauseXia className={'drop-shadow-md scale-100 lg:scale-150'} />
+              )}
+            </AnimatePopUp>
+          </section>
+        )}
+
         {/* COMIC */}
         {content === 'comic' && (
-          <section className='relative z-20 min-h-screen'>
+          <section className='relative z-20 min-h-screen overflow-hidden'>
             {comicData.type === 'banner' ? (
               <AnimateSlide side={'left'} index={1} rotate>
                 {randomBetween(0, 2) === 1 ? (
@@ -62,21 +75,8 @@ export default function Characters() {
           </section>
         )}
 
-        {/* PAUSED */}
-        {content === 'paused' && (
-          <section className='absolute z-20 min-h-screen'>
-            <AnimatePopUp>
-              {randomBetween(0, 2) === 1 ? (
-                <CharPauseDan className={'drop-shadow-md scale-100 lg:scale-150'} />
-              ) : (
-                <CharPauseXia className={'drop-shadow-md scale-100 lg:scale-150'} />
-              )}
-            </AnimatePopUp>
-          </section>
-        )}
-
         {/* GAME OVER */}
-        {content === 'over' && <section className='absolute z-20'>GAME OVER</section>}
+        {content === 'over' && <section className='absolute z-20 min-h-screen overflow-hidden'>GAME OVER</section>}
       </div>
     </>
   );

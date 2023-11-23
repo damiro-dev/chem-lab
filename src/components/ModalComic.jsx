@@ -2,17 +2,17 @@ import { useEffect, useState } from 'react';
 import { PiPlayFill } from 'react-icons/Pi';
 import { useNavigationUpdate } from '../context/NavigationProvider';
 import { useGame } from '../context/GameProvider';
+import { useAnimateCharUpdate } from '../context/AnimateCharProvider';
 import { motion, AnimatePresence } from 'framer-motion';
 import cn from '../lib/tailwindMerge';
 import comicsData from '../data/comics';
-import CharHeadDan from '../assets/CharHeadDan';
-import CharHeadXia from '../assets/CharHeadXia';
 import Badge from '../assets/badge';
 import getColor from '../lib/getColor';
 import getTrophy from '../lib/getTrophy';
 
 export default function ModalComic() {
   const setPage = useNavigationUpdate();
+  const setAnimateChar = useAnimateCharUpdate();
   const { level, name } = useGame();
   const [animate, setAnimate] = useState(false);
 
@@ -21,10 +21,12 @@ export default function ModalComic() {
 
   useEffect(() => {
     setAnimate(true);
+    setAnimateChar(true);
   }, []);
 
   const handleContinue = () => {
     setAnimate(false);
+    setAnimateChar(false);
     setTimeout(() => {
       setPage('levelup');
     }, 320);

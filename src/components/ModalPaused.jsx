@@ -4,35 +4,39 @@ import { useGame } from '../context/GameProvider';
 import { useTimer } from '../context/TimerProvider';
 import { useNavigationUpdate } from '../context/NavigationProvider';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useAnimateCharUpdate } from '../context/AnimateCharProvider';
 import cn from '../lib/tailwindMerge';
 import Badge from '../assets/badge';
 import getColor from '../lib/getColor';
 import getBadge from '../lib/getBadge';
-import { FaSlidersH } from 'react-icons/fa';
 
 export default function ModalPaused() {
   const { name, inGame, level } = useGame();
   const { isRunning, startTimer, stopTimer } = useTimer();
   const [animate, setAnimate] = useState(false);
-  const navUpdate = useNavigationUpdate();
+  const setPage = useNavigationUpdate();
+  const setAnimateChar = useAnimateCharUpdate();
 
   useEffect(() => {
     setAnimate(true);
+    setAnimateChar(true);
   }, []);
 
   // ON PAUSE
   const toggleTimer = () => {
     if (inGame && isRunning) {
       setAnimate(true);
+      setAnimateChar(true);
       setTimeout(() => {
         stopTimer();
-        navUpdate('paused');
+        setPage('paused');
       }, 320);
     } else {
       setAnimate(false);
+      setAnimateChar(false);
       setTimeout(() => {
         startTimer();
-        navUpdate('game');
+        setPage('game');
       }, 320);
     }
   };

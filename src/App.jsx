@@ -3,6 +3,7 @@ import GameProvider from './context/GameProvider';
 import NavigationProvider from './context/NavigationProvider';
 import CursorProvider from './context/CursorProvider';
 import TimerProvider from './context/TimerProvider';
+import AnimateCharProvider from './context/AnimateCharProvider';
 import Container from './components/Container';
 import GamePanel from './components/GamePanel';
 import Modal from './components/Modal';
@@ -18,14 +19,16 @@ export default function App() {
         <NavigationProvider>
           <CursorProvider>
             <TimerProvider>
-              <Container>
-                <Characters />
-                <GamePanel />
-                <Tooltip />
-                <Modal />
-                <Follower />
-                <GameImage />
-              </Container>
+              <AnimateCharProvider>
+                <Container>
+                  <Characters />
+                  <GamePanel />
+                  <Tooltip />
+                  <Modal />
+                  <Follower />
+                  <GameImage />
+                </Container>
+              </AnimateCharProvider>
             </TimerProvider>
           </CursorProvider>
         </NavigationProvider>

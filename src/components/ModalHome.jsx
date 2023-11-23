@@ -5,12 +5,14 @@ import { useGameUpdate } from '../context/GameProvider';
 import { useTimer, useTimerUpdate } from '../context/TimerProvider';
 import { useLocalStorage } from '../context/LocalStorageProvider';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useAnimateCharUpdate } from '../context/AnimateCharProvider';
 import cn from '../lib/tailwindMerge';
 import getBadge from '../lib/getBadge';
 import Logo from '../assets/Logo';
 
 export default function ModalHome() {
   const setPage = useNavigationUpdate();
+  const setAnimateChar = useAnimateCharUpdate();
   const { setScene, setRevealItems, setLevel, setName, setScore } = useGameUpdate();
   const { setTime } = useTimerUpdate();
   const { initialTime } = useTimer();
@@ -28,6 +30,7 @@ export default function ModalHome() {
     setTime(initialTime);
     setScene(4);
     setAnimate(true);
+    setAnimateChar(true);
   }, []);
 
   const gotoPage = (page) => {
@@ -41,6 +44,7 @@ export default function ModalHome() {
     const newName = inputChange.trim().substring(0, 16); // Remove leading and trailing spaces, and limit to 16 characters
     if (newName.length >= 3) {
       setAnimate(false);
+      setAnimateChar(false);
       setName(newName);
       setTimeout(() => {
         setLevel(1);

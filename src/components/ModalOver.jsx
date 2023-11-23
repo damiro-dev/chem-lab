@@ -4,6 +4,7 @@ import { useGame, useGameUpdate } from '../context/GameProvider';
 import { useNavigationUpdate } from '../context/NavigationProvider';
 import { useLocalStorage } from '../context/LocalStorageProvider';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useAnimateCharUpdate } from '../context/AnimateCharProvider';
 import referenceData from '../data/reference';
 import cn from '../lib/tailwindMerge';
 import Badge from '../assets/badge';
@@ -12,7 +13,8 @@ import getColor from '../lib/getColor';
 import ItemCard from '../assets/ItemCard';
 
 export default function ModalOver() {
-  const navUpdate = useNavigationUpdate();
+  const setPage = useNavigationUpdate();
+  const setAnimateChar = useAnimateCharUpdate();
   const { items, numItems, name, itemFound, level, score, revealItems } = useGame();
   const { setRevealItems } = useGameUpdate();
   const { addLabsGameItem } = useLocalStorage();
@@ -34,12 +36,14 @@ export default function ModalOver() {
     handleAddListing();
     setRevealItems(false);
     setAnimate(true);
+    setAnimateChar(true);
   }, []);
 
   const handleExit = () => {
     setAnimate(false);
+    setAnimateChar(false);
     setTimeout(() => {
-      navUpdate('home');
+      setPage('home');
     }, 320);
   };
 

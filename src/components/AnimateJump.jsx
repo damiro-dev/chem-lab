@@ -1,9 +1,11 @@
-import { useState, useEffect, useCallback } from 'react';
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useAnimateChar } from '../context/AnimateCharProvider';
 import cn from '../lib/tailwindMerge';
 import randomBetween from '../lib/randomBetween';
 
 export default function AnimateJump({ children }) {
+  const animateChar = useAnimateChar();
   const windowWidth = window.innerWidth - 200;
   const windowHeight = window.innerHeight;
   const leftLimit = windowWidth / 2 - 200;
@@ -29,6 +31,7 @@ export default function AnimateJump({ children }) {
     <motion.div
       initial={{ x: 0, y: windowHeight, rotate: '0deg' }}
       animate={{ x: [x], y: [windowHeight, windowHeight, y], rotate: [rotate] }}
+      exit={{ x: x, y: windowHeight, rotate: '0deg' }}
       transition={{
         duration: (windowHeight - y) * 0.001, // 0.6
         delay: randomBetween(5, 30) * 0.1,
@@ -41,7 +44,18 @@ export default function AnimateJump({ children }) {
       className={cn(side === 'left' && 'scale-x-[-100%]', 'absolute -translate-x-1/2 origin-center')}
       style={{ x: x, y: y }}
     >
-      {children}
+      <AnimatePresence>
+        {animateChar && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+          >
+            {children}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }

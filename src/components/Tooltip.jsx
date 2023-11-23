@@ -38,12 +38,12 @@ export default function Tooltip() {
       setItemFound((found) => found + 1);
       setScore((prev) => prev + 1);
       item.tagged = !item.tagged;
-      console.log('CORRECT:', 'item', clickedItem.reference, '|', itemFound, 'found in total', items.length);
+      // console.log('CORRECT:', 'item', clickedItem.reference, '|', itemFound, 'found in total', items.length);
       if (itemFound === items.length) {
         stopTimer();
         setInGame(false);
         navUpdate('summary');
-        console.log('LEVEL', level, 'COMPLETE:', items);
+        // console.log('LEVEL', level, 'COMPLETE:', items);
       }
     }
   };

@@ -32,6 +32,7 @@ export default function ModalHighScore() {
           transition={{ duration: 0.3, ease: 'easeOut' }}
           className='max-h-screen -my-10 py-10 overflow-scroll'
         >
+          {/* LOGO */}
           <motion.div
             initial={{ opacity: 0, y: -100 }}
             animate={{ opacity: 1, y: 0 }}
@@ -42,6 +43,7 @@ export default function ModalHighScore() {
             <h2 className='text-xl text-white font-semibold tracking-[8px] -mr-4 drop-shadow-md'>LEADERBOARD</h2>
           </motion.div>
           <div className='rounded-2xl backdrop-blur-sm bg-black/40 flex flex-col py-10'>
+            {/* NAVIGATION */}
             <motion.div
               initial={{ opacity: 0, top: -50 }}
               animate={{ opacity: 1, top: -16 }}
@@ -62,6 +64,7 @@ export default function ModalHighScore() {
               </div>
             </motion.div>
 
+            {/* HIGH SCORE LIST */}
             {labsGameData.length === 0 ? (
               <p className='uppercase text-center tracking-widest'>No entries to display</p>
             ) : (

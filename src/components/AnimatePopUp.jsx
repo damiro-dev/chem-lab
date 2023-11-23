@@ -18,7 +18,7 @@ export default function AnimatePopUp({ children }) {
     setX(randomBetween(0, windowWidth));
     setY(randomBetween(windowHeight - 340, windowHeight - 200));
     setDelay(Math.floor(randomBetween(5, 60)) * 0.1);
-    console.log(x, y, delay);
+    // console.log(x, y, delay);
   };
 
   return (

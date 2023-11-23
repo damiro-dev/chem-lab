@@ -30,6 +30,13 @@ export default function ModalHome() {
     setAnimate(true);
   }, []);
 
+  const gotoPage = (page) => {
+    setAnimate(false);
+    setTimeout(() => {
+      setPage(page);
+    }, 720);
+  };
+
   const handlePlay = async () => {
     const newName = inputChange.trim().substring(0, 16); // Remove leading and trailing spaces, and limit to 16 characters
     if (newName.length >= 3) {
@@ -49,10 +56,10 @@ export default function ModalHome() {
       <AnimatePresence>
         {animate && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 100 }}
+            transition={{ duration: 0.3 }}
             className='rounded-2xl backdrop-blur-sm bg-black/40 px-8 md:px-20 pt-10 pb-16 flex flex-col gap-4 shadow-md'
           >
             {/* TOP BUTTONS */}
@@ -63,7 +70,7 @@ export default function ModalHome() {
               className='absolute z-10 flex gap-3 -top-4 left-1/2 -translate-x-1/2'
             >
               <div
-                onClick={() => setContent('highscore')}
+                onClick={() => gotoPage('highscore')}
                 className={cn(
                   // labsGameData.length === 0 && 'hidden',
                   'font-semibold uppercase text-[12px] tracking-[4px] bg-black/70 hover:bg-black/60 pl-6 pr-4 py-2 rounded-full cursor-pointer shadow-md'
@@ -72,7 +79,7 @@ export default function ModalHome() {
                 LEADERBOARD
               </div>
               <div
-                onClick={() => setContent('about')}
+                onClick={() => gotoPage('about')}
                 className='min-w-[34px] font-semibold uppercase text-[12px] bg-black/70 hover:bg-black/60 px-0 py-2 rounded-full cursor-pointer text-center shadow-md'
               >
                 ?

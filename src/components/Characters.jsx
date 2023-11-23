@@ -6,6 +6,9 @@ import CharHomeDan from '../assets/CharHomeDan';
 import CharHomeXia from '../assets/CharHomeXia';
 import CharComicDan from '../assets/CharComicDan';
 import CharComicXia from '../assets/CharComicXia';
+import CharPauseDan from '../assets/CharPauseDan';
+import CharPauseXia from '../assets/CharPauseXia';
+import AnimatePopUp from './AnimatePopUp';
 
 export default function Characters() {
   const content = useNavigation();
@@ -39,13 +42,15 @@ export default function Characters() {
 
         {/* PAUSED */}
         {content === 'paused' && (
-          <section className='absolute z-20w-full min-h-screen flex items-center'>PAUSED</section>
+          <section className='absolute z-20 w-full min-h-screen'>
+            <AnimatePopUp>
+              <CharPauseDan className={'drop-shadow-md scale-100 lg:scale-150'} />
+            </AnimatePopUp>
+          </section>
         )}
 
         {/* GAME OVER */}
-        {content === 'over' && (
-          <section className='absolute z-20 w-full min-h-screen flex items-center'>GAME OVER</section>
-        )}
+        {content === 'over' && <section className='absolute z-20'>GAME OVER</section>}
       </div>
     </>
   );

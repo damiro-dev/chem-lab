@@ -1,28 +1,42 @@
 {
-  "name": "chem-lab",
-  "private": true,
+  "name": "labsgame",
   "version": "0.0.0",
+  "author": "Damiro",
+  "description": "A hidden object game focused on objects found in chemical laboratories.",
+  "private": true,
+  "main": "electron/electron.cjs",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "electron": "wait-on tcp:3000 && cross-env IS_DEV=true electron .",
+    "electron:pack": "electron-builder --dir",
+    "electron:dev": "concurrently -k \"cross-env BROWSER=none npm run dev\" \"npm run electron\"",
+    "electron:builder": "electron-builder --mac --win",
+    "build:for:electron": "tsc --noEmit && cross-env ELECTRON=true vite build",
+    "app:build": "npm run build:for:electron && npm run electron:builder"
   },
   "dependencies": {
     "clsx": "^2.0.0",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
     "framer-motion": "^10.16.5",
+    "node-fetch": "^2.6.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.11.0",
     "react-use-measure": "^2.1.1",
-    "tailwind-merge": "^1.14.0"
+    "tailwind-merge": "^1.14.0",
+    "wait-on": "^7.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "autoprefixer": "^10.4.15",
+    "electron": "^27.1.2",
     "eslint": "^8.45.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
@@ -30,5 +44,29 @@
     "postcss": "^8.4.29",
     "tailwindcss": "^3.3.3",
     "vite": "^4.4.5"
+  },
+  "build": {
+    "appId": "com.damiro.labsgame",
+    "productName": "Labs GAME",
+    "copyright": "Copyright © 2023 Damiro",
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets",
+      "output": "dist_electron"
+    },
+    "mac": {
+      "category": "public.app-category.game",
+      "icon": "public/icon_256.icns"
+    },
+    "win": {
+      "icon": "public/icon_256.png"
+    }
   }
 }

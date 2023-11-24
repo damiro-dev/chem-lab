@@ -10,7 +10,7 @@ function createWindow() {
     autoHideMenuBar: true,
     resizable: true,
     frame: true,
-    icon: path.join(__dirname, 'icon_64.png'),
+    icon: path.join(__dirname, 'icon_256.png'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.cjs'),
       nodeIntegration: true,

@@ -6,6 +6,7 @@ import cn from '../lib/tailwindMerge';
 import Logo from '../assets/Logo';
 
 export default function ModalAbout() {
+  const res = window.innerHeight;
   const setPage = useNavigationUpdate();
   const { resetLabsGame } = useLocalStorage();
   const [animate, setAnimate] = useState(false);
@@ -33,7 +34,8 @@ export default function ModalAbout() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50 }}
           transition={{ duration: 0.3, ease: 'easeOut' }}
-          className='max-h-screen -my-10 py-10 overflow-scroll'
+          style={{ scale: res < 800 && '75%' }} 
+          className='max-h-screen -my-10 py-10 overflow-scroll scrollbar-hide'
         >
           <motion.div
             initial={{ opacity: 0, y: -100 }}

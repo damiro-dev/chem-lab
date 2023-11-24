@@ -12,6 +12,7 @@ import Badge from '../assets/badge';
 import ItemCard from '../assets/ItemCard';
 
 export default function Modallevelup() {
+  const res = window.innerHeight;
   const { name, scene, items, level, levelTime, numItems } = useGame();
   const { setInGame, setRevealItems, setItems } = useGameUpdate();
   const { setTime, setInitialTime } = useTimerUpdate();
@@ -44,7 +45,7 @@ export default function Modallevelup() {
   };
 
   return (
-    <div className='max-h-screen -my-10 py-10 overflow-scroll'>
+    <div className='max-h-screen -my-10 py-10 overflow-scroll scrollbar-hide'>
       <AnimatePresence>
         {animate && (
           <motion.div
@@ -52,6 +53,7 @@ export default function Modallevelup() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, y: 50 }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
+            style={{ scale: res < 800 && '75%' }} 
             className='flex flex-col gap-4'
           >
             {/* TITLE */}
@@ -95,7 +97,7 @@ export default function Modallevelup() {
             </div>
 
             {/* ITEMS */}
-            <div className='overflow-scroll pb-6'>
+            <div className='overflow-scroll scrollbar-hide pb-6'>
               <div
                 className={cn(
                   // hide to use for development purposes: mapping of items

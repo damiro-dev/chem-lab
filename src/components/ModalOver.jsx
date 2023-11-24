@@ -13,6 +13,7 @@ import getColor from '../lib/getColor';
 import ItemCard from '../assets/ItemCard';
 
 export default function ModalOver() {
+  const res = window.innerHeight;
   const setPage = useNavigationUpdate();
   const setAnimateChar = useAnimateCharUpdate();
   const { items, numItems, name, itemFound, level, score, revealItems } = useGame();
@@ -54,7 +55,7 @@ export default function ModalOver() {
   };
 
   return (
-    <div className='max-h-screen -my-10 pt-28 pb-10 overflow-scroll'>
+    <div className='max-h-screen -my-10 pt-28 pb-10 overflow-scroll scrollbar-hide'>
       <AnimatePresence>
         {animate && (
           <motion.div
@@ -62,6 +63,7 @@ export default function ModalOver() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, y: 50 }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
+            style={{ scale: res < 800 && '75%' }} 
             className='flex flex-col gap-4'
           >
             {/* TITLE */}
@@ -107,7 +109,7 @@ export default function ModalOver() {
             </div>
 
             {/* ITEMS */}
-            <div className='overflow-scroll pb-6'>
+            <div className='overflow-scroll scrollbar-hide pb-6'>
               <div
                 className={cn(
                   // hide to use for development purposes: mapping of items

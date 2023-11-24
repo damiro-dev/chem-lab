@@ -7,6 +7,7 @@ import Logo from '../assets/Logo';
 import getColor from '../lib/getColor';
 
 export default function ModalHighScore() {
+  const res = window.innerHeight;
   const setPage = useNavigationUpdate();
   const { labsGameData } = useLocalStorage();
   const [animate, setAnimate] = useState(false);
@@ -30,7 +31,8 @@ export default function ModalHighScore() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50 }}
           transition={{ duration: 0.3, ease: 'easeOut' }}
-          className='max-h-screen -my-10 py-10 overflow-scroll'
+          style={{ scale: res < 800 && '75%' }} 
+          className='max-h-screen -my-10 py-10 overflow-scroll scrollbar-hide'
         >
           {/* LOGO */}
           <motion.div

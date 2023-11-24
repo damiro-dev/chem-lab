@@ -13,6 +13,7 @@ import getBadge from '../lib/getBadge';
 import ItemCard from '../assets/ItemCard';
 
 export default function ModalSummary() {
+  const res = window.innerHeight;
   const { name, level, items, score } = useGame();
   const { setLevel } = useGameUpdate();
   const { labsGameData } = useLocalStorage();
@@ -40,7 +41,7 @@ export default function ModalSummary() {
   };
 
   return (
-    <div className='max-h-screen -my-10 py-10 overflow-scroll'>
+    <div className='max-h-screen -my-10 py-10 overflow-scroll scrollbar-hide'>
       <AnimatePresence>
         {animate && (
           <motion.div
@@ -48,6 +49,7 @@ export default function ModalSummary() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, y: 50 }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
+            style={{ scale: res < 800 && '75%' }} 
             className='flex flex-col gap-4'
           >
             {/* TITLE */}
@@ -97,7 +99,7 @@ export default function ModalSummary() {
             </div>
 
             {/* ITEMS */}
-            <div className='overflow-scroll pb-6'>
+            <div className='overflow-scroll scrollbar-hide pb-6'>
               <div
                 className={cn(
                   // hide to use for development purposes: mapping of items

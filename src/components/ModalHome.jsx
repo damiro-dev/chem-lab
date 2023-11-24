@@ -11,6 +11,8 @@ import getBadge from '../lib/getBadge';
 import Logo from '../assets/Logo';
 
 export default function ModalHome() {
+  const res = window.innerHeight;
+  // console.log(res);
   const setPage = useNavigationUpdate();
   const setAnimateChar = useAnimateCharUpdate();
   const { setScene, setRevealItems, setLevel, setName, setScore } = useGameUpdate();
@@ -56,7 +58,7 @@ export default function ModalHome() {
   };
 
   return (
-    <div className='max-h-screen -my-10 py-20 overflow-scroll'>
+    <div style={{ scale: res < 800 && '75%' }} className=' max-h-screen -my-10 py-20 overflow-scroll scrollbar-hide'>
       <AnimatePresence>
         {animate && (
           <motion.div

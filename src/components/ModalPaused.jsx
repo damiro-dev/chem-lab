@@ -11,6 +11,7 @@ import getColor from '../lib/getColor';
 import getBadge from '../lib/getBadge';
 
 export default function ModalPaused() {
+  const res = window.innerHeight;
   const { name, inGame, level } = useGame();
   const { isRunning, startTimer, stopTimer } = useTimer();
   const [animate, setAnimate] = useState(false);
@@ -42,7 +43,7 @@ export default function ModalPaused() {
   };
 
   return (
-    <div className='max-h-screen -my-10 py-10 overflow-scroll'>
+    <div className='max-h-screen -my-10 py-10 overflow-hide scrollbar-hide'>
       <AnimatePresence>
         {animate && (
           <motion.div
@@ -50,6 +51,7 @@ export default function ModalPaused() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 50 }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
+            style={{ scale: res < 800 && '75%' }} 
             className='flex flex-col gap-4'
           >
             {/* TITLE */}

@@ -11,6 +11,7 @@ import getColor from '../lib/getColor';
 import getTrophy from '../lib/getTrophy';
 
 export default function ModalComic() {
+  const res = window.innerHeight;
   const setPage = useNavigationUpdate();
   const setAnimateChar = useAnimateCharUpdate();
   const { level, name } = useGame();
@@ -33,7 +34,7 @@ export default function ModalComic() {
   };
 
   return (
-    <div className='max-h-screen -my-10 py-10 overflow-scroll'>
+    <div className='max-h-screen -my-10 py-10 overflow-scroll scrollbar-hide'>
       <AnimatePresence>
         {animate && (
           <motion.div
@@ -41,6 +42,7 @@ export default function ModalComic() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, y: 50 }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
+            style={{ scale: res < 800 && '75%' }} 
             className='flex flex-col gap-6'
           >
             {/* BADGE */}

@@ -78,7 +78,7 @@ export default function GameImage() {
         ref={scrollRef}
         className={cn(
           revealItems ? null : !isRunning && 'filter blur-3xl grayscale-[60%]',
-          'absolute inset-0 overflow-x-scroll scroll-smooth transition-all duration-700'
+          'absolute inset-0 overflow-x-scroll scrollbar-hide scroll-smooth transition-all duration-700'
         )}
       >
         {/* BACKGROUND IMAGE / SCENE */}

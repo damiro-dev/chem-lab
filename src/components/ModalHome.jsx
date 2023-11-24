@@ -12,7 +12,7 @@ import Logo from '../assets/Logo';
 
 export default function ModalHome() {
   const res = window.innerHeight;
-  // console.log(res);
+  console.log(res);
   const setPage = useNavigationUpdate();
   const setAnimateChar = useAnimateCharUpdate();
   const { setScene, setRevealItems, setLevel, setName, setScore } = useGameUpdate();

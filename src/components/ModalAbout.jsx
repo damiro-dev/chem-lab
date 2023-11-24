@@ -34,7 +34,7 @@ export default function ModalAbout() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50 }}
           transition={{ duration: 0.3, ease: 'easeOut' }}
-          style={{ scale: res < 800 && '75%' }} 
+          style={{ scale: res < 800 && '75%' }}
           className='max-h-screen -my-10 py-10 overflow-scroll scrollbar-hide'
         >
           <motion.div

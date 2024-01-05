@@ -42,7 +42,7 @@ export default function ModalComic() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, y: 50 }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
-            style={{ scale: res < 800 && '75%' }} 
+            style={{ scale: res < 800 && '75%' }}
             className='flex flex-col gap-6'
           >
             {/* BADGE */}

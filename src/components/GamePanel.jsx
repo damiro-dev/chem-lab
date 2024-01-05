@@ -74,7 +74,7 @@ export default function GamePanel() {
             time <= 10 ? 'text-red-500' : 'text-white'
           )}
         >
-          {isRunning ? time : <PiPlayFill />}
+          {isRunning ? <div>{time}</div> : <PiPlayFill />}
         </div>
       </section>
 

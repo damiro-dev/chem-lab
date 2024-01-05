@@ -71,11 +71,18 @@ export default function ModalAbout() {
             <p>
               Interactive and educational game designed to enhance laboratory skills and familiarity with laboratory
               apparatuses, materials, and equipment. The player will embark on a learning journey where they engage in
-              memory challenge and interactive hidden-game adeventure on a laboratory environment.
+              memory challenge and interactive hidden-game adventure on a laboratory environment.
             </p>
             <p>
-              The idea is to embed a mini game into computers at school that can be played quickly, which is fun and,
-              challenging and at the same time become a learning opportunity to anyone who plays it.
+              The goal of this innovation is to improve the laboratory skills by providing a browser-based application
+              for gamifying the familiarity of laboratory apparatuses, materials, and equipment and their uses while
+              incorporating technological advancements.
+            </p>
+            <p>
+              Objectives are to improve the basic science process skills in the familiarization of laboratory
+              apparatuses, materials, and equipment and their uses; to acquire basic skills in using digital tools
+              through fundamental computer operations; and to engage learners in a motivating, fun, and innovative way
+              of teaching science.
             </p>
             <div className='flex flex-row gap-4'>
               <span className='w-8 aspect-square bg-black/80 rounded-full'></span>

@@ -7,26 +7,27 @@ const comicsData = [
       {
         character: 'Xia',
         dialog:
-          'Oh hi trainee, im Xia! Welcome to the lab! Its a mess here, hope you can help us find the missing equipment on this lab.',
+          'Hi! trainee, I am Xia. Welcome to the lab! It is a mess here. I hope that you can help us find the missing equipment in this laboratory scene.',
         duration: 1,
         delay: 0.5,
       },
       {
         character: 'Daniel',
         dialog:
-          'Hello! I am Daniel. Your job is to find the missing items listed by clicking on them. Make sure to confirm the items you find.',
+          'Hello! I am Daniel. Your goal is to find the missing laboratory items by clicking on them. Select the correct items listed.',
         duration: 1,
         delay: 0.5,
       },
       {
         character: 'Xia',
-        dialog: 'Lets try 1 item for now. It should be easy. You can PAUSE by tapping on the timer.',
+        dialog:
+          'Let us try the first item. Once in the game, you can PAUSE anytime by clicking the timer above the scene.',
         duration: 1,
         delay: 0.5,
       },
       {
         character: 'Daniel',
-        dialog: 'Oh, please be aware of the time limit. You only have 30 seconds to find your first item. Good luck!',
+        dialog: 'Please be mindful of the time limit. You only have 30 seconds to find the first missing item. Enjoy!',
         duration: 1,
         delay: 0.5,
       },
@@ -39,20 +40,20 @@ const comicsData = [
     comic: [
       {
         character: 'Xia',
-        dialog: 'Let us tell you something ...',
+        dialog: 'Good job! Let us try another one.',
         duration: 1,
         delay: 0.5,
       },
       {
         character: 'Daniel',
-        dialog: 'Most of the time, you need to find multiple items to get the job done. Lets try 3 items now.',
+        dialog:
+          'In the next round, you will need to locate and identify 3 specific missing items in 30 seconds to progress to the next level.',
         duration: 1,
         delay: 0.5,
       },
       {
         character: 'Xia',
-        dialog:
-          'Thats 3 items in 30 seconds. Ill give you a tip, scroll left and right, you might find some items there. Good luck!',
+        dialog: 'You can scroll from left to right to find some items there.',
         duration: 1,
         delay: 0.5,
       },
@@ -65,19 +66,21 @@ const comicsData = [
     comic: [
       {
         character: 'Xia',
-        dialog: 'Good job! You are officially a Trainee now.',
+        dialog: 'Great job! You are officially a TRAINEE now.',
         duration: 1,
         delay: 0.5,
       },
       {
         character: 'Daniel',
-        dialog: 'Jobs easy right? I think youll get the hang of it. Congrats!',
+        dialog:
+          'As the difficulty increases, I believe you will find more enjoyment in the challenge, as you progress to higher levels.',
         duration: 1,
         delay: 0.5,
       },
       {
         character: 'Xia',
-        dialog: 'You need to get to certain levels to get promoted. I think you can be in your own now.',
+        dialog:
+          'Advancing to specific levels will help you earn promotions, acquire more stars, and unlock various badges. I trust in your ability to accomplish these milestones on your own.',
         duration: 1,
         delay: 0.5,
       },
@@ -121,14 +124,14 @@ const comicsData = [
       {
         character: 'Xia',
         dialog:
-          'Wow! We cant believe you easily made it here, congrats! From here on, Its you against the clock. Looking forward to see you secure that elusive 1st place!',
+          'Impressive progress! Congratulations on reaching this stage swiftly. Now, it is a race against time. We eagerly anticipate witnessing your goal of securing the elusive first place!',
         duration: 1,
         delay: 0.5,
       },
       {
         character: 'Daniel',
         dialog:
-          'Were pretty sure you know your lab equipment now. Congrats on being an expert! Now nail that 1st place in the hall of fame. Good luck!',
+          'Your knowledge of laboratory equipment, apparatuses, and materials is commendable, establishing you as an expert! Now, aim to secure the top spot in the hall of fame. Best of luck as you strive for that first-place position!',
         duration: 1,
         delay: 0.5,
       },

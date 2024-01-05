@@ -98,9 +98,9 @@ export default function ModalHome() {
 
             <p className='text-sm text-white/50'>
               Gear up for the ultimate challenge as the Labs Game beckons you to claim the top spot on the leaderboard
-              and snag all the coveted badges! Become the lab virtuoso by tackling brain-teasing tasks, showcasing your
-              skills, and outsmarting the competition. Are you ready to rise to the occasion and etch your name in the
-              annals of laboratory greatness? Aim high, aim for the stars, and let the badge collection begin!
+              and get all the coveted badges! Become the lab expert by tackling brain-teasing tasks, showcasing your
+              skills, and outsmarting the competition. Are you ready to explore the challenges and aim high for the
+              stars? Let the badge collection begin!
             </p>
 
             <div className='text-sm font-bold text-white/70 uppercase'>

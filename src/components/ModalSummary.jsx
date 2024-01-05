@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { PiPlayFill } from 'react-icons/Pi';
+import { FaPlay } from 'react-icons/fa6';
 import { useNavigationUpdate } from '../context/NavigationProvider';
 import { useGame, useGameUpdate } from '../context/GameProvider';
 import { useLocalStorage } from '../context/LocalStorageProvider';
@@ -49,7 +49,7 @@ export default function ModalSummary() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, y: 50 }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
-            style={{ scale: res < 800 && '75%' }} 
+            style={{ scale: res < 800 && '75%' }}
             className='flex flex-col gap-4'
           >
             {/* TITLE */}
@@ -141,7 +141,7 @@ export default function ModalSummary() {
                   'bg-white/60 hover:bg-white/80'
                 )}
               >
-                <PiPlayFill className='text-black/70 scale-110' />
+                <FaPlay className='text-black/70 scale-110' />
               </div>
             </motion.div>
           </motion.div>

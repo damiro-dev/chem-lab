@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { PiPlayFill } from 'react-icons/Pi';
+import { FaPlay } from 'react-icons/fa6';
 import { useNavigationUpdate } from '../context/NavigationProvider';
 import { useGameUpdate } from '../context/GameProvider';
 import { useTimer, useTimerUpdate } from '../context/TimerProvider';
@@ -135,7 +135,7 @@ export default function ModalHome() {
                     'cursor-pointer bg-black/70 hover:bg-black/60'
                   )}
                 >
-                  <PiPlayFill className='scale-110' />
+                  <FaPlay className='scale-110' />
                 </div>
               </div>
               <span className='text-sm font-semibold text-red-800 tracking-wide'>{feedback}</span>

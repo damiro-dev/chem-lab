@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { PiPlayFill } from 'react-icons/Pi';
+import { FaPlay } from 'react-icons/fa6';
 import { useNavigationUpdate } from '../context/NavigationProvider';
 import { useGame } from '../context/GameProvider';
 import { useAnimateCharUpdate } from '../context/AnimateCharProvider';
@@ -157,7 +157,7 @@ export default function ModalComic() {
                   CONTINUE
                 </span>
                 <div className='z-10 w-10 aspect-square flex items-center justify-center rounded-full -ml-12 bg-white/60 hover:bg-white/80'>
-                  <PiPlayFill className='text-black/70 scale-110' />
+                  <FaPlay className='text-black/70 scale-110' />
                 </div>
               </motion.div>
             </div>

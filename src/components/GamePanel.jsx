@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { useGame, useGameUpdate } from '../context/GameProvider';
 import { useTimer, useTimerUpdate } from '../context/TimerProvider';
 import { useNavigationUpdate } from '../context/NavigationProvider';
-import { PiPlayFill } from 'react-icons/Pi';
-import { FaCircleChevronUp } from 'react-icons/fa6';
+import { FaCircleChevronUp, FaPlay } from 'react-icons/fa6';
 import cn from '../lib/tailwindMerge';
 import referenceData from '../data/reference';
 
@@ -74,7 +73,7 @@ export default function GamePanel() {
             time <= 10 ? 'text-red-500' : 'text-white'
           )}
         >
-          {isRunning ? <div>{time}</div> : <PiPlayFill />}
+          {isRunning ? <div>{time}</div> : <FaPlay />}
         </div>
       </section>
 
